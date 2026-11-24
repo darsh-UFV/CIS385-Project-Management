@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Executive Overview | Project Website</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Page-specific dashboard layout. EDIT: Adjust dashboard spacing here. */
+    .route-card { min-height: 255px; }
+    .route-card__visual { min-height: 180px; padding: 4px 0 0; }
+    .route-card__chips { margin-bottom: 8px; }
+    .route-card__foot { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top:8px; color:var(--color-muted); font-size:10px; }
+    .hero-feature { min-height:255px; display:flex; flex-direction:column; justify-content:space-between; }
+    .hero-feature__figures { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
+    .hero-feature__figures div { padding-top:10px; border-top:1px solid rgb(255 255 255 / 35%); }
+    .hero-feature__figures strong { display:block; font-size:20px; font-weight:500; letter-spacing:-.04em; }
+    .hero-feature__figures span { display:block; color:rgb(255 255 255 / 82%); font-size:10px; }
+    .dashboard-tools { display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+    .dashboard-tools__left { display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
+    .dashboard-tools__hint { color:var(--color-muted); font-size:10px; }
+    .stat-card__value--text { font-size:15px; line-height:1.25; letter-spacing:-.025em; }
+    .chart-card { cursor:pointer; }
+    .chart-card:focus-within { outline:2px solid var(--color-red); outline-offset:2px; }
+    .chart-card__body { min-width:0; }
+    .chart-card__note { margin:8px 0 0; color:var(--color-muted); font-size:10px; }
+    .summary-strip { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .summary-strip__item { text-align:left; transition:background-color 140ms ease, border-color 140ms ease; }
+    .summary-strip__item:hover { border-color:var(--color-red-soft); background:var(--color-red-tint); }
+    .summary-strip__item > span:first-child { min-width:0; }
+    .summary-strip__item strong { display:block; color:var(--color-title); font-size:13px; font-weight:600; }
+    .summary-strip__item small { display:block; margin-top:2px; color:var(--color-muted); font-size:10px; }
+    .source-note { margin:0; color:var(--color-muted); font-size:10px; }
+    .dashboard-section { display:grid; gap:12px; }
+    .dashboard-section__heading { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .dashboard-section__heading h2 { margin:0; color:var(--color-nav); font-size:15px; font-weight:600; }
+    .dashboard-section__heading span { color:var(--color-muted); font-size:10px; }
+    .chart-stack { display:grid; gap:18px; }
+    .print-action { white-space:nowrap; }
+    @media (max-width:760px) {
+      .hero-feature,.route-card { min-height:0; }
+      .summary-strip { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width:480px) {
+      .summary-strip { grid-template-columns:minmax(0,1fr); }
+      .dashboard-tools { align-items:stretch; }
+    }
+    @media print {
+      .dashboard-tools,.print-action,.mobile-menu-toggle,.sidebar__quicklinks,.sidebar__create-link { display:none !important; }
+      .stat-card[hidden],.card[hidden] { display:block !important; }
+      .app-shell { grid-template-columns:minmax(0,1fr); }
+      .stat-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell" id="app-shell">
+    <aside class="sidebar" id="site-sidebar" aria-label="Project navigation">
+      <div class="sidebar__identity">
+        <span class="sidebar__monogram" aria-hidden="true">FV</span>
+        <div class="sidebar__identity-copy">
+          <span class="sidebar__identity-label">Project workspace</span>
+          <strong class="sidebar__identity-name">Fraser Valley Preparedness Research Lab</strong>
+        </div>
+      </div>
+
+      <div class="sidebar__selector">
+        <div class="sidebar__selector-main">
+          <span class="sidebar__selector-mark" aria-hidden="true">FV</span>
+          <span class="sidebar__selector-copy"><small>Institution</small><strong>University of the Fraser Valley</strong></span>
+        </div>
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+      </div>
+
+      <!-- Keep all ten navigation links static and relative on every page. -->
+      <nav class="sidebar__nav" aria-label="Website pages">
+        <a class="sidebar__nav-link active" href="index.html" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg>
+          <span class="sidebar__nav-label">Executive Overview</span>
+        </a>
+        <a class="sidebar__nav-link" href="project-charter.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5h10a2 2 0 0 1 2 2v13h-14v-13a2 2 0 0 1 2-2Z"/><path d="M9 3.5h6v3H9zM8 11h8M8 15h8"/></svg>
+          <span class="sidebar__nav-label">Project Charter</span>
+        </a>
+        <a class="sidebar__nav-link" href="scope-deliverables.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"/><path d="m3.8 7.7 8.2 4.6 8.2-4.6M12 12.3V21"/></svg>
+          <span class="sidebar__nav-label">Scope &amp; Deliverables</span>
+        </a>
+        <a class="sidebar__nav-link" href="time.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>
+          <span class="sidebar__nav-label">Time</span>
+        </a>
+        <a class="sidebar__nav-link" href="cost.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7.5" ry="3"/><path d="M4.5 6.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5M4.5 11.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5"/></svg>
+          <span class="sidebar__nav-label">Cost</span>
+        </a>
+        <a class="sidebar__nav-link" href="operations.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5h6v5H4zM14 13.5h6v5h-6zM10 8h4a2 2 0 0 1 2 2v3.5M7 10.5v7h7"/></svg>
+          <span class="sidebar__nav-label">Operations</span><span class="sidebar__nav-count" id="operations-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="management.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="var(--color-card)"/><circle cx="15" cy="12" r="2" fill="var(--color-card)"/><circle cx="7" cy="18" r="2" fill="var(--color-card)"/></svg>
+          <span class="sidebar__nav-label">Management</span>
+        </a>
+        <a class="sidebar__nav-link" href="references.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h12a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2v-13Z"/><path d="M7 4.5v13a2 2 0 0 0 2 2M9 9h7M9 13h7"/></svg>
+          <span class="sidebar__nav-label">References</span><span class="sidebar__nav-count" id="references-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="detailed-documentation.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h8l4 4v13H6z"/><path d="M14 3.5v4h4M9 12h6M9 16h6"/></svg>
+          <span class="sidebar__nav-label">Detailed Documentation</span>
+        </a>
+        <a class="sidebar__nav-link" href="about-us.html">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 9a2.5 2.5 0 1 1 4.4 1.6c-.9 1-1.9 1.2-1.9 2.9M12 17h.01"/></svg>
+          <span class="sidebar__nav-label">About Us</span>
+        </a>
+      </nav>
+
+      <section class="sidebar__highlight" aria-label="Project snapshot">
+        <div class="sidebar__highlight-heading"><span class="sidebar__highlight-title">Project snapshot</span><span class="sidebar__highlight-value">Planned</span></div>
+        <div class="sidebar__highlight-metric">
+          <strong class="sidebar__highlight-number" id="highlight-number" data-highlight-number>36</strong>
+          <span class="sidebar__highlight-caption" id="highlight-caption" data-highlight-caption>calendar months</span>
+        </div>
+        <div class="sidebar__highlight-toggles" data-metric-switcher>
+          <button class="sidebar__highlight-toggle active" type="button" data-metric-toggle data-metric-key="duration" aria-pressed="true">Duration</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="budget" aria-pressed="false">Budget</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="risks" aria-pressed="false">Risks</button>
+        </div>
+      </section>
+
+      <div class="sidebar__bottom">
+        <div class="sidebar__quicklinks" aria-label="Quick links">
+          <a href="time.html#time" aria-label="Open Time"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 9h16"/></svg></a>
+          <a href="cost.html#cost" aria-label="Open Cost"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></svg></a>
+          <a href="operations.html#operations" aria-label="Open Operations"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8-4 8 4v10l-8 4-8-4zM4 7l8 5 8-5M12 12v9"/></svg></a>
+          <a href="management.html#management" aria-label="Open Management"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h4"/></svg></a>
+        </div>
+        <a class="sidebar__create-link" href="detailed-documentation.html">
+          <span class="sidebar__create-icon" aria-hidden="true">+</span>
+          <span>Open Detailed Documentation</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <header class="topbar">
+        <div class="topbar__leading">
+          <button class="icon-button mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-sidebar">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div>
+            <h1 class="page-title">Executive Overview</h1>
+            <p class="page-subtitle">Fraser Valley Preparedness Research Lab · Project proposal</p>
+          </div>
+        </div>
+        <div class="topbar__actions">
+          <label class="search-pill">
+            <span class="visually-hidden">Search dashboard cards and charts</span>
+            <input type="search" placeholder="Search" data-search-target="#dashboard-overview" autocomplete="off">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+          </label>
+          <button class="icon-button print-action" id="print-dashboard" type="button" aria-label="Print or save as PDF" title="Print / Save as PDF">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V4h10v4M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v6H7z"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div id="dashboard-overview" class="section-stack">
+        <section class="dashboard-layout" aria-label="Project schedule and funding snapshot">
+          <article class="card route-card" data-category="timing" data-filter-item data-searchable data-search-text="project timeline planned activities six-month periods" data-drawer-title="Project timeline" data-drawer-text="" data-source="Time page" data-source-href="time.html#time" data-tooltip="Source: Time page" role="button" tabindex="0" aria-label="Open project timeline details">
+            <div class="card__header">
+              <div><h2 class="card__title">Project timeline</h2><p class="card__subtitle" id="timeline-card-subtitle"></p></div>
+              <span class="read-more">Read more</span>
+            </div>
+            <div class="chip-row route-card__chips" aria-label="Timeline labels"><span class="chip chip--filled">Schedule</span><span class="chip">Six-month periods</span><span class="chip">Planned work</span></div>
+            <div class="route-card__visual" data-chart="timeline-route" aria-label="Numbered project activity route chart"></div>
+            <div class="route-card__foot"><span>Abstract schedule sequence · not a geographic map</span><span>Source: Time page</span></div>
+          </article>
+
+          <article class="feature-card hero-feature" data-category="cost" data-filter-item data-searchable data-search-text="funding ceiling delivery baseline sponsor controlled reserve" data-drawer-title="Total funding ceiling" data-drawer-text="" data-source="Cost page" data-source-href="cost.html#cost" data-tooltip="Source: Cost page" role="button" tabindex="0" aria-label="Open total funding ceiling details">
+            <div>
+              <h2 class="feature-card__title">Total funding ceiling</h2>
+              <strong class="feature-card__value" id="feature-funding-value"></strong>
+              <span class="feature-card__caption">Documented funding ceiling</span>
+            </div>
+            <div class="progress-track" aria-label="Delivery baseline share of funding ceiling"><span class="progress-track__fill" id="feature-baseline-progress" style="width:0;background:var(--color-card)"></span></div>
+            <div class="hero-feature__figures">
+              <div><strong id="feature-baseline-value"></strong><span>Delivery baseline</span></div>
+              <div><strong id="feature-reserve-value"></strong><span>Sponsor-controlled reserve</span></div>
+            </div>
+            <span class="feature-card__footer" id="feature-baseline-caption"></span>
+          </article>
+        </section>
+
+        <section class="dashboard-tools" aria-label="Dashboard filters">
+          <div class="dashboard-tools__left">
+            <div class="filter-row" role="group" aria-label="Filter dashboard sections">
+              <button class="filter-chip active" type="button" data-filter-chip data-filter-group="dashboard" data-filter-value="all" data-filter-target="#dashboard-overview" aria-pressed="true">All</button>
+              <button class="filter-chip" type="button" data-filter-chip data-filter-group="dashboard" data-filter-value="timing" data-filter-target="#dashboard-overview" aria-pressed="false">Timing</button>
+              <button class="filter-chip" type="button" data-filter-chip data-filter-group="dashboard" data-filter-value="cost" data-filter-target="#dashboard-overview" aria-pressed="false">Cost</button>
+              <button class="filter-chip" type="button" data-filter-chip data-filter-group="dashboard" data-filter-value="return" data-filter-target="#dashboard-overview" aria-pressed="false">Return</button>
+              <button class="filter-chip" type="button" data-filter-chip data-filter-group="dashboard" data-filter-value="scope" data-filter-target="#dashboard-overview" aria-pressed="false">Scope</button>
+              <button class="filter-chip" type="button" data-filter-chip data-filter-group="dashboard" data-filter-value="operations" data-filter-target="#dashboard-overview" aria-pressed="false">Operations</button>
+              <button class="filter-chip" type="button" data-filter-chip data-filter-group="dashboard" data-filter-value="management" data-filter-target="#dashboard-overview" aria-pressed="false">Management</button>
+            </div>
+          </div>
+          <span class="dashboard-tools__hint">Select a card for its source page and details</span>
+        </section>
+
+          <section class="dashboard-section" aria-labelledby="timing-stats-heading">
+            <div class="dashboard-section__heading"><h2 id="timing-stats-heading">Project and timing</h2><span>Planned schedule</span></div>
+            <div class="stat-grid" id="timing-stat-grid"></div>
+          </section>
+          <section class="dashboard-section" aria-labelledby="cost-stats-heading">
+            <div class="dashboard-section__heading"><h2 id="cost-stats-heading">Cost baseline</h2><span>CAD millions unless stated otherwise</span></div>
+            <div class="stat-grid" id="cost-stat-grid"></div>
+          </section>
+          <section class="dashboard-section" aria-labelledby="return-stats-heading">
+            <div class="dashboard-section__heading"><h2 id="return-stats-heading">Return and payback</h2><span>Documented scenarios</span></div>
+            <div class="stat-grid" id="return-stat-grid"></div>
+          </section>
+          <section class="dashboard-section" aria-labelledby="scope-stats-heading">
+            <div class="dashboard-section__heading"><h2 id="scope-stats-heading">Scope and deliverables</h2><span>Source quantities and counts</span></div>
+            <div class="stat-grid" id="scope-stat-grid"></div>
+          </section>
+          <section class="dashboard-section" aria-labelledby="operations-stats-heading">
+            <div class="dashboard-section__heading"><h2 id="operations-stats-heading">Operations and management</h2><span>Source lists and structures</span></div>
+            <div class="stat-grid" id="operations-stat-grid"></div>
+          </section>
+        </div>
+
+        <!-- Phase 6 fills this mount point with the complete interactive what-if workspace. -->
+        <section class="dashboard-section" aria-labelledby="whatif-heading">
+          <div class="dashboard-section__heading"><h2 id="whatif-heading">What-if analysis</h2><span>Scenario workspace</span></div>
+          <div id="whatif-root"></div>
+        </section>
+
+        <nav class="page-pagination" aria-label="Previous and next pages">
+          <a class="pagination-link" href="about-us.html"><span aria-hidden="true">←</span> Previous page <strong>About Us</strong></a>
+          <a class="pagination-link pagination-link--next" href="project-charter.html">Next page <strong>Project Charter</strong> <span aria-hidden="true">→</span></a>
+        </nav>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/project-data.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    /* Page-specific dashboard rendering. All project data comes from PROJECT_DATA or is calculated from it. */
+    (function () {
+      'use strict';
+      const data = window.PROJECT_DATA;
+      if (!data) return;
+
+      const pageLinks = {
+        charter: { name: 'Project Charter', href: 'project-charter.html#project-charter' },
+        scope: { name: 'Scope & Deliverables', href: 'scope-deliverables.html#scope' },
+        time: { name: 'Time', href: 'time.html#time' },
+        cost: { name: 'Cost', href: 'cost.html#cost' },
+        operations: { name: 'Operations', href: 'operations.html#operations' },
+        management: { name: 'Management', href: 'management.html#management' },
+        references: { name: 'References', href: 'references.html#references' }
+      };
+      const iconMarkup = {
+        timing: '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>',
+        cost: '<svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6.5" rx="7.5" ry="3"/><path d="M4.5 6.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5M4.5 11.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5"/></svg>',
+        return: '<svg viewBox="0 0 24 24" fill="none"><path d="M4 18V6M4 18h16M8 15l3-4 3 2 5-7"/></svg>',
+        scope: '<svg viewBox="0 0 24 24" fill="none"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"/><path d="m3.8 7.7 8.2 4.6 8.2-4.6M12 12.3V21"/></svg>',
+        operations: '<svg viewBox="0 0 24 24" fill="none"><path d="M4 5.5h6v5H4zM14 13.5h6v5h-6zM10 8h4a2 2 0 0 1 2 2v3.5M7 10.5v7h7"/></svg>',
+        management: '<svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="7" cy="18" r="2"/></svg>',
+        document: '<svg viewBox="0 0 24 24" fill="none"><path d="M6 3.5h8l4 4v13H6z"/><path d="M14 3.5v4h4M9 12h6M9 16h6"/></svg>'
+      };
+
+      // Calculate calendar-month duration from the source start period and exact closing date.
+      const monthStart = new Date(data.project.startMonth + '-01T00:00:00');
+      const closingDate = new Date(data.project.closingDate + 'T00:00:00');
+      const now = new Date();
+      const localToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const daysUntilStartPeriod = Math.ceil((monthStart - localToday) / 86400000);
+      const daysUntilClosing = Math.ceil((closingDate - localToday) / 86400000);
+      const plannedMonths = (closingDate.getFullYear() - monthStart.getFullYear()) * 12
+        + (closingDate.getMonth() - monthStart.getMonth()) + 1;
+      const dateFormatter = new Intl.DateTimeFormat('en-CA', { month: 'long', day: 'numeric', year: 'numeric' });
+      const closingDateLabel = dateFormatter.format(closingDate);
+      const accounts = data.cost.accounts;
+      const totals = data.cost.documentedTotals;
+      const accountTotal = accounts.reduce((sum, item) => sum + item.amount, 0);
+      const largestAccount = accounts.reduce((best, item) => item.amount > best.amount ? item : best, accounts[0]);
+      const smallestAccount = accounts.reduce((best, item) => item.amount < best.amount ? item : best, accounts[0]);
+      const reserveShare = totals.sponsorControlledReserve / totals.fundingCeiling * 100;
+      const baselineShare = totals.deliveryBaseline / totals.fundingCeiling * 100;
+      const largestAccountShare = largestAccount.amount / accountTotal * 100;
+      const averageMonthlyBaseline = totals.deliveryBaseline / plannedMonths;
+      const labourAccount = accounts.find((item) => item.id === 'direct-labour-backfill');
+      const upToAccounts = accounts.filter((item) => item.quantityQualifier === 'up to');
+      const riskOwners = Array.from(new Set(data.risks.map((item) => item.owner)));
+      const risksPerOwner = data.risks.length / Math.max(1, riskOwners.length);
+      const governanceCount = [data.management.reporting.progress, data.management.changeControl, data.management.scopeAcceptance].filter(Boolean).length;
+      const returnScenarios = data.returnAnalysis.scenarios;
+      const bestScenario = returnScenarios.reduce((best, item) => item.statedROI > best.statedROI ? item : best, returnScenarios[0]);
+      const worstScenario = returnScenarios.reduce((worst, item) => item.statedNPV < worst.statedNPV ? item : worst, returnScenarios[0]);
+
+      // Update all visible snapshot values from the data file.
+      document.getElementById('operations-nav-count').textContent = String(data.risks.length);
+      document.getElementById('references-nav-count').textContent = String(data.documentStructure.referenceEntryCount);
+      const highlight = document.getElementById('highlight-number');
+      highlight.textContent = String(plannedMonths);
+      const metricDefinitions = {
+        duration: { value: plannedMonths, label: 'calendar months' },
+        budget: { value: 'CAD $' + totals.fundingCeiling.toLocaleString('en-CA') + 'm', label: 'CAD funding ceiling' },
+        risks: { value: data.risks.length, label: 'priority risks' }
+      };
+      document.querySelectorAll('[data-metric-key]').forEach((button) => {
+        const metric = metricDefinitions[button.dataset.metricKey];
+        if (metric) button.dataset.metricValue = String(metric.value);
+      });
+
+      const fundingValue = document.getElementById('feature-funding-value');
+      fundingValue.dataset.countUp = String(totals.fundingCeiling);
+      fundingValue.dataset.prefix = 'CAD $';
+      fundingValue.dataset.suffix = 'm';
+      fundingValue.textContent = 'CAD $' + totals.fundingCeiling.toLocaleString('en-CA') + 'm';
+      const baselineValue = document.getElementById('feature-baseline-value');
+      baselineValue.textContent = 'CAD $' + totals.deliveryBaseline.toLocaleString('en-CA') + 'm';
+      document.getElementById('feature-reserve-value').textContent = 'CAD $' + totals.sponsorControlledReserve.toLocaleString('en-CA') + 'm';
+      document.getElementById('feature-baseline-progress').style.width = baselineShare + '%';
+      document.getElementById('feature-baseline-caption').textContent = baselineShare.toFixed(0) + '% baseline · ' + reserveShare.toFixed(0) + '% reserve';
+      document.getElementById('timeline-card-subtitle').textContent = data.time.activities.length + ' planned activities · ' + data.project.plannedScheduleDescription.replace('Planned work from ', '');
+
+      // Dashboard cards use source labels and numeric values only; each opens its source section.
+      function renderCards(targetId, items) {
+        const target = document.getElementById(targetId);
+        const fragment = document.createDocumentFragment();
+        items.forEach((item) => {
+          const source = pageLinks[item.source];
+          const card = document.createElement('button');
+          card.type = 'button';
+          card.className = 'stat-card';
+          card.dataset.category = item.category;
+          card.dataset.filterItem = '';
+          card.dataset.searchText = [item.label, item.detail, item.display, item.textValue].filter(Boolean).join(' ');
+          card.dataset.drawerTitle = item.label;
+          card.dataset.drawerText = item.drawerText || (item.label + ': ' + (item.display || item.textValue || '') + (item.detail ? ' · ' + item.detail : ''));
+          card.dataset.source = source.name + ' page';
+          card.dataset.sourceHref = source.href;
+          card.dataset.tooltip = 'Source: ' + source.name + ' page';
+          card.setAttribute('aria-label', item.label + ': ' + (item.display || item.textValue || '') + '. Source: ' + source.name + ' page. Open details.');
+
+          const top = document.createElement('span');
+          top.className = 'stat-card__top';
+          const icon = document.createElement('span');
+          icon.className = 'stat-card__icon';
+          icon.setAttribute('aria-hidden', 'true');
+          icon.innerHTML = item.icon || iconMarkup[item.category] || iconMarkup.document;
+          const indicator = document.createElement('span');
+          indicator.className = 'text-faint';
+          indicator.textContent = '↗';
+          top.append(icon, indicator);
+
+          const body = document.createElement('span');
+          const value = document.createElement('strong');
+          value.className = 'stat-card__value';
+          if (item.textValue !== undefined) {
+            value.classList.add('stat-card__value--text');
+            value.textContent = item.textValue;
+          } else {
+            value.dataset.countUp = String(item.value);
+            if (item.prefix) value.dataset.prefix = item.prefix;
+            if (item.suffix) value.dataset.suffix = item.suffix;
+            if (item.decimals !== undefined) value.dataset.decimals = String(item.decimals);
+            value.textContent = item.display;
+          }
+          const label = document.createElement('span');
+          label.className = 'stat-card__label';
+          label.textContent = item.label;
+          const detail = document.createElement('span');
+          detail.className = 'stat-card__detail';
+          detail.textContent = item.detail || '';
+          body.append(value, label, detail);
+          card.append(top, body);
+          fragment.appendChild(card);
+        });
+        target.replaceChildren(fragment);
+      }
+
+      const timingItems = [
+        { label: 'Project name', textValue: data.project.name, detail: 'Project proposal', source: 'charter', category: 'timing' },
+        { label: 'Institution', textValue: data.project.institution, detail: 'Project institution', source: 'charter', category: 'timing' },
+        { label: 'Planned start period', textValue: data.project.startPeriod, detail: 'Schedule start period', source: 'time', category: 'timing' },
+        { label: 'Project closing date', textValue: closingDateLabel, detail: 'Documented closing date', source: 'charter', category: 'timing' },
+        { label: 'Planned calendar duration', value: plannedMonths, display: plannedMonths + ' months', suffix: ' months', detail: 'Inclusive calendar-month count across the documented start and closing periods', source: 'time', category: 'timing' },
+        { label: 'Days until start period', value: Math.max(0, daysUntilStartPeriod), display: String(Math.max(0, daysUntilStartPeriod)), suffix: ' days', detail: 'Assumption - not from the document: first day of the start month used as the date anchor', drawerText: 'Assumption - not from the document: this countdown uses the first day of the documented start month as a date anchor. The Word document does not specify an exact start day.', source: 'time', category: 'timing' },
+        { label: 'Days until closing', value: Math.max(0, daysUntilClosing), display: String(Math.max(0, daysUntilClosing)), suffix: ' days', detail: 'Calculated to ' + closingDateLabel, source: 'charter', category: 'timing' },
+        { label: 'Schedule activities', value: data.time.activities.length, display: String(data.time.activities.length), detail: 'Activities in the Gantt table', source: 'time', category: 'timing' },
+        { label: 'Six-month periods', value: data.time.periods.length, display: String(data.time.periods.length), detail: data.time.periodLengthMonths + '-month periods', source: 'time', category: 'timing' },
+        { label: 'Timing notes', value: data.time.timingNotes.length, display: String(data.time.timingNotes.length), detail: 'Documented schedule notes', source: 'time', category: 'timing' }
+      ];
+
+      const costItems = [
+        { label: 'Total funding ceiling', value: totals.fundingCeiling, prefix: 'CAD $', suffix: 'm', display: 'CAD $' + totals.fundingCeiling.toLocaleString('en-CA') + 'm', detail: 'Documented total ceiling', source: 'cost', category: 'cost' },
+        { label: 'Delivery baseline', value: totals.deliveryBaseline, prefix: 'CAD $', suffix: 'm', display: 'CAD $' + totals.deliveryBaseline.toLocaleString('en-CA') + 'm', detail: 'Sum of budget account amounts', source: 'cost', category: 'cost' },
+        { label: 'Sponsor-controlled reserve', value: totals.sponsorControlledReserve, prefix: 'CAD $', suffix: 'm', display: 'CAD $' + totals.sponsorControlledReserve.toLocaleString('en-CA') + 'm', detail: 'Unreleased allowance', source: 'cost', category: 'cost' },
+        { label: 'Reserve share of ceiling', value: reserveShare, suffix: '%', decimals: 0, display: reserveShare.toFixed(0) + '%', detail: 'Reserve ÷ funding ceiling', source: 'cost', category: 'cost' },
+        { label: 'Cost accounts', value: accounts.length, display: String(accounts.length), detail: 'Accounts in the budget table', source: 'cost', category: 'cost' },
+        { label: 'Largest cost account', value: largestAccount.amount, prefix: 'CAD $', suffix: 'm', display: 'CAD $' + largestAccount.amount + 'm', detail: largestAccount.name, source: 'cost', category: 'cost' },
+        { label: 'Largest account share', value: largestAccountShare, suffix: '%', decimals: 1, display: largestAccountShare.toFixed(1) + '%', detail: largestAccount.name, source: 'cost', category: 'cost' },
+        { label: 'Smallest cost account', value: smallestAccount.amount, prefix: 'CAD $', suffix: 'm', display: 'CAD $' + smallestAccount.amount + 'm', detail: smallestAccount.name, source: 'cost', category: 'cost' },
+        { label: 'Average baseline per month', value: averageMonthlyBaseline, prefix: 'CAD $', suffix: 'm', decimals: 2, display: 'CAD $' + averageMonthlyBaseline.toFixed(2) + 'm', detail: 'Delivery baseline ÷ planned calendar months', source: 'cost', category: 'cost' },
+        { label: 'Direct labour and backfill', value: labourAccount.quantity, suffix: ' FTE-years', display: labourAccount.quantity.toLocaleString('en-CA') + ' FTE-years', detail: 'Quantity in the labour cost basis', source: 'cost', category: 'cost' },
+        { label: 'First approved spending cap', value: data.cost.firstApprovedSpendingMaximum, prefix: 'CAD $', suffix: 'm', display: 'CAD $' + data.cost.firstApprovedSpendingMaximum + 'm', detail: 'Maximum first approved spending', source: 'cost', category: 'cost' }
+      ];
+
+      const returnItems = [
+        { label: 'Annual operating cost', value: data.returnAnalysis.annualOperatingCost, prefix: 'CAD $', suffix: 'm', display: 'CAD $' + data.returnAnalysis.annualOperatingCost + 'm', detail: 'Annual operating cost in the ROI scenarios', source: 'cost', category: 'return' },
+        { label: 'Break-even annual gross benefit', value: data.returnAnalysis.annualOperatingCost, prefix: 'CAD $', suffix: 'm', display: 'CAD $' + data.returnAnalysis.annualOperatingCost + 'm', detail: 'Gross benefit equal to annual operating cost', source: 'cost', category: 'return' },
+        { label: 'ROI scenarios', value: returnScenarios.length, display: String(returnScenarios.length), detail: 'Documented benefit scenarios', source: 'cost', category: 'return' },
+        { label: 'Best stated simple payback', textValue: bestScenario.statedSimplePayback, detail: 'Annual gross benefit: CAD $' + bestScenario.annualGrossBenefit + 'm', source: 'cost', category: 'return' },
+        { label: 'Best scenario ROI', value: bestScenario.statedROI, prefix: '+', suffix: '%', decimals: 1, display: '+' + bestScenario.statedROI.toFixed(1) + '%', detail: 'Document-stated ROI', source: 'cost', category: 'return' },
+        { label: 'Best scenario NPV', value: bestScenario.statedNPV, prefix: '+CAD $', suffix: 'm', decimals: 1, display: '+CAD $' + bestScenario.statedNPV.toFixed(1) + 'm', detail: 'Document-stated NPV', source: 'cost', category: 'return' },
+        { label: 'Worst scenario NPV', value: Math.abs(worstScenario.statedNPV), prefix: '−CAD $', suffix: 'm', decimals: 1, display: '−CAD $' + Math.abs(worstScenario.statedNPV).toFixed(1) + 'm', detail: 'Document-stated NPV', source: 'cost', category: 'return' }
+      ];
+
+      const regionalPackages = accounts.find((item) => item.id === 'regional-access-continuity');
+      const researchAwards = accounts.find((item) => item.id === 'independent-partnered-research');
+      const serviceAwards = accounts.find((item) => item.id === 'service-continuity-awards');
+      const sharedEquipment = accounts.find((item) => item.id === 'deployable-continuity-equipment');
+      const scopeItems = [
+        { label: 'Deliverable headings', value: data.scope.deliverableHeadings.length, display: String(data.scope.deliverableHeadings.length), detail: 'Scope subheadings', source: 'scope', category: 'scope' },
+        { label: 'Initial clinical service sites', value: data.scope.initialSites.quantity, display: String(data.scope.initialSites.quantity), detail: data.scope.initialSites.unit, source: 'scope', category: 'scope' },
+        { label: 'Up to partner-site packages', value: regionalPackages.quantity, display: String(regionalPackages.quantity), detail: regionalPackages.unit, source: 'cost', category: 'scope' },
+        { label: 'Up to research awards', value: researchAwards.quantity, display: String(researchAwards.quantity), detail: researchAwards.unit, source: 'cost', category: 'scope' },
+        { label: 'Up to evaluated local projects', value: serviceAwards.quantity, display: String(serviceAwards.quantity), detail: serviceAwards.unit, source: 'cost', category: 'scope' },
+        { label: 'Up to shared equipment lots', value: sharedEquipment.quantity, display: String(sharedEquipment.quantity), detail: sharedEquipment.unit, source: 'cost', category: 'scope' },
+        { label: 'Up-to quantity entries', value: upToAccounts.length, display: String(upToAccounts.length), detail: 'Budget accounts explicitly qualified as up to', source: 'cost', category: 'scope' },
+        { label: 'Fraser Valley population', value: data.scope.populationContext.population, display: data.scope.populationContext.population.toLocaleString('en-CA'), detail: data.scope.populationContext.censusYear + ' census', source: 'scope', category: 'scope' },
+        { label: 'Population increase', value: data.scope.populationContext.growthPercent, suffix: '%', decimals: 1, display: data.scope.populationContext.growthPercent.toFixed(1) + '%', detail: data.scope.populationContext.comparisonYear + ' to ' + data.scope.populationContext.censusYear, source: 'scope', category: 'scope' },
+        { label: 'Monitoring indicators', value: data.scope.monitoringIndicators.length, display: String(data.scope.monitoringIndicators.length), detail: 'Listed indicators and inputs', source: 'scope', category: 'scope' },
+        { label: 'Pharmaceutical partners', value: data.scope.pharmaceuticalPartnerships.length, display: String(data.scope.pharmaceuticalPartnerships.length), detail: data.scope.pharmaceuticalPartnerships.join(' · '), source: 'scope', category: 'scope' }
+      ];
+
+      const operationsItems = [
+        { label: 'Priority risks', value: data.risks.length, display: String(data.risks.length), detail: 'Risk register entries', source: 'operations', category: 'operations' },
+        { label: 'Distinct risk owners', value: riskOwners.length, display: String(riskOwners.length), detail: 'Proposed owners in risk register', source: 'operations', category: 'operations' },
+        { label: 'Average risks per owner', value: risksPerOwner, decimals: 1, display: risksPerOwner.toFixed(1), detail: 'Risk count ÷ distinct proposed owners', source: 'operations', category: 'operations' },
+        { label: 'Stakeholder responsibility roles', value: data.operations.stakeholderResponsibilities.length, display: String(data.operations.stakeholderResponsibilities.length), detail: 'Named responsibility entries', source: 'operations', category: 'operations' },
+        { label: 'Recruitment groups', value: data.operations.recruitmentGroups.length, display: String(data.operations.recruitmentGroups.length), detail: 'Recruitment categories', source: 'operations', category: 'operations' },
+        { label: 'Three spheres', value: data.management.threeSpheres.length, display: String(data.management.threeSpheres.length), detail: 'Business · Organizational · Technology', source: 'management', category: 'management' },
+        { label: 'Organizational frames', value: data.management.organizationalFrames.length, display: String(data.management.organizationalFrames.length), detail: 'Structural · Human resource · Political · Symbolic', source: 'management', category: 'management' },
+        { label: 'Project management process groups', value: data.management.processGroups.length, display: String(data.management.processGroups.length), detail: 'Initiating · Planning · Executing · Monitoring and Controlling · Closing', source: 'management', category: 'management' },
+        { label: 'SWOT quadrants', value: Object.keys(data.management.swot).length, display: String(Object.keys(data.management.swot).length), detail: 'Strengths · Weaknesses · Opportunities · Threats', source: 'management', category: 'management' },
+        { label: 'Quality management topics', value: data.management.qualityTopics.length, display: String(data.management.qualityTopics.length), detail: 'Quality section topics', source: 'management', category: 'management' },
+        { label: 'HR management topics', value: data.management.hrTopics.length, display: String(data.management.hrTopics.length), detail: 'People, communication and handover topics', source: 'management', category: 'management' },
+        { label: 'Governance topics', value: governanceCount, display: String(governanceCount), detail: 'Progress reporting · Change control · Scope acceptance', source: 'management', category: 'management' }
+      ];
+renderCards('timing-stat-grid', timingItems);
+      renderCards('cost-stat-grid', costItems);
+      renderCards('return-stat-grid', returnItems);
+      renderCards('scope-stat-grid', scopeItems);
+      renderCards('operations-stat-grid', operationsItems);
+const routeCard = document.querySelector('.route-card');
+      routeCard.dataset.drawerText = 'The route marks ' + data.time.activities.length + ' planned schedule activities across ' + data.time.periods.length + ' documented periods. It is an abstract timeline, not a geographic map.';
+      document.querySelector('.hero-feature').dataset.drawerText = 'The documented total funding ceiling is CAD ' + totals.fundingCeiling + ' million, comprising a CAD ' + totals.deliveryBaseline + ' million delivery baseline and a CAD ' + totals.sponsorControlledReserve + ' million sponsor-controlled reserve.';
+
+      // The period countdown uses an explicit date anchor because the source gives a month, not a day.
+      const countdownNote = document.createElement('p');
+      countdownNote.className = 'page-footnote';
+      countdownNote.textContent = 'Assumption - not from the document: the document identifies ' + data.project.startPeriod + ' as the start period but does not specify an exact start day. The start-period countdown therefore uses the first day of that month as a date anchor.';
+      document.querySelector('.dashboard-tools').insertAdjacentElement('afterend', countdownNote);
+// The non-native card surfaces have matching keyboard activation behaviour.
+      document.querySelectorAll('[role="button"][data-drawer-title]').forEach((surface) => {
+        surface.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            surface.click();
+          }
+        });
+      });
+      document.getElementById('print-dashboard').addEventListener('click', () => window.print());
+    })();
+  </script>
+  <script src="assets/js/whatif.js"></script>
+</body>
+</html>

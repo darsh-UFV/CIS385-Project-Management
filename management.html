@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Management | Project Website</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* EDIT: Page-specific layout; all document formatting stays inside .doc. */
+    .document-page-intro { margin-bottom: 4px; }
+    .document-page-intro p { margin: 5px 0 0; color: var(--color-muted); font-size: 12px; }
+    .document-paper { width: min(100%, 8.5in); padding: 1in; overflow: visible; }
+    .doc { white-space: normal; }
+    .doc .word-run { white-space: pre-wrap; tab-size: 8; }
+    .doc .doc-page-break { display: block; height: 1px; margin: 18pt 0; border: 0; background: #D8D8D8; break-after: page; page-break-after: always; }
+    .doc .word-bookmark { display: block; height: 0; scroll-margin-top: 18px; }
+    .doc .word-image { display: inline-block; max-width: 100%; object-fit: contain; }
+    .doc .word-list { margin: 0 0 10pt; padding-left: 36pt; font-family: Arial, sans-serif; font-size: 12pt; line-height: 1; }
+    .doc .word-list li { margin: 0; padding-left: 0; }
+    .doc .word-table { width: 100%; border-collapse: collapse; border-spacing: 0; font-family: Arial, sans-serif; font-size: 12pt; line-height: 1; }
+    .doc .word-table td, .doc .word-table th { padding: 4pt; vertical-align: top; }
+    .doc .word-table td p { margin: 0 0 4pt; }
+    .doc .word-table--gridtable4-accent6 { border: 0.5pt solid #8DD873; }
+    .doc .word-table--gridtable4-accent6 td { border: 0.5pt solid #8DD873; }
+    .doc .word-table--gridtable4-accent6 tr:first-child td { background: #4EA72E; color: #FFFFFF; font-weight: 700; }
+    .doc .word-table--gridtable4-accent2 { border: 0.5pt solid #F1A983; }
+    .doc .word-table--gridtable4-accent2 td { border: 0.5pt solid #F1A983; }
+    .doc .word-table--gridtable4-accent2 tr:first-child td { background: #E97132; color: #FFFFFF; font-weight: 700; }
+    .doc .word-table--gridtable4-accent6 td:nth-child(even) { background-color: #FAE2D5; }
+    .doc .word-table--gridtable4-accent6 tr:first-child td { background: #4EA72E; }
+    .doc .word-table--gridtable4-accent2 td:nth-child(even) { background-color: #FCE4D6; }
+    .doc .word-table--gridtable4-accent2 tr:first-child td { background: #E97132; }
+    .doc .word-table--gridtable4-accent6 td p, .doc .word-table--gridtable4-accent2 td p { margin: 0 0 4pt; }
+    .doc table:not([class*="gridtable"]) td { border: 1px solid #A3A3A3; }
+    .doc table:not([class*="gridtable"]) { border: 1px solid #A3A3A3; }
+    .doc .doc-table-wrap { max-width: 100%; overflow-x: auto; margin: 10pt 0; }
+    .doc .doc-table-wrap table { min-width: 520px; }
+    .doc .word-table--image-layout { table-layout: auto; }
+    .doc .word-table--image-layout td { border: 0 !important; padding: 0; }
+    .sidebar__request-card { display:flex; min-height:116px; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:14px; border:1px dashed var(--color-red-soft); border-radius:18px; background:var(--color-card); color:var(--color-nav); text-align:center; }
+    .sidebar__request-plus { display:grid; width:30px; height:30px; place-items:center; border-radius:50%; background:var(--color-red); color:var(--color-card); font-size:22px; line-height:1; }
+    .sidebar__request-card strong { font-size:11px; font-weight:600; }
+    .sidebar__request-card span:last-child { color:var(--color-muted); font-size:9px; }
+    .pagination-link { display:flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; background:var(--color-card); color:var(--color-nav); font-size:11px; }
+    .pagination-link strong { font-weight:600; }
+    .pagination-link--next { margin-left:auto; }
+    .doc a { color: #0563C1; }
+    @media (max-width: 760px) { .document-paper { padding: 0.55in; } }
+    @media (max-width: 480px) { .document-paper { padding: 18px; } }
+    @media print { .document-paper { width: 100%; max-width: none; padding: 0; } .doc-table-wrap { overflow: visible; } .doc-table-wrap table { min-width: 0; } }
+  
+    /* EDIT: Page-specific cards and interactive components for section pages. */
+    .section-heading-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .section-intro{margin:0;color:var(--color-muted);font-size:12px}
+    .section-widget-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-gap)}
+    .section-widget{min-width:0;display:grid;align-content:start;gap:12px}
+    .section-widget--wide{grid-column:1/-1}
+    .section-widget__eyebrow{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--color-muted);font-size:10px}
+    .section-widget__eyebrow strong{color:var(--color-red);font-weight:600}
+    .section-fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .section-fact{padding:12px;border:1px solid var(--color-line);border-radius:14px;background:var(--color-card)}
+    .section-fact__label{display:block;color:var(--color-muted);font-size:10px}
+    .section-fact__value{display:block;margin-top:4px;color:var(--color-title);font-size:16px;font-weight:500;overflow-wrap:anywhere}
+    .section-copy{margin:0;color:var(--color-nav);font-size:12px;line-height:1.65}
+    .section-copy + .section-copy{margin-top:9px}
+    .section-inline-links{display:flex;gap:8px;flex-wrap:wrap}
+    .section-inline-links a{font-size:11px}
+    .section-stat{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+    .section-stat strong{font-size:35px;line-height:1;font-weight:400;letter-spacing:-.05em;color:var(--color-red);font-variant-numeric:tabular-nums}
+    .section-stat span{color:var(--color-muted);font-size:11px}
+    .section-choice-list{display:flex;flex-wrap:wrap;gap:7px}
+    .section-choice-list .chip{cursor:default}
+    .section-note{margin:0;color:var(--color-muted);font-size:10px;line-height:1.5}
+    .section-divider{height:1px;background:var(--color-line);margin:4px 0}
+    .section-document{display:grid;gap:11px;margin-top:4px}
+    .section-document .document-paper{margin-inline:0;max-width:100%;}
+    .section-document__header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .section-document__title{margin:0;font-size:19px;font-weight:400;color:var(--color-title)}
+    .section-tab-panels{min-width:0}
+    .section-tab-panels .tab-panel{padding-top:12px}
+    .section-tab-panels .tab-panel[hidden]{display:none!important}
+    .section-accordion{border-top:1px solid var(--color-line);padding-top:10px}
+    .section-accordion summary{cursor:pointer;color:var(--color-nav);font-size:12px;font-weight:600;list-style:none}
+    .section-accordion summary::-webkit-details-marker{display:none}
+    .section-accordion__body{padding:10px 0 2px;color:var(--color-nav);font-size:12px;line-height:1.65}
+    .section-accordion__body p{margin:0 0 8px}
+    .section-widget[hidden]{display:none!important}
+    .section-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .section-list li{display:flex;align-items:flex-start;gap:8px;color:var(--color-nav);font-size:11px}
+    .section-list li:before{content:"";width:6px;height:6px;flex:0 0 6px;margin-top:5px;border-radius:50%;background:var(--color-red)}
+    .section-pagination-label{display:block;color:var(--color-muted);font-size:9px}
+    @media(max-width:760px){.section-widget-grid{grid-template-columns:1fr}.section-widget--wide{grid-column:auto}}
+    @media print{.section-tools,.section-tabs,.no-print{display:none!important}.section-widget[hidden]{display:block!important}.section-document .document-paper{width:100%;padding:0}.section-widget-grid{grid-template-columns:1fr 1fr}}
+    
+/* EDIT: Operations and Management page components. */
+.ops-toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:end}
+.ops-control{display:grid;gap:5px;min-width:160px;flex:1}
+.ops-control label{font-size:10px;font-weight:600;color:var(--color-nav)}
+.ops-control input,.ops-control select{width:100%;min-height:36px;padding:8px 10px;border:1px solid var(--color-line);border-radius:10px;background:var(--color-card);color:var(--color-nav);font:inherit;font-size:11px}
+.ops-stat-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.ops-stat{padding:12px;border:1px solid var(--color-line);border-radius:13px;background:var(--color-card)}
+.ops-stat strong{display:block;color:var(--color-red);font-size:24px;font-weight:400;line-height:1.1}
+.ops-stat span{display:block;margin-top:4px;color:var(--color-muted);font-size:10px}
+.ops-risk-table{width:100%;border-collapse:collapse;font-size:10px}
+.ops-risk-table th,.ops-risk-table td{padding:9px 8px;border-bottom:1px solid var(--color-line);text-align:left;vertical-align:top}
+.ops-risk-table th{font-size:9px;color:var(--color-muted);font-weight:600}
+.ops-risk-table td{color:var(--color-nav)}
+.ops-risk-table button{padding:0;border:0;background:transparent;color:var(--color-red);text-align:left;font:inherit;font-weight:600;cursor:pointer}
+.ops-risk-detail{margin-top:11px;padding:12px;border-radius:13px;background:var(--color-panel);display:grid;gap:8px}
+.ops-risk-detail[hidden]{display:none}
+.ops-risk-detail dl{display:grid;grid-template-columns:92px minmax(0,1fr);gap:6px 10px;margin:0;font-size:10px}
+.ops-risk-detail dt{color:var(--color-muted)}.ops-risk-detail dd{margin:0;color:var(--color-nav);line-height:1.5}
+.ops-owner-chart{width:100%;height:auto;display:block}
+.ops-owner-chart text{font-family:var(--font-ui);fill:var(--color-nav);font-size:10px}
+.ops-owner-chart .bar{fill:var(--color-red-soft)}
+.ops-owner-chart .bar.selected{fill:var(--color-red)}
+.ops-button-grid{display:flex;flex-wrap:wrap;gap:7px}
+.ops-select-button{border:1px solid var(--color-line);border-radius:999px;padding:8px 11px;background:var(--color-card);color:var(--color-nav);font:inherit;font-size:10px;cursor:pointer}
+.ops-select-button[aria-pressed="true"],.ops-select-button.active{border-color:var(--color-red);background:var(--color-red);color:var(--color-card)}
+.ops-detail-copy{margin:0;color:var(--color-nav);font-size:11px;line-height:1.65}
+.ops-detail-panel{padding:12px;border:1px solid var(--color-line);border-radius:13px;background:var(--color-card);margin-top:10px}
+.ops-chip-list{display:flex;flex-wrap:wrap;gap:6px}
+.ops-chip{padding:6px 9px;border-radius:999px;background:var(--color-red-tint);color:var(--color-nav);font-size:10px}
+.ops-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.ops-step{padding:10px;border:1px solid var(--color-line);border-radius:12px;background:var(--color-card);color:var(--color-nav);font-size:10px;text-align:left;cursor:pointer}
+.ops-step[aria-pressed="true"]{border-color:var(--color-red);background:var(--color-red-tint)}
+.ops-swot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.ops-swot-quadrant{padding:12px;border:1px solid var(--color-line);border-radius:13px;background:var(--color-card);min-width:0}
+.ops-swot-quadrant h3{margin:0 0 9px;font-size:13px;font-weight:500;color:var(--color-title)}
+.ops-swot-quadrant button{border:0;background:transparent;padding:0;color:var(--color-red);font:inherit;font-size:10px;cursor:pointer;text-decoration:underline}
+.ops-swot-quadrant p{margin:9px 0 0;color:var(--color-nav);font-size:11px;line-height:1.6}
+.ops-swot-quadrant p[hidden]{display:none}
+.ops-note{font-size:9px;color:var(--color-muted);line-height:1.5;margin:0}
+.ops-scroll{overflow-x:auto;max-width:100%}
+.ops-quiet-link{color:var(--color-red);font-size:10px;text-decoration:underline}
+.ops-source-card{display:grid;gap:10px;align-content:start}
+.ops-source-card .section-widget__eyebrow{margin-bottom:0}
+@media(max-width:760px){.ops-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.ops-stat-row{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.ops-stat-row,.ops-swot-grid{grid-template-columns:1fr}.ops-risk-table{min-width:560px}.ops-risk-detail dl{grid-template-columns:1fr;gap:2px}.ops-risk-detail dd{margin-bottom:7px}}
+@media print{.ops-toolbar input,.ops-toolbar select,.ops-button-grid button,.ops-step,.ops-swot-quadrant button{display:none!important}.ops-risk-detail[hidden],.ops-swot-quadrant p[hidden]{display:block!important}.ops-steps{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+  <div class="app-shell" id="app-shell">
+    <aside class="sidebar" id="site-sidebar" aria-label="Project navigation">
+      <div class="sidebar__identity">
+        <span class="sidebar__monogram" aria-hidden="true">FV</span>
+        <div class="sidebar__identity-copy">
+          <span class="sidebar__identity-label">Project workspace</span>
+          <strong class="sidebar__identity-name">Fraser Valley Preparedness Research Lab</strong>
+        </div>
+      </div>
+
+      <div class="sidebar__selector">
+        <div class="sidebar__selector-main">
+          <span class="sidebar__selector-mark" aria-hidden="true">FV</span>
+          <span class="sidebar__selector-copy"><small>Institution</small><strong>University of the Fraser Valley</strong></span>
+        </div>
+        <svg viewbox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg>
+      </div>
+
+      <!-- Keep all ten navigation links static and relative on every page. -->
+      <nav class="sidebar__nav" aria-label="Website pages">
+        <a class="sidebar__nav-link" href="index.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1"></rect></svg>
+          <span class="sidebar__nav-label">Executive Overview</span>
+        </a>
+        <a class="sidebar__nav-link" href="project-charter.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5h10a2 2 0 0 1 2 2v13h-14v-13a2 2 0 0 1 2-2Z"></path><path d="M9 3.5h6v3H9zM8 11h8M8 15h8"></path></svg>
+          <span class="sidebar__nav-label">Project Charter</span>
+        </a>
+        <a class="sidebar__nav-link" href="scope-deliverables.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"></path><path d="m3.8 7.7 8.2 4.6 8.2-4.6M12 12.3V21"></path></svg>
+          <span class="sidebar__nav-label">Scope &amp; Deliverables</span>
+        </a>
+        <a class="sidebar__nav-link" href="time.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5l3.5 2"></path></svg>
+          <span class="sidebar__nav-label">Time</span>
+        </a>
+        <a class="sidebar__nav-link" href="cost.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7.5" ry="3"></ellipse><path d="M4.5 6.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5M4.5 11.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5"></path></svg>
+          <span class="sidebar__nav-label">Cost</span>
+        </a>
+        <a class="sidebar__nav-link" href="operations.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5h6v5H4zM14 13.5h6v5h-6zM10 8h4a2 2 0 0 1 2 2v3.5M7 10.5v7h7"></path></svg>
+          <span class="sidebar__nav-label">Operations</span><span class="sidebar__nav-count" id="operations-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link active" href="management.html" aria-current="page">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path><circle cx="9" cy="6" r="2" fill="var(--color-card)"></circle><circle cx="15" cy="12" r="2" fill="var(--color-card)"></circle><circle cx="7" cy="18" r="2" fill="var(--color-card)"></circle></svg>
+          <span class="sidebar__nav-label">Management</span>
+        </a>
+        <a class="sidebar__nav-link" href="references.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h12a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2v-13Z"></path><path d="M7 4.5v13a2 2 0 0 0 2 2M9 9h7M9 13h7"></path></svg>
+          <span class="sidebar__nav-label">References</span><span class="sidebar__nav-count" id="references-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="detailed-documentation.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h8l4 4v13H6z"></path><path d="M14 3.5v4h4M9 12h6M9 16h6"></path></svg>
+          <span class="sidebar__nav-label">Detailed Documentation</span>
+        </a>
+        <a class="sidebar__nav-link" href="about-us.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M9.5 9a2.5 2.5 0 1 1 4.4 1.6c-.9 1-1.9 1.2-1.9 2.9M12 17h.01"></path></svg>
+          <span class="sidebar__nav-label">About Us</span>
+        </a>
+      </nav>
+
+      <section class="sidebar__highlight" aria-label="Project snapshot">
+        <div class="sidebar__highlight-heading"><span class="sidebar__highlight-title">Project snapshot</span><span class="sidebar__highlight-value">Planned</span></div>
+        <div class="sidebar__highlight-metric">
+          <strong class="sidebar__highlight-number" id="highlight-number" data-highlight-number>36</strong>
+          <span class="sidebar__highlight-caption" id="highlight-caption" data-highlight-caption>calendar months</span>
+        </div>
+        <div class="sidebar__highlight-toggles" data-metric-switcher>
+          <button class="sidebar__highlight-toggle active" type="button" data-metric-toggle data-metric-key="duration" aria-pressed="true">Duration</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="budget" aria-pressed="false">Budget</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="risks" aria-pressed="false">Risks</button>
+        </div>
+      </section>
+
+      <div class="sidebar__bottom">
+        <div class="sidebar__quicklinks" aria-label="Quick links">
+          <a href="time.html#time" aria-label="Open Time"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M8 3v4M16 3v4M4 9h16"></path></svg></a>
+          <a href="cost.html#cost" aria-label="Open Cost"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"></path></svg></a>
+          <a href="operations.html#operations" aria-label="Open Operations"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8-4 8 4v10l-8 4-8-4zM4 7l8 5 8-5M12 12v9"></path></svg></a>
+          <a href="management.html#management" aria-label="Open Management"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h4"></path></svg></a>
+        </div>
+        <a class="sidebar__create-link" href="detailed-documentation.html">
+          <span class="sidebar__create-icon" aria-hidden="true">+</span>
+          <span>Open Detailed Documentation</span>
+        </a>
+      </div>
+    </aside>
+    <main class="app-main">
+      <header class="topbar">
+        <div class="topbar__leading">
+          <button class="icon-button mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-sidebar"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+          <div><h1 class="page-title">Management</h1><p class="page-subtitle">Fraser Valley Preparedness Research Lab · Project proposal</p></div>
+          <a class="topbar__select" href="#document-content">Document <span aria-hidden="true">⌄</span></a>
+        </div>
+        <div class="topbar__actions section-tools">
+          <label class="search-pill"><span class="visually-hidden">Search this page</span><input type="search" placeholder="Search" data-search-target="#section-widgets" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></label>
+          <button class="icon-button" type="button" data-print-page aria-label="Print or save as PDF" title="Print / Save as PDF"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V4h10v4M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v6H7z"/></svg></button>
+        </div>
+      </header>
+      <div class="page-content section-stack">
+        <div class="section-heading-row"><p class="section-intro">Explore the documented management models, governance, reporting, change control, SWOT, quality and HR topics.</p><span class="chip chip--tint">Planned project · Source: Word document</span></div>
+        <section id="section-widgets" class="section-stack" aria-label="Interactive section content">
+<div class="section-widget-grid">
+  <article class="card section-widget" data-filter-item data-category="spheres" data-search-text="three spheres model business organizational technology systems management">
+    <div class="card__header"><div><h2 class="card__title">Three Spheres Model for Systems Management</h2><p class="card__subtitle">Select a sphere to explore its original example</p></div><span class="chip chip--tint">3 spheres</span></div>
+    <div id="sphere-buttons" class="ops-button-grid" role="tablist" aria-label="Three spheres"></div><div class="ops-detail-panel"><strong id="sphere-heading"></strong><p class="ops-detail-copy" id="sphere-copy" style="margin-top:7px"></p></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="frames" data-search-text="four organizational frames structural human resource political symbolic">
+    <div class="card__header"><div><h2 class="card__title">Four Organizational Frames</h2><p class="card__subtitle">Choose a frame to read its description</p></div><span class="chip chip--tint">4 frames</span></div>
+    <div id="frame-buttons" class="ops-button-grid" role="tablist" aria-label="Organizational frames"></div><div class="ops-detail-panel"><strong id="frame-heading"></strong><p class="ops-detail-copy" id="frame-copy" style="margin-top:7px"></p></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="authorization" data-search-text="champion pre-initiation authorization UFV executives Dr Garry Fehr spending ceiling sponsors purchasing officer">
+    <div class="card__header"><div><h2 class="card__title">The Champion, Pre-Initiation and Authorization</h2><p class="card__subtitle">Expand the two source statements</p></div><span class="source-label">Source: Management</span></div>
+    <details class="section-accordion"><summary>The Champion</summary><p class="ops-detail-copy" id="champion-copy"></p></details>
+    <details class="section-accordion"><summary>Pre-Initiation</summary><p class="ops-detail-copy" id="preinit-copy"></p></details>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="lifecycle" data-search-text="project life cycle model spiral model decision uncertainty weekly count forecast complexity tool performance simulated shortages">
+    <div class="card__header"><div><h2 class="card__title">Project Life Cycle Model</h2><p class="card__subtitle">Documented model and description</p></div><span class="chip chip--filled" id="lifecycle-model"></span></div>
+    <button type="button" class="button-secondary" id="lifecycle-toggle" aria-expanded="false">Show cycle description</button><p class="ops-detail-copy" id="lifecycle-description" hidden></p>
+  </article>
+
+  <article class="card section-widget section-widget--wide" data-filter-item data-category="process" data-search-text="five project management process groups initiating planning executing monitoring controlling closing">
+    <div class="card__header"><div><h2 class="card__title">Five Project Management Process Groups</h2><p class="card__subtitle">Select a process group to display its description</p></div><span class="chip chip--tint">5 groups</span></div>
+    <div class="ops-button-grid" id="process-buttons" role="tablist" aria-label="Project management process groups"></div><div class="ops-detail-panel"><strong id="process-heading"></strong><p class="ops-detail-copy" id="process-copy" style="margin-top:7px"></p></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="reports" data-search-text="progress reports status reports finance spending comparison approved budget leads decisions milestones deadline">
+    <div class="card__header"><div><h2 class="card__title">Progress Reports and Status Reports</h2><p class="card__subtitle">Compare the reporting items</p></div><span class="source-label">Source: Management</span></div>
+    <div id="report-buttons" class="ops-button-grid" role="tablist" aria-label="Report types"></div><div class="ops-detail-panel"><strong id="report-heading"></strong><p class="ops-detail-copy" id="report-copy" style="margin-top:7px"></p></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="change-control" data-search-text="change control stakeholder request reason cost privacy existing project work authority scope schedule budget testing requirements informed">
+    <div class="card__header"><div><h2 class="card__title">Change Control</h2><p class="card__subtitle">Explore the sequence stated in the source paragraph</p></div><span class="chip chip--tint">5 steps</span></div>
+    <div id="change-steps" class="ops-steps"></div><div class="ops-detail-panel"><p class="ops-detail-copy" id="change-copy" aria-live="polite"></p></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="acceptance" data-search-text="scope acceptance completed work target formal approval responsible person">
+    <div class="card__header"><div><h2 class="card__title">Scope Acceptance</h2><p class="card__subtitle">Reveal the documented acceptance condition</p></div><span class="chip chip--tint">Expandable</span></div>
+    <button class="button-secondary" id="acceptance-toggle" type="button" aria-expanded="false">Show acceptance statement</button><p class="ops-detail-copy" id="acceptance-copy" hidden></p>
+  </article>
+
+  <article class="card section-widget section-widget--wide" data-filter-item data-category="swot" data-search-text="SWOT analysis strengths weaknesses opportunities threats">
+    <div class="card__header"><div><h2 class="card__title">SWOT Analysis</h2><p class="card__subtitle">Open a quadrant to read its original statement</p></div><span class="chip chip--tint">4 quadrants</span></div>
+    <div class="ops-swot-grid" id="swot-grid"></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="quality" data-search-text="project quality management quality planning assurance control testing cost quality incident management">
+    <div class="card__header"><div><h2 class="card__title">Project Quality Management</h2><p class="card__subtitle">Select a quality topic</p></div><span class="chip chip--tint">6 topics</span></div>
+    <div id="quality-buttons" class="ops-button-grid" role="tablist" aria-label="Quality topics"></div><div class="ops-detail-panel"><strong id="quality-heading"></strong><p class="ops-detail-copy" id="quality-copy" style="margin-top:7px"></p></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="hr-management" data-search-text="project HR management staffing workload employee motivation communication handover closure">
+    <div class="card__header"><div><h2 class="card__title">Project HR Management</h2><p class="card__subtitle">Select an HR management topic</p></div><span class="chip chip--tint">5 topics</span></div>
+    <div id="hr-topic-buttons" class="ops-button-grid" role="tablist" aria-label="HR management topics"></div><div class="ops-detail-panel"><strong id="hr-topic-heading"></strong><p class="ops-detail-copy" id="hr-topic-copy" style="margin-top:7px"></p></div>
+  </article>
+</div>
+</section>
+        <section class="section-document" aria-labelledby="document-section-title">
+          <div class="section-document__header"><h2 class="section-document__title" id="document-section-title">Document</h2><span class="source-label">Original Word formatting</span></div>
+          <div id="document-content" class="document-paper"><article class="doc" lang="en"><!-- DOCUMENT CONTENT START --><h1><span id="bookmark-_Toc246349593" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Management</span></h1>
+<h2><span id="bookmark-_Toc246349594" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Three Spheres Model for Systems Management</span></h2>
+<ol class="word-list" data-num-id="27" data-level="0"><li style="line-height:1.1625"><span class="word-run">Business </span><span class="word-run">sphere</span><span class="word-run"> include for example, by adding the extra shift of a nurse at the clinic will cover the appointments or not. (Renso, 2026b)</span></li><li style="line-height:1.1625"><span class="word-run">Organizational sphere include that who have the authority to approve the overtime and organize the team in the need. (Renso, 2026b)</span></li><li style="line-height:1.1625"><span class="word-run">Technology sphere include that if the research software will deliver the predicted data on time, with accuracy, and with clarity to the clinics. (Renso, 2026b)</span></li></ol>
+<h2><span id="bookmark-_Toc246349595" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Four Organizational Frames</span></h2>
+<ol class="word-list" data-num-id="28" data-level="0"><li style="line-height:1.1625"><span class="word-run">The structural frame shows that who will make which decision, like UFV will do the research, while the clinics will send the data of their patients visits.</span></li><li style="line-height:1.1625"><span class="word-run">The human resource frame will include the training and workshops done by the trainers to train the nurses at the clinics for sending the data to UFV lab. Then ask trainees that whether they could </span><span class="word-run">use</span><span class="word-run"> that time. (Renso, 2026b).</span></li><li style="line-height:1.1625"><span class="word-run">The political frame will include, when the two clinics will need the same mobile healthcare team at the same time. This will reveal the political side of this project. So, there is need to set the clear rules to avoid these types of conflicts.</span></li><li style="line-height:1.1625"><span class="word-run">The symbolic frame shows the real actions, like listening to remote staff and addressing their real issues and solving those. </span><span class="word-run">So,</span><span class="word-run"> this will build the trust. Pasting the logo on the website will not affect the relationship strengths with those remote clinics so, active listening will be needed. (Renso, 2026b)</span></li></ol>
+<h2><span id="bookmark-_Toc246349596" class="word-bookmark" aria-hidden="true"></span><span class="word-run">The </span><span class="word-run">Champion, Pre-Initiation </span><span class="word-run">and</span><span class="word-run"> Authorization</span></h2>
+<p style="line-height:1.1625"><span class="word-run">The primary champion are the University of the Fraser Valley executives and </span><span class="word-run">Dr. Garry Fehr so that the </span><span class="word-run">cross-department</span><span class="word-run"> decisions can be secured effectively.</span></p>
+<p style="line-height:1.1625"><span class="word-run">Pre-Initiative include the key baselines like regional problems, deciding the spending ceiling, and the sponsors. Meanwhile, purchasing officer will uses the approved charter and then prepare the procurement packages within the budget.</span></p>
+<p style="line-height:1.1625"><span style="font-weight:700"><span class="word-run">Project </span></span><span style="font-weight:700"><span class="word-run">Life Cycle Model</span></span></p>
+<p style="line-height:1.1625"><span class="word-run">For the development of the research software, spiral model will be used. Each cycle will initiate with the </span><span class="word-run">decision,</span><span class="word-run"> and one uncertainty will be decided. </span><span class="word-run">Cycles will</span><span class="word-run"> evaluate weekly count delivery, forecast complexity, and tool performance during simulated shortages</span><span class="word-run">.</span></p>
+<p style="line-height:1.1625"><span style="font-weight:700"><span class="word-run">Five </span></span><span style="font-weight:700"><span class="word-run">Project Management Process Groups</span></span></p>
+<ol class="word-list" data-num-id="29" data-level="0"><li style="line-height:1.1625"><span class="word-run">Initiating: this phase will confirm that lab has the necessary permissions to start developing the software and start other parts of the project.</span></li><li style="line-height:1.1625"><span class="word-run">Planning: this phase will include the details of the work that needs to be done, how much it will cost and who will be responsible for it.</span></li><li style="line-height:1.1625"><span class="word-run">Executing: in the phase, teams will be </span><span class="word-run">built</span><span class="word-run"> and resources will be collected. Then development of the research software and installation of the sensors will be started.</span></li><li style="line-height:1.1625"><span class="word-run">Monitoring and Controlling: this phase </span><span class="word-run">check</span><span class="word-run">s</span><span class="word-run"> the progress of the project and prepare the status reports and progress reports. Then quality and other problems will be fixed and documented.</span></li><li style="line-height:1.1625"><span class="word-run">Closing: in the phase the development of the project will be </span><span class="word-run">finished,</span><span class="word-run"> and then final cost will be calculated, lessons learned from the mistakes will be recorded, the work will be transferred to the people who will finalize the project and its reports. </span><span class="word-run">(Renso, 2026b, Class 2 lecture slides)</span></li></ol>
+<h2><span id="bookmark-_Toc246349597" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Progress Reports </span><span class="word-run">and</span><span class="word-run"> Status </span><span class="word-run">Reports</span></h2>
+<p style="line-height:1.1625"><span class="word-run">Each team leader will submit the weekly progress </span><span class="word-run">report,</span><span class="word-run"> and it will include the reporting date, completed milestones, next decision that will be taken and by who, and the deadline for that decision. (Renso, 2026)</span></p>
+<p style="line-height:1.1625"><span class="word-run">Meanwhile, the Finance department lead will send the spending report and comparison with the approved budget.</span></p>
+<p style="line-height:1.1625"><span class="word-run">Along with this, a status reports will also be sent by all leads to get the status of the project at a specific time.</span></p>
+<h2><span id="bookmark-_Toc246349598" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Change Control</span></h2>
+<p style="line-height:1.1625"><span class="word-run">This process includes recording the request of the stakeholder and reason behind that request. Then effects of that request will be reviewed on the cost, privacy, and the existing project work. After this, the change authority will approve the request and then update the scope, schedule, budget, testing and requirements and everyone will be informed.</span></p>
+<h2><span id="bookmark-_Toc246349599" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Scope Acceptance</span></h2>
+<p style="line-height:1.1625"><span class="word-run">Then the completed work will be checked against the target set and then getting formal approval from the responsible person.</span></p>
+<h2><span id="bookmark-_Toc246349600" class="word-bookmark" aria-hidden="true"></span><span class="word-run">SWOT Analysis</span></h2>
+<h3><span id="bookmark-_Toc246349601" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Strengths</span></h3>
+<p style="line-height:1.1625"><span class="word-run">The lab has a clear focus in solving the practical and </span><span class="word-run">real-life</span><span class="word-run"> problems that are associated with the pandemic. Meanwhile, researchers and clinic managers take the better decisions by using that information about the staff schedules, supplies, and emergency planning. (Renso, 2026)</span></p>
+<h3><span id="bookmark-_Toc246349602" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Weaknesses</span></h3>
+<p style="line-height:1.1625"><span class="word-run">First one is that the lab is depends on the information that will be provided by other organizations. If many organizations will provide the </span><span class="word-run">data,</span><span class="word-run"> then different reporting methods can create the inconsistent results, which will lead to errors. (Renso, 2026)</span></p>
+<h3><span id="bookmark-_Toc246349603" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Opportunities</span></h3>
+<p style="line-height:1.1625"><span class="word-run">Lab can use the same data and the research software access to other clinics in other regions and then each regions' clinic can make their own decisions based on the predictions by this software. (Renso, 2026)</span></p>
+<h3><span id="bookmark-_Toc246349604" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Threats</span></h3>
+<p style="line-height:1.1625"><span class="word-run">A participating clinic can leave the project and stop sending the data to UFV lab in between and that can slow down the progress. So, this project should prepare first the smaller version that will only collect the data from one clinic. (Renso, 2026)</span></p>
+<h2><span id="bookmark-_Toc246349605" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Return on investment (ROI) / payback analysis</span></h2>
+<p style="line-height:1.1625"><span class="word-run">Return on investment and chances of the better investments can be done by first reviewing the data and the reporting data methods that are being used in the research software.</span></p>
+<p style="line-height:1.1625"><span class="word-run">Secondly, by delaying the expensive equipment purchases and can only be bought when the reliable information about that equipment will be available. Third, by testing the situation that if one clinic will not send the data or stop sending in between then what will be the </span><span class="word-run">effect</span><span class="word-run"> of it on the research software development. Then board members can use the SWOT analysing to enhance the investment decisions.</span></p>
+<p style="line-height:1.1625"><span class="word-run">By considering all these things, payback analysis can be </span><span class="word-run">done,</span><span class="word-run"> and better decisions can be taken.</span></p>
+<h2><span id="bookmark-_Toc246349606" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Project </span><span class="word-run">Quality Management</span></h2>
+<h3><span id="bookmark-_Toc246349607" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Quality </span><span class="word-run">Planning</span></h3>
+<p style="line-height:1.1625"><span class="word-run">It can </span><span class="word-run">be done</span><span class="word-run"> by deciding what the report will contain and when it is needed, then setting the clear requirements, then assigning to someone who is responsible to check that whether these requirements are met or not.</span></p>
+<h3><span id="bookmark-_Toc246349608" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Quality </span><span class="word-run">Assurance</span></h3>
+<p style="line-height:1.1625"><span class="word-run">This is done by checking whether the team are following the correct procedures, then review the document and changes in it. </span></p>
+<h3><span id="bookmark-_Toc246349609" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Quality Control</span></h3>
+<p style="line-height:1.1625"><span class="word-run">By testing </span><span class="word-run">each</span><span class="word-run"> software release, identify and record defects, and make sure the final product works correctly.</span></p>
+<h3><span id="bookmark-_Toc246349610" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Testing</span></h3>
+<p style="line-height:1.1625"><span class="word-run">This is done by checking the results of the calculations that it should produce the correct results, no duplicates of the records, no missing information, and then asking the clinic managers that the result reports are easy to process and read.</span></p>
+<h3><span id="bookmark-_Toc246349611" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Cost </span><span class="word-run">Of Quality</span></h3>
+<p style="line-height:1.1625"><span class="word-run">Cost can be decreased by training the staff to enter the information correctly, and review the quality of the information, fixing the errors before the report release and after the report release to improve further.</span></p>
+<h3><span id="bookmark-_Toc246349612" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Quality Incident Management</span></h3>
+<p style="line-height:1.1625"><span class="word-run">These quality related incidents will be recorded for future lessons, problems will be written in it and the cause of those problems, and then quality checklists will be made to set the future practices.</span></p>
+<h2><span id="bookmark-_Toc246349613" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Project HR </span><span class="word-run">Management - </span><span class="word-run">People</span><span class="word-run">, </span><span class="word-run">Communication </span><span class="word-run">and</span><span class="word-run"> </span><span class="word-run">Durable Handover</span></h2>
+<h3><span id="bookmark-_Toc246349614" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Staffing and Workload Planning</span></h3>
+<p style="line-height:1.1625"><span class="word-run">In this plan, HR will determine which employees are needed and when and assigning too many tasks to one person will be avoided. Then HR will also decide that to complete certain phases of the project, where temporary workers will be needed.</span></p>
+<h3><span id="bookmark-_Toc246349615" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Employee Motivation</span></h3>
+<p style="line-height:1.1625"><span class="word-run">Time will be provided to employees to learn skills, recognize </span><span class="word-run">employees’</span><span class="word-run"> achievements and then appreciate them will increase their motivation. Then employees will be provided with predictable schedules and more backup employees so that workload should not increase on few employees.</span></p>
+<h3><span id="bookmark-_Toc246349616" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Communication</span></h3>
+<p style="line-height:1.1625"><span class="word-run">Project updates and other information will be shared among the employees of different departments via email and project management software like Microsoft Project.</span></p>
+<h3><span id="bookmark-_Toc246349617" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Project Handover</span></h3>
+<p style="line-height:1.1625"><span class="word-run">After the project will be completed then staff of the clinics will be trained to effectively send the data and process the reports generated by the research software.</span></p>
+<h3><span id="bookmark-_Toc246349618" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Project Closure</span></h3>
+<p style="line-height:1.1625"><span class="word-run">After confirming that whole work is done and reports are made then it will be finalized and project will be closed</span><span class="word-run">.</span></p>
+<p style="margin-bottom:8pt;line-height:1.1625"><span class="doc-page-break" aria-hidden="true"></span></p><!-- DOCUMENT CONTENT END --></article></div>
+        </section>
+        <nav class="page-pagination" aria-label="Previous and next pages">
+          <a class="pagination-link" href="operations.html"><span aria-hidden="true">←</span><span><span class="section-pagination-label">Previous page</span><strong>Operations</strong></span></a>
+          <a class="pagination-link pagination-link--next" href="references.html"><span><span class="section-pagination-label">Next page</span><strong>References</strong></span><span aria-hidden="true">→</span></a>
+        </nav>
+      </div>
+    </main>
+  </div>
+  <script src="assets/js/project-data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function(){
+      'use strict';
+      const d=window.PROJECT_DATA;if(!d)return;const m=d.management;
+      const $=s=>document.querySelector(s);const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
+      function buttons(rootId,items,onChange,label=x=>x.name){const root=$(rootId);root.replaceChildren();items.forEach((item,i)=>{const b=el('button','ops-select-button',label(item));b.type='button';b.setAttribute('aria-pressed',String(i===0));if(i===0)b.classList.add('active');b.addEventListener('click',()=>{root.querySelectorAll('button').forEach((x,j)=>{x.classList.toggle('active',i===j);x.setAttribute('aria-pressed',String(i===j));});onChange(item,i);});root.append(b);});if(items.length)onChange(items[0],0);}
+      buttons('#sphere-buttons',m.threeSpheres,item=>{$('#sphere-heading').textContent=item.name;$('#sphere-copy').textContent=item.description;});
+      buttons('#frame-buttons',m.organizationalFrames,item=>{$('#frame-heading').textContent=item.name;$('#frame-copy').textContent=item.description;});
+      $('#champion-copy').textContent=m.champion;$('#preinit-copy').textContent=m.preInitiation;
+      $('#lifecycle-model').textContent=m.lifeCycleModel;$('#lifecycle-toggle').addEventListener('click',()=>{const p=$('#lifecycle-description'),show=p.hidden;p.textContent=m.lifeCycleDescription;p.hidden=!show;$('#lifecycle-toggle').textContent=show?'Hide cycle description':'Show cycle description';$('#lifecycle-toggle').setAttribute('aria-expanded',String(show));});
+      buttons('#process-buttons',m.processGroups,item=>{$('#process-heading').textContent=item.name;$('#process-copy').textContent=item.description;});
+      const reports=[{name:'Progress report',text:m.reporting.progress},{name:'Finance spending report',text:m.reporting.finance},{name:'Status report',text:m.reporting.status}];
+      buttons('#report-buttons',reports,item=>{$('#report-heading').textContent=item.name;$('#report-copy').textContent=item.text;});
+      const sentence=m.changeControl;
+      const steps=[
+        'recording the request of the stakeholder and reason behind that request.',
+        'effects of that request will be reviewed on the cost, privacy, and the existing project work.',
+        'the change authority will approve the request',
+        'update the scope, schedule, budget, testing and requirements',
+        'everyone will be informed.'
+      ];
+      const stepRoot=$('#change-steps');steps.forEach((text,i)=>{const b=el('button','ops-step',(i+1)+' · '+['Record request','Review effects','Approve request','Update project items','Inform everyone'][i]);b.type='button';b.setAttribute('aria-pressed',String(i===0));if(i===0)b.classList.add('active');b.addEventListener('click',()=>{stepRoot.querySelectorAll('button').forEach((x,j)=>{x.classList.toggle('active',i===j);x.setAttribute('aria-pressed',String(i===j));});$('#change-copy').textContent=text;});stepRoot.append(b);});$('#change-copy').textContent=steps[0];
+      $('#acceptance-copy').textContent=m.scopeAcceptance;$('#acceptance-toggle').addEventListener('click',()=>{const p=$('#acceptance-copy'),show=p.hidden;p.hidden=!show;$('#acceptance-toggle').textContent=show?'Hide acceptance statement':'Show acceptance statement';$('#acceptance-toggle').setAttribute('aria-expanded',String(show));});
+      const swot=$('#swot-grid');Object.entries(m.swot).forEach(([key,text])=>{const card=el('section','ops-swot-quadrant'),h=el('h3','',key.charAt(0).toUpperCase()+key.slice(1)),b=el('button','','Show statement'),p=el('p','',text);p.hidden=true;b.type='button';b.setAttribute('aria-expanded','false');b.addEventListener('click',()=>{p.hidden=!p.hidden;b.textContent=p.hidden?'Show statement':'Hide statement';b.setAttribute('aria-expanded',String(!p.hidden));});card.append(h,b,p);swot.append(card);});
+      buttons('#quality-buttons',m.qualityTopics,item=>{$('#quality-heading').textContent=item.name;$('#quality-copy').textContent=item.description;});
+      buttons('#hr-topic-buttons',m.hrTopics,item=>{$('#hr-topic-heading').textContent=item.name;$('#hr-topic-copy').textContent=item.description;});
+      const print=$('[data-print-page]');if(print)print.addEventListener('click',()=>window.print());
+    })();
+  </script>
+</body>
+</html>

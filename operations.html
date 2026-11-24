@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Operations | Project Website</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* EDIT: Page-specific layout; all document formatting stays inside .doc. */
+    .document-page-intro { margin-bottom: 4px; }
+    .document-page-intro p { margin: 5px 0 0; color: var(--color-muted); font-size: 12px; }
+    .document-paper { width: min(100%, 8.5in); padding: 1in; overflow: visible; }
+    .doc { white-space: normal; }
+    .doc .word-run { white-space: pre-wrap; tab-size: 8; }
+    .doc .doc-page-break { display: block; height: 1px; margin: 18pt 0; border: 0; background: #D8D8D8; break-after: page; page-break-after: always; }
+    .doc .word-bookmark { display: block; height: 0; scroll-margin-top: 18px; }
+    .doc .word-image { display: inline-block; max-width: 100%; object-fit: contain; }
+    .doc .word-list { margin: 0 0 10pt; padding-left: 36pt; font-family: Arial, sans-serif; font-size: 12pt; line-height: 1; }
+    .doc .word-list li { margin: 0; padding-left: 0; }
+    .doc .word-table { width: 100%; border-collapse: collapse; border-spacing: 0; font-family: Arial, sans-serif; font-size: 12pt; line-height: 1; }
+    .doc .word-table td, .doc .word-table th { padding: 4pt; vertical-align: top; }
+    .doc .word-table td p { margin: 0 0 4pt; }
+    .doc .word-table--gridtable4-accent6 { border: 0.5pt solid #8DD873; }
+    .doc .word-table--gridtable4-accent6 td { border: 0.5pt solid #8DD873; }
+    .doc .word-table--gridtable4-accent6 tr:first-child td { background: #4EA72E; color: #FFFFFF; font-weight: 700; }
+    .doc .word-table--gridtable4-accent2 { border: 0.5pt solid #F1A983; }
+    .doc .word-table--gridtable4-accent2 td { border: 0.5pt solid #F1A983; }
+    .doc .word-table--gridtable4-accent2 tr:first-child td { background: #E97132; color: #FFFFFF; font-weight: 700; }
+    .doc .word-table--gridtable4-accent6 td:nth-child(even) { background-color: #FAE2D5; }
+    .doc .word-table--gridtable4-accent6 tr:first-child td { background: #4EA72E; }
+    .doc .word-table--gridtable4-accent2 td:nth-child(even) { background-color: #FCE4D6; }
+    .doc .word-table--gridtable4-accent2 tr:first-child td { background: #E97132; }
+    .doc .word-table--gridtable4-accent6 td p, .doc .word-table--gridtable4-accent2 td p { margin: 0 0 4pt; }
+    .doc table:not([class*="gridtable"]) td { border: 1px solid #A3A3A3; }
+    .doc table:not([class*="gridtable"]) { border: 1px solid #A3A3A3; }
+    .doc .doc-table-wrap { max-width: 100%; overflow-x: auto; margin: 10pt 0; }
+    .doc .doc-table-wrap table { min-width: 520px; }
+    .doc .word-table--image-layout { table-layout: auto; }
+    .doc .word-table--image-layout td { border: 0 !important; padding: 0; }
+    .sidebar__request-card { display:flex; min-height:116px; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:14px; border:1px dashed var(--color-red-soft); border-radius:18px; background:var(--color-card); color:var(--color-nav); text-align:center; }
+    .sidebar__request-plus { display:grid; width:30px; height:30px; place-items:center; border-radius:50%; background:var(--color-red); color:var(--color-card); font-size:22px; line-height:1; }
+    .sidebar__request-card strong { font-size:11px; font-weight:600; }
+    .sidebar__request-card span:last-child { color:var(--color-muted); font-size:9px; }
+    .pagination-link { display:flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; background:var(--color-card); color:var(--color-nav); font-size:11px; }
+    .pagination-link strong { font-weight:600; }
+    .pagination-link--next { margin-left:auto; }
+    .doc a { color: #0563C1; }
+    @media (max-width: 760px) { .document-paper { padding: 0.55in; } }
+    @media (max-width: 480px) { .document-paper { padding: 18px; } }
+    @media print { .document-paper { width: 100%; max-width: none; padding: 0; } .doc-table-wrap { overflow: visible; } .doc-table-wrap table { min-width: 0; } }
+  
+    /* EDIT: Page-specific cards and interactive components for section pages. */
+    .section-heading-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .section-intro{margin:0;color:var(--color-muted);font-size:12px}
+    .section-widget-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-gap)}
+    .section-widget{min-width:0;display:grid;align-content:start;gap:12px}
+    .section-widget--wide{grid-column:1/-1}
+    .section-widget__eyebrow{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--color-muted);font-size:10px}
+    .section-widget__eyebrow strong{color:var(--color-red);font-weight:600}
+    .section-fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .section-fact{padding:12px;border:1px solid var(--color-line);border-radius:14px;background:var(--color-card)}
+    .section-fact__label{display:block;color:var(--color-muted);font-size:10px}
+    .section-fact__value{display:block;margin-top:4px;color:var(--color-title);font-size:16px;font-weight:500;overflow-wrap:anywhere}
+    .section-copy{margin:0;color:var(--color-nav);font-size:12px;line-height:1.65}
+    .section-copy + .section-copy{margin-top:9px}
+    .section-inline-links{display:flex;gap:8px;flex-wrap:wrap}
+    .section-inline-links a{font-size:11px}
+    .section-stat{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+    .section-stat strong{font-size:35px;line-height:1;font-weight:400;letter-spacing:-.05em;color:var(--color-red);font-variant-numeric:tabular-nums}
+    .section-stat span{color:var(--color-muted);font-size:11px}
+    .section-choice-list{display:flex;flex-wrap:wrap;gap:7px}
+    .section-choice-list .chip{cursor:default}
+    .section-note{margin:0;color:var(--color-muted);font-size:10px;line-height:1.5}
+    .section-divider{height:1px;background:var(--color-line);margin:4px 0}
+    .section-document{display:grid;gap:11px;margin-top:4px}
+    .section-document .document-paper{margin-inline:0;max-width:100%;}
+    .section-document__header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .section-document__title{margin:0;font-size:19px;font-weight:400;color:var(--color-title)}
+    .section-tab-panels{min-width:0}
+    .section-tab-panels .tab-panel{padding-top:12px}
+    .section-tab-panels .tab-panel[hidden]{display:none!important}
+    .section-accordion{border-top:1px solid var(--color-line);padding-top:10px}
+    .section-accordion summary{cursor:pointer;color:var(--color-nav);font-size:12px;font-weight:600;list-style:none}
+    .section-accordion summary::-webkit-details-marker{display:none}
+    .section-accordion__body{padding:10px 0 2px;color:var(--color-nav);font-size:12px;line-height:1.65}
+    .section-accordion__body p{margin:0 0 8px}
+    .section-widget[hidden]{display:none!important}
+    .section-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .section-list li{display:flex;align-items:flex-start;gap:8px;color:var(--color-nav);font-size:11px}
+    .section-list li:before{content:"";width:6px;height:6px;flex:0 0 6px;margin-top:5px;border-radius:50%;background:var(--color-red)}
+    .section-pagination-label{display:block;color:var(--color-muted);font-size:9px}
+    @media(max-width:760px){.section-widget-grid{grid-template-columns:1fr}.section-widget--wide{grid-column:auto}}
+    @media print{.section-tools,.section-tabs,.no-print{display:none!important}.section-widget[hidden]{display:block!important}.section-document .document-paper{width:100%;padding:0}.section-widget-grid{grid-template-columns:1fr 1fr}}
+    
+/* EDIT: Operations and Management page components. */
+.ops-toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:end}
+.ops-control{display:grid;gap:5px;min-width:160px;flex:1}
+.ops-control label{font-size:10px;font-weight:600;color:var(--color-nav)}
+.ops-control input,.ops-control select{width:100%;min-height:36px;padding:8px 10px;border:1px solid var(--color-line);border-radius:10px;background:var(--color-card);color:var(--color-nav);font:inherit;font-size:11px}
+.ops-stat-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.ops-stat{padding:12px;border:1px solid var(--color-line);border-radius:13px;background:var(--color-card)}
+.ops-stat strong{display:block;color:var(--color-red);font-size:24px;font-weight:400;line-height:1.1}
+.ops-stat span{display:block;margin-top:4px;color:var(--color-muted);font-size:10px}
+.ops-risk-table{width:100%;border-collapse:collapse;font-size:10px}
+.ops-risk-table th,.ops-risk-table td{padding:9px 8px;border-bottom:1px solid var(--color-line);text-align:left;vertical-align:top}
+.ops-risk-table th{font-size:9px;color:var(--color-muted);font-weight:600}
+.ops-risk-table td{color:var(--color-nav)}
+.ops-risk-table button{padding:0;border:0;background:transparent;color:var(--color-red);text-align:left;font:inherit;font-weight:600;cursor:pointer}
+.ops-risk-detail{margin-top:11px;padding:12px;border-radius:13px;background:var(--color-panel);display:grid;gap:8px}
+.ops-risk-detail[hidden]{display:none}
+.ops-risk-detail dl{display:grid;grid-template-columns:92px minmax(0,1fr);gap:6px 10px;margin:0;font-size:10px}
+.ops-risk-detail dt{color:var(--color-muted)}.ops-risk-detail dd{margin:0;color:var(--color-nav);line-height:1.5}
+.ops-owner-chart{width:100%;height:auto;display:block}
+.ops-owner-chart text{font-family:var(--font-ui);fill:var(--color-nav);font-size:10px}
+.ops-owner-chart .bar{fill:var(--color-red-soft)}
+.ops-owner-chart .bar.selected{fill:var(--color-red)}
+.ops-button-grid{display:flex;flex-wrap:wrap;gap:7px}
+.ops-select-button{border:1px solid var(--color-line);border-radius:999px;padding:8px 11px;background:var(--color-card);color:var(--color-nav);font:inherit;font-size:10px;cursor:pointer}
+.ops-select-button[aria-pressed="true"],.ops-select-button.active{border-color:var(--color-red);background:var(--color-red);color:var(--color-card)}
+.ops-detail-copy{margin:0;color:var(--color-nav);font-size:11px;line-height:1.65}
+.ops-detail-panel{padding:12px;border:1px solid var(--color-line);border-radius:13px;background:var(--color-card);margin-top:10px}
+.ops-chip-list{display:flex;flex-wrap:wrap;gap:6px}
+.ops-chip{padding:6px 9px;border-radius:999px;background:var(--color-red-tint);color:var(--color-nav);font-size:10px}
+.ops-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.ops-step{padding:10px;border:1px solid var(--color-line);border-radius:12px;background:var(--color-card);color:var(--color-nav);font-size:10px;text-align:left;cursor:pointer}
+.ops-step[aria-pressed="true"]{border-color:var(--color-red);background:var(--color-red-tint)}
+.ops-swot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.ops-swot-quadrant{padding:12px;border:1px solid var(--color-line);border-radius:13px;background:var(--color-card);min-width:0}
+.ops-swot-quadrant h3{margin:0 0 9px;font-size:13px;font-weight:500;color:var(--color-title)}
+.ops-swot-quadrant button{border:0;background:transparent;padding:0;color:var(--color-red);font:inherit;font-size:10px;cursor:pointer;text-decoration:underline}
+.ops-swot-quadrant p{margin:9px 0 0;color:var(--color-nav);font-size:11px;line-height:1.6}
+.ops-swot-quadrant p[hidden]{display:none}
+.ops-note{font-size:9px;color:var(--color-muted);line-height:1.5;margin:0}
+.ops-scroll{overflow-x:auto;max-width:100%}
+.ops-quiet-link{color:var(--color-red);font-size:10px;text-decoration:underline}
+.ops-source-card{display:grid;gap:10px;align-content:start}
+.ops-source-card .section-widget__eyebrow{margin-bottom:0}
+@media(max-width:760px){.ops-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.ops-stat-row{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.ops-stat-row,.ops-swot-grid{grid-template-columns:1fr}.ops-risk-table{min-width:560px}.ops-risk-detail dl{grid-template-columns:1fr;gap:2px}.ops-risk-detail dd{margin-bottom:7px}}
+@media print{.ops-toolbar input,.ops-toolbar select,.ops-button-grid button,.ops-step,.ops-swot-quadrant button{display:none!important}.ops-risk-detail[hidden],.ops-swot-quadrant p[hidden]{display:block!important}.ops-steps{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+  <div class="app-shell" id="app-shell">
+    <aside class="sidebar" id="site-sidebar" aria-label="Project navigation">
+      <div class="sidebar__identity">
+        <span class="sidebar__monogram" aria-hidden="true">FV</span>
+        <div class="sidebar__identity-copy">
+          <span class="sidebar__identity-label">Project workspace</span>
+          <strong class="sidebar__identity-name">Fraser Valley Preparedness Research Lab</strong>
+        </div>
+      </div>
+
+      <div class="sidebar__selector">
+        <div class="sidebar__selector-main">
+          <span class="sidebar__selector-mark" aria-hidden="true">FV</span>
+          <span class="sidebar__selector-copy"><small>Institution</small><strong>University of the Fraser Valley</strong></span>
+        </div>
+        <svg viewbox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg>
+      </div>
+
+      <!-- Keep all ten navigation links static and relative on every page. -->
+      <nav class="sidebar__nav" aria-label="Website pages">
+        <a class="sidebar__nav-link" href="index.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1"></rect></svg>
+          <span class="sidebar__nav-label">Executive Overview</span>
+        </a>
+        <a class="sidebar__nav-link" href="project-charter.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5h10a2 2 0 0 1 2 2v13h-14v-13a2 2 0 0 1 2-2Z"></path><path d="M9 3.5h6v3H9zM8 11h8M8 15h8"></path></svg>
+          <span class="sidebar__nav-label">Project Charter</span>
+        </a>
+        <a class="sidebar__nav-link" href="scope-deliverables.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"></path><path d="m3.8 7.7 8.2 4.6 8.2-4.6M12 12.3V21"></path></svg>
+          <span class="sidebar__nav-label">Scope &amp; Deliverables</span>
+        </a>
+        <a class="sidebar__nav-link" href="time.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5l3.5 2"></path></svg>
+          <span class="sidebar__nav-label">Time</span>
+        </a>
+        <a class="sidebar__nav-link" href="cost.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7.5" ry="3"></ellipse><path d="M4.5 6.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5M4.5 11.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5"></path></svg>
+          <span class="sidebar__nav-label">Cost</span>
+        </a>
+        <a class="sidebar__nav-link active" href="operations.html" aria-current="page">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5h6v5H4zM14 13.5h6v5h-6zM10 8h4a2 2 0 0 1 2 2v3.5M7 10.5v7h7"></path></svg>
+          <span class="sidebar__nav-label">Operations</span><span class="sidebar__nav-count" id="operations-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="management.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path><circle cx="9" cy="6" r="2" fill="var(--color-card)"></circle><circle cx="15" cy="12" r="2" fill="var(--color-card)"></circle><circle cx="7" cy="18" r="2" fill="var(--color-card)"></circle></svg>
+          <span class="sidebar__nav-label">Management</span>
+        </a>
+        <a class="sidebar__nav-link" href="references.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h12a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2v-13Z"></path><path d="M7 4.5v13a2 2 0 0 0 2 2M9 9h7M9 13h7"></path></svg>
+          <span class="sidebar__nav-label">References</span><span class="sidebar__nav-count" id="references-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="detailed-documentation.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h8l4 4v13H6z"></path><path d="M14 3.5v4h4M9 12h6M9 16h6"></path></svg>
+          <span class="sidebar__nav-label">Detailed Documentation</span>
+        </a>
+        <a class="sidebar__nav-link" href="about-us.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M9.5 9a2.5 2.5 0 1 1 4.4 1.6c-.9 1-1.9 1.2-1.9 2.9M12 17h.01"></path></svg>
+          <span class="sidebar__nav-label">About Us</span>
+        </a>
+      </nav>
+
+      <section class="sidebar__highlight" aria-label="Project snapshot">
+        <div class="sidebar__highlight-heading"><span class="sidebar__highlight-title">Project snapshot</span><span class="sidebar__highlight-value">Planned</span></div>
+        <div class="sidebar__highlight-metric">
+          <strong class="sidebar__highlight-number" id="highlight-number" data-highlight-number>36</strong>
+          <span class="sidebar__highlight-caption" id="highlight-caption" data-highlight-caption>calendar months</span>
+        </div>
+        <div class="sidebar__highlight-toggles" data-metric-switcher>
+          <button class="sidebar__highlight-toggle active" type="button" data-metric-toggle data-metric-key="duration" aria-pressed="true">Duration</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="budget" aria-pressed="false">Budget</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="risks" aria-pressed="false">Risks</button>
+        </div>
+      </section>
+
+      <div class="sidebar__bottom">
+        <div class="sidebar__quicklinks" aria-label="Quick links">
+          <a href="time.html#time" aria-label="Open Time"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M8 3v4M16 3v4M4 9h16"></path></svg></a>
+          <a href="cost.html#cost" aria-label="Open Cost"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"></path></svg></a>
+          <a href="operations.html#operations" aria-label="Open Operations"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8-4 8 4v10l-8 4-8-4zM4 7l8 5 8-5M12 12v9"></path></svg></a>
+          <a href="management.html#management" aria-label="Open Management"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h4"></path></svg></a>
+        </div>
+        <a class="sidebar__create-link" href="detailed-documentation.html">
+          <span class="sidebar__create-icon" aria-hidden="true">+</span>
+          <span>Open Detailed Documentation</span>
+        </a>
+      </div>
+    </aside>
+    <main class="app-main">
+      <header class="topbar">
+        <div class="topbar__leading">
+          <button class="icon-button mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-sidebar"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+          <div><h1 class="page-title">Operations</h1><p class="page-subtitle">Fraser Valley Preparedness Research Lab · Project proposal</p></div>
+          <a class="topbar__select" href="#document-content">Document <span aria-hidden="true">⌄</span></a>
+        </div>
+        <div class="topbar__actions section-tools">
+          <label class="search-pill"><span class="visually-hidden">Search this page</span><input type="search" placeholder="Search" data-search-target="#section-widgets" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></label>
+          <button class="icon-button" type="button" data-print-page aria-label="Print or save as PDF" title="Print / Save as PDF"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V4h10v4M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v6H7z"/></svg></button>
+        </div>
+      </header>
+      <div class="page-content section-stack">
+        <div class="section-heading-row"><p class="section-intro">Explore the documented stakeholders, staffing, communications, disagreements and priority risks.</p><span class="chip chip--tint">Planned project · Source: Word document</span></div>
+        <section id="section-widgets" class="section-stack" aria-label="Interactive section content">
+<div class="section-widget-grid">
+  <article class="card section-widget section-widget--wide" data-filter-item data-category="risks" data-search-text="priority risks trigger owner prevention risk register filter search">
+    <div class="card__header"><div><h2 class="card__title">Priority Risks, Decision Triggers and Controls</h2><p class="card__subtitle">Filter the ten documented risks by owner or search their names and controls</p></div><span class="chip chip--filled"><span data-risk-count>10</span> risks</span></div>
+    <div class="ops-toolbar">
+      <div class="ops-control"><label for="risk-owner-filter">Proposed owner</label><select id="risk-owner-filter"><option value="all">All owners</option></select></div>
+      <div class="ops-control"><label for="risk-search">Search risks</label><input id="risk-search" type="search" placeholder="Search risk, trigger or prevention" autocomplete="off"></div>
+    </div>
+    <div class="ops-scroll" style="margin-top:10px"><table class="ops-risk-table"><thead><tr><th>Risk</th><th>Trigger</th><th>Proposed owner</th><th>Details</th></tr></thead><tbody id="risk-table-body"></tbody></table></div>
+    <div class="ops-risk-detail" id="risk-detail" hidden aria-live="polite"><strong id="risk-detail-name"></strong><dl><dt>Trigger</dt><dd id="risk-detail-trigger"></dd><dt>Proposed owner</dt><dd id="risk-detail-owner"></dd><dt>Prevention</dt><dd id="risk-detail-prevention"></dd></dl></div>
+    <p class="ops-note">Risk details are reproduced from the document. No probabilities or risk-specific cost and delay impacts are provided.</p>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="risk-owners" data-search-text="risks per owner proposed owner bar chart">
+    <div class="card__header"><div><h2 class="card__title">Risks per Proposed Owner</h2><p class="card__subtitle">Select a bar to filter the risk register</p></div><span class="source-label">Source: Operations</span></div>
+    <div class="ops-stat-row"><div class="ops-stat"><strong data-risk-owner-count></strong><span>distinct owners</span></div><div class="ops-stat"><strong data-risk-average></strong><span>risks per owner</span></div></div>
+    <svg class="ops-owner-chart" id="risk-owner-chart" viewBox="0 0 620 280" role="img" aria-label="Bar chart of documented risks by proposed owner"></svg>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="stakeholders" data-search-text="project stakeholders HR management responsibilities lab director clinic manager research team UFV Human Resources">
+    <div class="card__header"><div><h2 class="card__title">Stakeholder Responsibilities</h2><p class="card__subtitle">Select a role to display its documented responsibility</p></div><span class="source-label">Source: Operations</span></div>
+    <div class="ops-button-grid" id="stakeholder-buttons"></div><div class="ops-detail-panel"><p class="ops-detail-copy" id="stakeholder-copy" aria-live="polite"></p></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="recruitment" data-search-text="recruitment employees project managers privacy specialists epidemiologists forecasting trainers technical support">
+    <div class="card__header"><div><h2 class="card__title">Recruitment of Employees</h2><p class="card__subtitle">Explore the documented recruitment groups</p></div><span class="chip chip--tint">Staffing groups</span></div>
+    <div class="ops-button-grid" id="recruitment-buttons" role="group" aria-label="Recruitment groups"></div><div class="ops-detail-panel"><strong id="recruitment-heading"></strong><div class="ops-chip-list" id="recruitment-roles" style="margin-top:9px"></div><p class="ops-note" id="recruitment-condition" style="margin-top:9px"></p></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="students" data-search-text="students testing sample data interfaces documenting system changes">
+    <div class="card__header"><div><h2 class="card__title">Students Can Help With</h2><p class="card__subtitle">Open each listed activity</p></div><span class="chip chip--tint" data-student-count></span></div>
+    <div id="student-support-list" class="section-stack"></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="communication" data-search-text="communication stakeholder weekly forecast progress status spending reports unresolved resolved issues">
+    <div class="card__header"><div><h2 class="card__title">Communication With Stakeholders</h2><p class="card__subtitle">Select a communication item</p></div><span class="source-label">Source: Operations</span></div>
+    <div class="ops-button-grid" id="communication-buttons" role="group" aria-label="Communication items"></div><div class="ops-detail-panel"><p class="ops-detail-copy" id="communication-copy" aria-live="polite"></p></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="conflicts" data-search-text="conflicts handling disagreements remote clinics priority increasing visits additional staff supplies preset rules">
+    <div class="card__header"><div><h2 class="card__title">Conflicts And Handling Disagreements</h2><p class="card__subtitle">Reveal the source statement and its examples</p></div><span class="chip chip--tint">Expandable</span></div>
+    <details class="section-accordion"><summary>Show the complete source statement</summary><p class="ops-detail-copy" id="conflict-source"></p></details>
+    <div class="ops-button-grid" id="conflict-example-buttons" style="margin-top:12px"></div><div class="ops-detail-panel"><p class="ops-detail-copy" id="conflict-example-copy"></p></div>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="hr" data-search-text="HR employee job classifications salaries employment agreements recruitment">
+    <div class="card__header"><div><h2 class="card__title">HR Management and Responsibilities</h2><p class="card__subtitle">Select the responsibility assigned in the document</p></div><span class="source-label">Source: Operations</span></div>
+    <div class="ops-button-grid" id="hr-responsibility-buttons"></div><p class="ops-detail-copy ops-detail-panel" id="hr-responsibility-copy" aria-live="polite"></p>
+  </article>
+</div>
+</section>
+        <section class="section-document" aria-labelledby="document-section-title">
+          <div class="section-document__header"><h2 class="section-document__title" id="document-section-title">Document</h2><span class="source-label">Original Word formatting</span></div>
+          <div id="document-content" class="document-paper"><article class="doc" lang="en"><!-- DOCUMENT CONTENT START --><h1><span id="bookmark-_Toc246349585" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Operations</span></h1>
+<h2><span id="bookmark-_Toc246349586" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Project Stakeholders</span></h2>
+<h3><span id="bookmark-_Toc246349587" class="word-bookmark" aria-hidden="true"></span><span class="word-run">HR Management and Responsibilities</span></h3>
+<p style="line-height:1.1625"><span class="word-run">The lab director will manage the research </span><span class="word-run">programme;</span><span class="word-run"> manager of the clinic will review the alert and decide whether this alert is important or not. Research team of the lab will get the data, refine it and then feed it in the research software.</span></p>
+<p style="line-height:1.1625"><span class="word-run">UFV Human Resources will decide employee job classifications. Confirm salaries and employment agreements.</span></p>
+<h3><span id="bookmark-_Toc246349588" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Recruitment of Employees</span></h3>
+<ul class="word-list" data-num-id="25" data-level="0"><li style="line-height:1.1625"><span style="font-weight:700"><span class="word-run">First group:</span></span><span class="word-run"> Project managers, privacy specialists, community relations staff and clinical reviewers.</span></li><li style="line-height:1.1625"><span style="font-weight:700"><span class="word-run">Second group:</span></span><span class="word-run"> Epidemiologists, forecasting specialists, health informatics specialists, software integration developers, accessibility specialists and quality assurance staff.</span></li><li style="line-height:1.1625"><span style="font-weight:700"><span class="word-run">Third group:</span></span><span class="word-run"> Trainers, technical support staff, research coordinators and evaluation staff.</span></li><li style="line-height:1.1625"><span class="word-run">Facilities and purchasing specialists will join when needed.</span></li></ul>
+<h3><span id="bookmark-_Toc246349589" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Students </span><span class="word-run">Can Help With</span></h3>
+<ul class="word-list" data-num-id="26" data-level="0"><li style="line-height:1.1625"><span class="word-run">Testing the system using sample data.</span></li><li style="line-height:1.1625"><span class="word-run">Checking whether interfaces are easy to use.</span></li><li style="line-height:1.1625"><span class="word-run">Documenting system changes.</span></li></ul>
+<h3><span id="bookmark-_Toc246349590" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Communication </span><span class="word-run">With </span><span class="word-run">Stakeholders </span><span class="word-run">Include Sending </span><span class="word-run">Progress </span><span class="word-run">and</span><span class="word-run"> Status Reports</span></h3>
+<p style="line-height:1.1625"><span class="word-run">Weekly forecast reports will be sent to clinic managers, project sponsor will get the weekly progress report and status report, and reports on the spending and unresolved issues. That communication channels will be used that are already being trusted by the stakeholders.</span></p>
+<h3><span id="bookmark-_Toc246349591" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Conflicts </span><span class="word-run">And </span><span class="word-run">Handling Disagreements</span></h3>
+<p style="line-height:1.1625"><span class="word-run">Different communities may disagree about which clinic will receive the additional staff and supplies in priority the conflicts may happen, so to solve this preset rules should be </span><span class="word-run">distributed to the regional clinics, for example, remote clinics will get the priority or where visits are increasing at higher rate will get the extra staff first.</span></p>
+<p style="line-height:1.1625"><span class="word-run">Sponsor will also receive the updated information on the unresolved issues and resolved ones.</span></p>
+<h2><span id="bookmark-_Toc246349592" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Priority </span><span class="word-run">Risks, Decision Triggers </span><span class="word-run">and</span><span class="word-run"> Controls</span></h2>
+<div class="doc-table-wrap"><table class="word-table word-table--gridtable4-accent2"><colgroup><col style="width:121.15pt"><col style="width:346.35pt"></colgroup><tr><td style="width:121.15pt"><p style="text-align:center;line-height:1.1625"><span class="word-run">Item</span></p></td><td style="width:346.35pt"><p style="text-align:center;line-height:1.1625"><span class="word-run">Details</span></p></td></tr><tr><td style="width:121.15pt"><p style="line-height:1.1625"><span class="word-run">1 · Data access delayed</span></p></td><td style="width:346.35pt"><p style="line-height:1.1625"><span class="word-run">Trigger — No signed permission from the clinics</span></p><p style="line-height:1.1625"><span class="word-run">Proposed owner — Data collector</span></p><p style="line-height:1.1625"><span class="word-run">Prevention — get permissions early</span></p></td></tr><tr><td style="width:121.15pt"><p style="line-height:1.1625"><span class="word-run">2 · Privacy incident</span></p></td><td style="width:346.35pt"><p style="line-height:1.1625"><span class="word-run">Trigger — Suspected disclosure private information</span></p><p style="line-height:1.1625"><span class="word-run">Proposed owner — Privacy officer</span></p><p style="line-height:1.1625"><span class="word-run">Prevention — Review outputs before release and restrict access.</span></p></td></tr><tr><td style="width:121.15pt"><p style="line-height:1.1625"><span class="word-run">3 · False alert or missed rise</span></p></td><td style="width:346.35pt"><p style="line-height:1.1625"><span class="word-run">Trigger — Reviewer documents on error</span></p><p style="line-height:1.1625"><span class="word-run">Proposed owner — Clinical lead</span></p><p style="line-height:1.1625"><span class="word-run">Prevention — Independently compare signals with ordinary surveillance.</span></p></td></tr><tr><td style="width:121.15pt"><p style="line-height:1.1625"><span class="word-run">4 · Poor rural coverage</span></p></td><td style="width:346.35pt"><p style="line-height:1.1625"><span class="word-run">Trigger — A participating area loses a scheduled feed</span></p><p style="line-height:1.1625"><span class="word-run">Proposed owner — Epidemiology lead</span></p><p style="line-height:1.1625"><span class="word-run">Prevention — Publish completeness of coverage and make the report which will include what areas are covered</span></p></td></tr><tr><td style="width:121.15pt"><p style="line-height:1.1625"><span class="word-run">5 · Platform outage</span></p></td><td style="width:346.35pt"><p style="line-height:1.1625"><span class="word-run">Trigger — Scheduled briefing cannot be delivered</span></p><p style="line-height:1.1625"><span class="word-run">Proposed owner — IT service owner</span></p><p style="line-height:1.1625"><span class="word-run">Prevention — Rehearse restoration and alternate delivery.</span></p></td></tr><tr><td style="width:121.15pt"><p style="line-height:1.1625"><span class="word-run">6 · Reviewer fatigue</span></p></td><td style="width:346.35pt"><p style="line-height:1.1625"><span class="word-run">Trigger — Repeated actions and reviews overtime</span></p><p style="line-height:1.1625"><span class="word-run">Proposed owner — Operations manager</span></p><p style="line-height:1.1625"><span class="word-run">Prevention — Train the alternates and review hours weekly.</span></p></td></tr><tr><td style="width:121.15pt"><p style="line-height:1.1625"><span class="word-run">7 · Cost escalation</span></p></td><td style="width:346.35pt"><p style="line-height:1.1625"><span class="word-run">Trigger — Compliant bids exceed the work-package ceiling</span></p><p style="line-height:1.1625"><span class="word-run">Proposed owner — Procurement lead</span></p><p style="line-height:1.1625"><span class="word-run">Prevention — Compare whole-life pricing and phase commitments.</span></p></td></tr><tr><td style="width:121.15pt"><p style="line-height:1.1625"><span class="word-run">8 · Loss of trust</span></p></td><td style="width:346.35pt"><p style="line-height:1.1625"><span class="word-run">Trigger — Partner challenges an interpretation or requests withdrawal</span></p><p style="line-height:1.1625"><span class="word-run">Proposed owner — Engagement lead</span></p><p style="line-height:1.1625"><span class="word-run">Prevention — Agree use, review and correction rights in writing.</span></p></td></tr><tr><td style="width:121.15pt"><p style="line-height:1.1625"><span class="word-run">9 · Vendor dependence</span></p></td><td style="width:346.35pt"><p style="line-height:1.1625"><span class="word-run">Trigger — Supplier fails a contracted export or recovery test</span></p><p style="line-height:1.1625"><span class="word-run">Proposed owner — Commercial lead</span></p><p style="line-height:1.1625"><span class="word-run">Prevention — Require documented exports and transition assistance.</span></p></td></tr><tr><td style="width:121.15pt"><p style="line-height:1.1625"><span class="word-run">10 · Unfunded operation</span></p></td><td style="width:346.35pt"><p style="line-height:1.1625"><span class="word-run">Trigger — No signed operating authority at cutover review</span></p><p style="line-height:1.1625"><span class="word-run">Proposed owner — Executive sponsor</span></p><p style="line-height:1.1625"><span class="word-run">Prevention — Obtain a priced service plan and recurring funding decision.</span></p><p style="line-height:1.1625"><span class="word-run"> </span></p></td></tr></table></div>
+<p style="line-height:1.1625"></p>
+<p style="line-height:1.1625"><span class="word-run">These estimates are learned from and after reading the following sources (Canadian Centre for Occupational Health and Safety, 2024; Freedom of Information and Protection of Privacy Act, 1996; Treasury Board of Canada Secretariat, 2016)</span></p><!-- DOCUMENT CONTENT END --></article></div>
+        </section>
+        <nav class="page-pagination" aria-label="Previous and next pages">
+          <a class="pagination-link" href="cost.html"><span aria-hidden="true">←</span><span><span class="section-pagination-label">Previous page</span><strong>Cost</strong></span></a>
+          <a class="pagination-link pagination-link--next" href="management.html"><span><span class="section-pagination-label">Next page</span><strong>Management</strong></span><span aria-hidden="true">→</span></a>
+        </nav>
+      </div>
+    </main>
+  </div>
+  <script src="assets/js/project-data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function(){
+      'use strict';
+      const d=window.PROJECT_DATA;if(!d)return;const o=d.operations, risks=d.risks;
+      const $=s=>document.querySelector(s);const $$=s=>Array.from(document.querySelectorAll(s));
+      const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
+      const btn=(text,fn,selected=false)=>{const b=el('button','ops-select-button',text);b.type='button';b.setAttribute('aria-pressed',String(selected));b.addEventListener('click',fn);return b;};
+      $('[data-risk-count]').textContent=risks.length;
+      const owners=[...new Set(risks.map(r=>r.owner))].sort((a,b)=>a.localeCompare(b));
+      const ownerFilter=$('#risk-owner-filter');owners.forEach(owner=>{const op=el('option','',owner);op.value=owner;ownerFilter.append(op);});
+      const detail=$('#risk-detail');
+      function showRisk(r){$('#risk-detail-name').textContent=r.id+' · '+r.name;$('#risk-detail-trigger').textContent=r.trigger;$('#risk-detail-owner').textContent=r.owner;$('#risk-detail-prevention').textContent=r.prevention;detail.hidden=false;}
+      function renderRiskTable(){const term=$('#risk-search').value.trim().toLowerCase(), owner=ownerFilter.value, tbody=$('#risk-table-body');tbody.replaceChildren();const filtered=risks.filter(r=>(owner==='all'||r.owner===owner)&&[r.name,r.trigger,r.owner,r.prevention].join(' ').toLowerCase().includes(term));filtered.forEach(r=>{const tr=el('tr'),td1=el('td'),td2=el('td','',r.trigger),td3=el('td','',r.owner),td4=el('td');const b=el('button','',r.id+' · '+r.name);b.type='button';b.addEventListener('click',()=>showRisk(r));td1.append(b);tr.append(td1,td2,td3,td4);const more=el('button','ops-quiet-link','View');more.type='button';more.addEventListener('click',()=>showRisk(r));td4.append(more);tbody.append(tr);});if(!filtered.length){const tr=el('tr'),td=el('td','','No matching risks.');td.colSpan=4;tr.append(td);tbody.append(tr);detail.hidden=true;}if(filtered.length===1)showRisk(filtered[0]);}
+      ownerFilter.addEventListener('change',renderRiskTable);$('#risk-search').addEventListener('input',renderRiskTable);renderRiskTable();showRisk(risks[0]);
+      $('[data-risk-owner-count]').textContent=owners.length;$('[data-risk-average]').textContent=(risks.length/owners.length).toFixed(1);
+      const svg=$('#risk-owner-chart'), max=Math.max(1,...owners.map(owner=>risks.filter(r=>r.owner===owner).length));
+      function drawOwnerChart(selected='all'){svg.replaceChildren();const NS='http://www.w3.org/2000/svg';const line=(tag,attrs,text)=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));if(text)n.textContent=text;return n;};
+        svg.append(line('line',{x1:158,y1:8,x2:158,y2:260,stroke:'var(--color-line)','stroke-width':1}));owners.forEach((owner,i)=>{const y=17+i*24,count=risks.filter(r=>r.owner===owner).length;const active=selected===owner;const g=line('g',{tabindex:0,role:'button','aria-label':owner+': '+count+' risks'});g.append(line('text',{x:150,y:y+10,'text-anchor':'end'},owner));g.append(line('rect',{x:165,y:y,width:Math.max(5,count/max*330),height:13,rx:5,class:'bar'+(active?' selected':'')}));g.append(line('text',{x:174+Math.max(5,count/max*330),y:y+10},String(count)));g.style.cursor='pointer';const choose=()=>{ownerFilter.value=owner;renderRiskTable();drawOwnerChart(owner);};g.addEventListener('click',choose);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}});svg.append(g);});}
+      drawOwnerChart('all');ownerFilter.addEventListener('change',()=>drawOwnerChart(ownerFilter.value));
+      function populateButtons(rootId,items,onChange,labelOf){const root=$(rootId);root.replaceChildren();items.forEach((item,i)=>root.append(btn(labelOf(item),()=>{root.querySelectorAll('button').forEach((b,j)=>{b.classList.toggle('active',i===j);b.setAttribute('aria-pressed',String(i===j));});onChange(item,i);},i===0)));if(items.length)onChange(items[0],0);}
+      populateButtons('#stakeholder-buttons',o.stakeholderResponsibilities,(item)=>$('#stakeholder-copy').textContent=item.responsibility,x=>x.role);
+      populateButtons('#recruitment-buttons',o.recruitmentGroups,(item)=>{$('#recruitment-heading').textContent=item.group;$('#recruitment-roles').replaceChildren();item.roles.forEach(role=>$('#recruitment-roles').append(el('span','ops-chip',role)));$('#recruitment-condition').textContent=item.condition|| (item.roles.length+' roles listed in the document');},x=>x.group);
+      $('[data-student-count]').textContent=o.studentSupport.length+' listed items';const studentRoot=$('#student-support-list');o.studentSupport.forEach((txt,i)=>{const details=el('details','section-accordion'),summary=el('summary','', 'Item '+(i+1));const p=el('p','ops-detail-copy',txt);details.append(summary,p);studentRoot.append(details);});
+      const comm=o.communicationAndReporting;populateButtons('#communication-buttons',comm,(item,i)=>$('#communication-copy').textContent=item,x=>x.startsWith('Weekly')?'Weekly reporting':'Sponsor updates');
+      $('#conflict-source').textContent=o.conflictHandling;
+      const conflictExamples=['remote clinics will get the priority','where visits are increasing at higher rate will get the extra staff first'];
+      populateButtons('#conflict-example-buttons',conflictExamples,(text)=>$('#conflict-example-copy').textContent=text,x=>x==='remote clinics will get the priority'?'Remote clinic priority':'Increasing visits');
+      const hr=o.stakeholderResponsibilities.find(x=>x.role==='UFV Human Resources');$('#hr-responsibility-copy').textContent=hr?hr.responsibility:'';
+      const hrRoot=$('#hr-responsibility-buttons');[o.stakeholderResponsibilities[0],hr].filter(Boolean).forEach((item,i)=>hrRoot.append(btn(item.role,()=>$('#hr-responsibility-copy').textContent=item.responsibility,i===0)));
+      const print=$('[data-print-page]');if(print)print.addEventListener('click',()=>window.print());
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Time | Project Website</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* EDIT: Page-specific layout; all document formatting stays inside .doc. */
+    .document-page-intro { margin-bottom: 4px; }
+    .document-page-intro p { margin: 5px 0 0; color: var(--color-muted); font-size: 12px; }
+    .document-paper { width: min(100%, 8.5in); padding: 1in; overflow: visible; }
+    .doc { white-space: normal; }
+    .doc .word-run { white-space: pre-wrap; tab-size: 8; }
+    .doc .doc-page-break { display: block; height: 1px; margin: 18pt 0; border: 0; background: #D8D8D8; break-after: page; page-break-after: always; }
+    .doc .word-bookmark { display: block; height: 0; scroll-margin-top: 18px; }
+    .doc .word-image { display: inline-block; max-width: 100%; object-fit: contain; }
+    .doc .word-list { margin: 0 0 10pt; padding-left: 36pt; font-family: Arial, sans-serif; font-size: 12pt; line-height: 1; }
+    .doc .word-list li { margin: 0; padding-left: 0; }
+    .doc .word-table { width: 100%; border-collapse: collapse; border-spacing: 0; font-family: Arial, sans-serif; font-size: 12pt; line-height: 1; }
+    .doc .word-table td, .doc .word-table th { padding: 4pt; vertical-align: top; }
+    .doc .word-table td p { margin: 0 0 4pt; }
+    .doc .word-table--gridtable4-accent6 { border: 0.5pt solid #8DD873; }
+    .doc .word-table--gridtable4-accent6 td { border: 0.5pt solid #8DD873; }
+    .doc .word-table--gridtable4-accent6 tr:first-child td { background: #4EA72E; color: #FFFFFF; font-weight: 700; }
+    .doc .word-table--gridtable4-accent2 { border: 0.5pt solid #F1A983; }
+    .doc .word-table--gridtable4-accent2 td { border: 0.5pt solid #F1A983; }
+    .doc .word-table--gridtable4-accent2 tr:first-child td { background: #E97132; color: #FFFFFF; font-weight: 700; }
+    .doc .word-table--gridtable4-accent6 td:nth-child(even) { background-color: #FAE2D5; }
+    .doc .word-table--gridtable4-accent6 tr:first-child td { background: #4EA72E; }
+    .doc .word-table--gridtable4-accent2 td:nth-child(even) { background-color: #FCE4D6; }
+    .doc .word-table--gridtable4-accent2 tr:first-child td { background: #E97132; }
+    .doc .word-table--gridtable4-accent6 td p, .doc .word-table--gridtable4-accent2 td p { margin: 0 0 4pt; }
+    .doc table:not([class*="gridtable"]) td { border: 1px solid #A3A3A3; }
+    .doc table:not([class*="gridtable"]) { border: 1px solid #A3A3A3; }
+    .doc .doc-table-wrap { max-width: 100%; overflow-x: auto; margin: 10pt 0; }
+    .doc .doc-table-wrap table { min-width: 520px; }
+    .doc .word-table--image-layout { table-layout: auto; }
+    .doc .word-table--image-layout td { border: 0 !important; padding: 0; }
+    .sidebar__request-card { display:flex; min-height:116px; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:14px; border:1px dashed var(--color-red-soft); border-radius:18px; background:var(--color-card); color:var(--color-nav); text-align:center; }
+    .sidebar__request-plus { display:grid; width:30px; height:30px; place-items:center; border-radius:50%; background:var(--color-red); color:var(--color-card); font-size:22px; line-height:1; }
+    .sidebar__request-card strong { font-size:11px; font-weight:600; }
+    .sidebar__request-card span:last-child { color:var(--color-muted); font-size:9px; }
+    .pagination-link { display:flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; background:var(--color-card); color:var(--color-nav); font-size:11px; }
+    .pagination-link strong { font-weight:600; }
+    .pagination-link--next { margin-left:auto; }
+    .doc a { color: #0563C1; }
+    @media (max-width: 760px) { .document-paper { padding: 0.55in; } }
+    @media (max-width: 480px) { .document-paper { padding: 18px; } }
+    @media print { .document-paper { width: 100%; max-width: none; padding: 0; } .doc-table-wrap { overflow: visible; } .doc-table-wrap table { min-width: 0; } }
+  
+    /* EDIT: Page-specific cards and interactive components for section pages. */
+    .section-heading-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .section-intro{margin:0;color:var(--color-muted);font-size:12px}
+    .section-widget-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-gap)}
+    .section-widget{min-width:0;display:grid;align-content:start;gap:12px}
+    .section-widget--wide{grid-column:1/-1}
+    .section-widget__eyebrow{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--color-muted);font-size:10px}
+    .section-widget__eyebrow strong{color:var(--color-red);font-weight:600}
+    .section-fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .section-fact{padding:12px;border:1px solid var(--color-line);border-radius:14px;background:var(--color-card)}
+    .section-fact__label{display:block;color:var(--color-muted);font-size:10px}
+    .section-fact__value{display:block;margin-top:4px;color:var(--color-title);font-size:16px;font-weight:500;overflow-wrap:anywhere}
+    .section-copy{margin:0;color:var(--color-nav);font-size:12px;line-height:1.65}
+    .section-copy + .section-copy{margin-top:9px}
+    .section-inline-links{display:flex;gap:8px;flex-wrap:wrap}
+    .section-inline-links a{font-size:11px}
+    .section-stat{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+    .section-stat strong{font-size:35px;line-height:1;font-weight:400;letter-spacing:-.05em;color:var(--color-red);font-variant-numeric:tabular-nums}
+    .section-stat span{color:var(--color-muted);font-size:11px}
+    .section-choice-list{display:flex;flex-wrap:wrap;gap:7px}
+    .section-choice-list .chip{cursor:default}
+    .section-note{margin:0;color:var(--color-muted);font-size:10px;line-height:1.5}
+    .section-divider{height:1px;background:var(--color-line);margin:4px 0}
+    .section-document{display:grid;gap:11px;margin-top:4px}
+    .section-document .document-paper{margin-inline:0;max-width:100%;}
+    .section-document__header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .section-document__title{margin:0;font-size:19px;font-weight:400;color:var(--color-title)}
+    .section-tab-panels{min-width:0}
+    .section-tab-panels .tab-panel{padding-top:12px}
+    .section-tab-panels .tab-panel[hidden]{display:none!important}
+    .section-accordion{border-top:1px solid var(--color-line);padding-top:10px}
+    .section-accordion summary{cursor:pointer;color:var(--color-nav);font-size:12px;font-weight:600;list-style:none}
+    .section-accordion summary::-webkit-details-marker{display:none}
+    .section-accordion__body{padding:10px 0 2px;color:var(--color-nav);font-size:12px;line-height:1.65}
+    .section-accordion__body p{margin:0 0 8px}
+    .section-widget[hidden]{display:none!important}
+    .section-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .section-list li{display:flex;align-items:flex-start;gap:8px;color:var(--color-nav);font-size:11px}
+    .section-list li:before{content:"";width:6px;height:6px;flex:0 0 6px;margin-top:5px;border-radius:50%;background:var(--color-red)}
+    .section-pagination-label{display:block;color:var(--color-muted);font-size:9px}
+    @media(max-width:760px){.section-widget-grid{grid-template-columns:1fr}.section-widget--wide{grid-column:auto}}
+    @media print{.section-tools,.section-tabs,.no-print{display:none!important}.section-widget[hidden]{display:block!important}.section-document .document-paper{width:100%;padding:0}.section-widget-grid{grid-template-columns:1fr 1fr}}
+    
+
+/* EDIT: Time and Cost page-specific components. */
+.page-kicker{margin:0;color:var(--color-muted);font-size:11px}
+.section-filter-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px}
+.section-filter-row .filter-chip{cursor:pointer}
+.time-metric-row,.cost-metric-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.time-metric,.cost-metric{padding:13px;border:1px solid var(--color-line);border-radius:14px;background:var(--color-card);min-width:0}
+.time-metric span,.cost-metric span{display:block;color:var(--color-muted);font-size:10px}
+.time-metric strong,.cost-metric strong{display:block;margin-top:5px;color:var(--color-title);font-size:19px;font-weight:400;overflow-wrap:anywhere}
+.time-metric small,.cost-metric small{display:block;margin-top:4px;color:var(--color-muted);font-size:9px}
+.data-control{display:grid;gap:6px;min-width:0}
+.data-control label{font-size:10px;font-weight:600;color:var(--color-nav)}
+.data-control select,.data-control input[type="number"],.data-control input[type="search"]{width:100%;min-height:36px;padding:8px 10px;border:1px solid var(--color-line);border-radius:10px;background:var(--color-card);color:var(--color-nav);font:inherit;font-size:11px}
+.data-control input[type="range"]{width:100%;accent-color:var(--color-red)}
+.control-inline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.data-output{padding:12px;border-radius:12px;background:var(--color-red-tint);color:var(--color-nav);font-size:11px;line-height:1.55}
+.data-output strong{color:var(--color-red);font-weight:650}
+.note-timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.note-timeline button{min-width:0;padding:11px;border:1px solid var(--color-line);border-radius:12px;background:var(--color-card);color:var(--color-nav);text-align:left;cursor:pointer;font:inherit}
+.note-timeline button[aria-pressed="true"]{border-color:var(--color-red);background:var(--color-red-tint)}
+.note-timeline strong{display:block;font-size:10px;font-weight:650;line-height:1.35}
+.note-timeline span{display:block;margin-top:5px;color:var(--color-muted);font-size:9px}
+.note-detail{margin-top:10px;padding:12px;border-left:3px solid var(--color-red);background:var(--color-panel);font-size:11px;line-height:1.6}
+.note-detail p{margin:0}
+.activity-list{display:grid;gap:7px;margin:0;padding:0;list-style:none}
+.activity-list li{padding:9px 10px;border:1px solid var(--color-line);border-radius:11px;background:var(--color-card);font-size:11px;line-height:1.45}
+.activity-list li strong{display:block;font-weight:600}
+.activity-list li span{display:block;margin-top:3px;color:var(--color-muted);font-size:9px}
+.interactive-table{width:100%;border-collapse:collapse;font-size:10px}
+.interactive-table th,.interactive-table td{padding:8px 9px;border-bottom:1px solid var(--color-line);text-align:left;vertical-align:top}
+.interactive-table th{color:var(--color-muted);font-weight:600;font-size:9px}
+.interactive-table td{color:var(--color-nav)}
+.interactive-table td:last-child,.interactive-table th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.interactive-table button{padding:0;border:0;background:transparent;color:var(--color-red);text-align:left;font:inherit;font-weight:600;cursor:pointer}
+.interactive-table tr:hover td{background:var(--color-red-tint)}
+.table-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:9px}
+.table-toolbar input{max-width:260px}
+.share-track{height:7px;overflow:hidden;border-radius:99px;background:var(--color-red-tint)}
+.share-track span{display:block;height:100%;border-radius:inherit;background:var(--color-red)}
+.stacked-funding{display:flex;height:24px;overflow:hidden;border-radius:8px;background:var(--color-red-tint)}
+.stacked-funding span:first-child{background:var(--color-red)}
+.stacked-funding span:last-child{background:var(--color-red-soft)}
+.legend-row{display:flex;flex-wrap:wrap;gap:14px;color:var(--color-muted);font-size:10px}
+.legend-dot{display:inline-block;width:8px;height:8px;margin-right:5px;border-radius:50%;background:var(--color-red);vertical-align:middle}
+.legend-dot.soft{background:var(--color-red-soft)}
+.calculator-result{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.calculator-result div{padding:10px;border:1px solid var(--color-line);border-radius:11px;background:var(--color-card)}
+.calculator-result span{display:block;color:var(--color-muted);font-size:9px}
+.calculator-result strong{display:block;margin-top:4px;font-size:15px;font-weight:500;color:var(--color-title);overflow-wrap:anywhere}
+.account-basis{display:grid;gap:9px}
+.account-basis details{padding:10px 0;border-top:1px solid var(--color-line)}
+.account-basis summary{cursor:pointer;font-size:11px;font-weight:600;color:var(--color-nav)}
+.account-basis p{margin:7px 0 0;color:var(--color-muted);font-size:10px;line-height:1.55}
+.criteria-list{display:grid;gap:10px}
+.criteria-item{display:grid;grid-template-columns:minmax(0,1fr) 36px;gap:5px 10px;align-items:center}
+.criteria-item strong{font-size:10px;font-weight:550;color:var(--color-nav)}
+.criteria-item em{font-size:10px;color:var(--color-red);font-style:normal;text-align:right}
+.criteria-item .share-track{grid-column:1/-1}
+@media(max-width:760px){.time-metric-row,.cost-metric-row{grid-template-columns:1fr 1fr}.note-timeline{grid-template-columns:1fr 1fr}.control-inline{grid-template-columns:1fr}.calculator-result{grid-template-columns:1fr}}
+@media(max-width:480px){.time-metric-row,.cost-metric-row,.note-timeline{grid-template-columns:1fr}.interactive-table{min-width:560px}}
+@media print{.section-filter-row,.section-tools,.no-print,.data-control input,.data-control select{display:none!important}.section-widget{break-inside:avoid}.note-timeline button{display:none}.note-detail{display:block!important}}
+</style>
+</head>
+<body>
+  <div class="app-shell" id="app-shell">
+    <aside class="sidebar" id="site-sidebar" aria-label="Project navigation">
+      <div class="sidebar__identity">
+        <span class="sidebar__monogram" aria-hidden="true">FV</span>
+        <div class="sidebar__identity-copy">
+          <span class="sidebar__identity-label">Project workspace</span>
+          <strong class="sidebar__identity-name">Fraser Valley Preparedness Research Lab</strong>
+        </div>
+      </div>
+
+      <div class="sidebar__selector">
+        <div class="sidebar__selector-main">
+          <span class="sidebar__selector-mark" aria-hidden="true">FV</span>
+          <span class="sidebar__selector-copy"><small>Institution</small><strong>University of the Fraser Valley</strong></span>
+        </div>
+        <svg viewbox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg>
+      </div>
+
+      <!-- Keep all ten navigation links static and relative on every page. -->
+      <nav class="sidebar__nav" aria-label="Website pages">
+        <a class="sidebar__nav-link" href="index.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1"></rect></svg>
+          <span class="sidebar__nav-label">Executive Overview</span>
+        </a>
+        <a class="sidebar__nav-link" href="project-charter.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5h10a2 2 0 0 1 2 2v13h-14v-13a2 2 0 0 1 2-2Z"></path><path d="M9 3.5h6v3H9zM8 11h8M8 15h8"></path></svg>
+          <span class="sidebar__nav-label">Project Charter</span>
+        </a>
+        <a class="sidebar__nav-link" href="scope-deliverables.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"></path><path d="m3.8 7.7 8.2 4.6 8.2-4.6M12 12.3V21"></path></svg>
+          <span class="sidebar__nav-label">Scope &amp; Deliverables</span>
+        </a>
+        <a class="sidebar__nav-link active" href="time.html" aria-current="page">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5l3.5 2"></path></svg>
+          <span class="sidebar__nav-label">Time</span>
+        </a>
+        <a class="sidebar__nav-link" href="cost.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7.5" ry="3"></ellipse><path d="M4.5 6.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5M4.5 11.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5"></path></svg>
+          <span class="sidebar__nav-label">Cost</span>
+        </a>
+        <a class="sidebar__nav-link" href="operations.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5h6v5H4zM14 13.5h6v5h-6zM10 8h4a2 2 0 0 1 2 2v3.5M7 10.5v7h7"></path></svg>
+          <span class="sidebar__nav-label">Operations</span><span class="sidebar__nav-count" id="operations-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="management.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path><circle cx="9" cy="6" r="2" fill="var(--color-card)"></circle><circle cx="15" cy="12" r="2" fill="var(--color-card)"></circle><circle cx="7" cy="18" r="2" fill="var(--color-card)"></circle></svg>
+          <span class="sidebar__nav-label">Management</span>
+        </a>
+        <a class="sidebar__nav-link" href="references.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h12a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2v-13Z"></path><path d="M7 4.5v13a2 2 0 0 0 2 2M9 9h7M9 13h7"></path></svg>
+          <span class="sidebar__nav-label">References</span><span class="sidebar__nav-count" id="references-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="detailed-documentation.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h8l4 4v13H6z"></path><path d="M14 3.5v4h4M9 12h6M9 16h6"></path></svg>
+          <span class="sidebar__nav-label">Detailed Documentation</span>
+        </a>
+        <a class="sidebar__nav-link" href="about-us.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M9.5 9a2.5 2.5 0 1 1 4.4 1.6c-.9 1-1.9 1.2-1.9 2.9M12 17h.01"></path></svg>
+          <span class="sidebar__nav-label">About Us</span>
+        </a>
+      </nav>
+
+      <section class="sidebar__highlight" aria-label="Project snapshot">
+        <div class="sidebar__highlight-heading"><span class="sidebar__highlight-title">Project snapshot</span><span class="sidebar__highlight-value">Planned</span></div>
+        <div class="sidebar__highlight-metric">
+          <strong class="sidebar__highlight-number" id="highlight-number" data-highlight-number>36</strong>
+          <span class="sidebar__highlight-caption" id="highlight-caption" data-highlight-caption>calendar months</span>
+        </div>
+        <div class="sidebar__highlight-toggles" data-metric-switcher>
+          <button class="sidebar__highlight-toggle active" type="button" data-metric-toggle data-metric-key="duration" aria-pressed="true">Duration</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="budget" aria-pressed="false">Budget</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="risks" aria-pressed="false">Risks</button>
+        </div>
+      </section>
+
+      <div class="sidebar__bottom">
+        <div class="sidebar__quicklinks" aria-label="Quick links">
+          <a href="time.html#time" aria-label="Open Time"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M8 3v4M16 3v4M4 9h16"></path></svg></a>
+          <a href="cost.html#cost" aria-label="Open Cost"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"></path></svg></a>
+          <a href="operations.html#operations" aria-label="Open Operations"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8-4 8 4v10l-8 4-8-4zM4 7l8 5 8-5M12 12v9"></path></svg></a>
+          <a href="management.html#management" aria-label="Open Management"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h4"></path></svg></a>
+        </div>
+        <a class="sidebar__create-link" href="detailed-documentation.html">
+          <span class="sidebar__create-icon" aria-hidden="true">+</span>
+          <span>Open Detailed Documentation</span>
+        </a>
+      </div>
+    </aside>
+    <main class="app-main">
+      <header class="topbar">
+        <div class="topbar__leading">
+          <button class="icon-button mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-sidebar"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+          <div><h1 class="page-title" id="time">Time</h1><p class="page-subtitle">Fraser Valley Preparedness Research Lab · Project proposal</p></div>
+          <a class="topbar__select" href="#document-content">Document <span aria-hidden="true">⌄</span></a>
+        </div>
+        <div class="topbar__actions section-tools">
+          <label class="search-pill"><span class="visually-hidden">Search this page</span><input type="search" placeholder="Search" data-search-target="#section-widgets" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></label>
+          <button class="icon-button" type="button" data-print-page aria-label="Print or save as PDF" title="Print / Save as PDF"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V4h10v4M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v6H7z"/></svg></button>
+        </div>
+      </header>
+      <div class="page-content section-stack">
+        <div class="section-heading-row"><p class="section-intro">Explore the six-month project schedule, timing notes and schedule scenarios.</p><span class="chip chip--tint">Planned project · Source: Word document</span></div>
+        <div class="section-filter-row no-print" role="group" aria-label="Filter section cards">
+          <button class="filter-chip active" type="button" data-filter-chip data-filter-group="time-filters" data-filter-value="all" data-filter-target="#section-widgets" aria-pressed="true">All</button>
+          <button class="filter-chip" type="button" data-filter-chip data-filter-group="time-filters" data-filter-value="schedule" data-filter-target="#section-widgets" aria-pressed="false">Schedule</button>
+          <button class="filter-chip" type="button" data-filter-chip data-filter-group="time-filters" data-filter-value="explorer" data-filter-target="#section-widgets" aria-pressed="false">Explorers</button>
+          <button class="filter-chip" type="button" data-filter-chip data-filter-group="time-filters" data-filter-value="calculator" data-filter-target="#section-widgets" aria-pressed="false">Calculators</button>
+          <button class="filter-chip" type="button" data-filter-chip data-filter-group="time-filters" data-filter-value="analysis" data-filter-target="#section-widgets" aria-pressed="false">Analysis</button>
+        </div>
+        <section id="section-widgets" class="section-stack" aria-label="Interactive section content">
+<div class="section-widget-grid">
+  <article class="card section-widget section-widget--wide" data-filter-item data-category="schedule" data-search-text="planned schedule duration start finish six month periods activities January 2027 December 2029">
+    <div class="card__header"><div><h2 class="card__title">Schedule overview</h2><p class="card__subtitle" id="time-schedule-description"></p></div><span class="chip chip--filled">Planned</span></div>
+    <div class="time-metric-row"><div class="time-metric"><span>Start</span><strong id="time-start-label"></strong><small>Month stated in the document</small></div><div class="time-metric"><span>Closing</span><strong id="time-close-label"></strong><small>Documented closing date · <span id="time-days-until-close"></span></small></div><div class="time-metric"><span>Calendar duration</span><strong id="time-duration-label"></strong><small>Derived from Jan 2027 through Dec 2029</small></div></div>
+    <div class="time-metric-row"><div class="time-metric"><span>Activities</span><strong id="time-activity-count"></strong><small>Schedule rows</small></div><div class="time-metric"><span>Periods</span><strong id="time-period-count"></strong><small id="time-period-length"></small></div><div class="time-metric"><span>Timing notes</span><strong id="time-note-count"></strong><small>Documented notes</small></div></div>
+  </article>
+  <article class="card section-widget section-widget--wide" data-filter-item data-category="schedule" data-search-text="Gantt chart project activity six month periods 2027 2028 2029 conditional expansion">
+    <div class="card__header"><div><h2 class="card__title">Project Gantt</h2><p class="card__subtitle">Activity periods from the document schedule table</p></div><span class="source-label">Source: Time page</span></div>
+    <div id="time-gantt-svg" class="chart-wrap" aria-label="Project Gantt chart"></div>
+    <div class="table-scroll"><table class="gantt-table interactive-table" id="time-gantt-table"><thead><tr id="time-gantt-head"></tr></thead><tbody id="time-gantt-body"></tbody></table></div>
+    <p class="section-note">Red marks a scheduled period; salmon marks the conditional expansion activity. Select an activity name for its scheduled periods.</p>
+  </article>
+  <article class="card section-widget" data-filter-item data-category="schedule" data-search-text="period selector active activities per period">
+    <div class="card__header"><div><h2 class="card__title">What is active in a period?</h2><p class="card__subtitle" id="time-period-selector-caption"></p></div><span class="source-label">Source: Time page</span></div>
+    <div class="data-control"><label for="time-period-select">Schedule period</label><select id="time-period-select"></select></div>
+    <ul class="activity-list" id="time-period-activities" aria-live="polite"></ul>
+  </article>
+  <article class="card section-widget" data-filter-item data-category="analysis" data-search-text="activities active per period activity counts">
+    <div class="card__header"><div><h2 class="card__title">Activities per period</h2><p class="card__subtitle">Count of schedule rows active in each period</p></div><span class="source-label">Derived from schedule table</span></div>
+    <div id="time-period-chart" class="chart-wrap"></div>
+  </article>
+  <article class="card section-widget section-widget--wide" data-filter-item data-category="schedule" data-search-text="important timing notes confirm authority data access delayed final scope practice tests acceptance meeting handover">
+    <div class="card__header"><div><h2 class="card__title">Important timing notes</h2><p class="card__subtitle">Select a timing note to display its original wording</p></div><span class="chip chip--tint">Verbatim notes</span></div>
+    <div class="note-timeline" id="time-note-buttons"></div>
+    <div class="note-detail" id="time-note-detail" aria-live="polite"><p>Select a timing note.</p></div>
+  </article>
+  <article class="card section-widget section-widget--wide" data-filter-item data-category="schedule" data-search-text="activity route numbered route authority permission data agreements build test software live test expand practice drills accept close">
+    <div class="card__header"><div><h2 class="card__title">Project activity route</h2><p class="card__subtitle" id="time-route-caption"></p></div><span class="source-label">Source: Time page</span></div>
+    <div id="time-route-chart" class="chart-wrap"></div>
+  </article>
+  <article class="card section-widget" data-filter-item data-category="analysis" data-search-text="overlap finder common six month periods activity pair">
+    <div class="card__header"><div><h2 class="card__title">Overlap finder</h2><p class="card__subtitle">Find periods shared by two activities</p></div><span class="source-label">Schedule comparison</span></div>
+    <div class="control-inline"><div class="data-control"><label for="time-overlap-a">Activity A</label><select id="time-overlap-a"></select></div><div class="data-control"><label for="time-overlap-b">Activity B</label><select id="time-overlap-b"></select></div></div>
+    <div class="data-output" id="time-overlap-result" aria-live="polite"></div>
+  </article>
+  <article class="card section-widget" data-filter-item data-category="calculator" data-search-text="delay explorer slip activity months cascade later activities closing date scenario assumption">
+    <div class="card__header"><div><h2 class="card__title">Delay explorer</h2><p class="card__subtitle">Model a delay and its downstream effect</p></div><span class="chip chip--tint">What-if</span></div>
+    <div class="data-control"><label for="time-delay-activity">Activity to delay</label><select id="time-delay-activity"></select></div>
+    <div class="data-control"><label for="time-delay-months">Delay: <strong id="time-delay-months-label">0 months</strong></label><input id="time-delay-months" type="range" min="0" max="24" step="1" value="0"></div>
+    <div class="data-output" id="time-delay-result" aria-live="polite"></div>
+    <p class="section-note">Assumption — not from the document: the selected activity and every later activity in the document's listed order shift by the same number of months. The slider limit is a control range only. The document does not state task dependencies.</p>
+  </article>
+</div>
+</section>
+        <section class="section-document" aria-labelledby="document-section-title">
+          <div class="section-document__header"><h2 class="section-document__title" id="document-section-title">Document</h2><span class="source-label">Original Word formatting</span></div>
+          <div id="document-content" class="document-paper"><article class="doc" lang="en"><!-- DOCUMENT CONTENT START --><h1><span id="bookmark-_Toc246349578" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Time</span></h1>
+<div class="doc-table-wrap"><table class="word-table"><colgroup><col style="width:131.55pt"><col style="width:56.6pt"><col style="width:56.55pt"><col style="width:56.55pt"><col style="width:56.55pt"><col style="width:56.55pt"><col style="width:52.65pt"></colgroup><tr><td colspan="7" style="background-color:#17365D;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">Fraser Valley Preparedness Lab – Project Gantt Chart</span></span></p></td></tr><tr><td colspan="7" style="background-color:#DCE6F1;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span class="word-run">Planned work from January 2027 to December 2029</span></p></td></tr><tr><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span class="word-run">H = </span><span class="word-run">6-month</span><span class="word-run"> period</span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:52.65pt"><p><span class="word-run"> </span></p></td></tr><tr><td style="background-color:#244A73;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="color:#FFFFFF;font-weight:700"><span class="word-run">Project activity</span></span></p></td><td style="background-color:#244A73;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span style="color:#FFFFFF;font-weight:700"><span class="word-run">2027 H1</span></span></p></td><td style="background-color:#244A73;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="color:#FFFFFF;font-weight:700"><span class="word-run">2027 H2</span></span></p></td><td style="background-color:#244A73;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="color:#FFFFFF;font-weight:700"><span class="word-run">2028 H1</span></span></p></td><td style="background-color:#244A73;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="color:#FFFFFF;font-weight:700"><span class="word-run">2028 H2</span></span></p></td><td style="background-color:#244A73;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="color:#FFFFFF;font-weight:700"><span class="word-run">2029 H1</span></span></p></td><td style="background-color:#244A73;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:52.65pt"><p><span style="color:#FFFFFF;font-weight:700"><span class="word-run">2029 H2</span></span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">Authority permission and feasibility</span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:52.65pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">Data agreements for research software and baseline</span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:52.65pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">Build, test research software, installing sensors, collecting | refining data with AI, and feeding it into software</span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:52.65pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">Live test with clinic sites</span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:52.65pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">Expand to more sites (if approved)</span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:52.65pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">Practice drills and fix problems</span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:52.65pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:0.5px solid #808080;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">Accept the service and close the project</span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:0.5px solid #808080;border-left:1px solid #A3A3A3;width:56.6pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:0.5px solid #808080;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:0.5px solid #808080;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:0.5px solid #808080;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#E7EDF2;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:0.5px solid #808080;border-left:1px solid #A3A3A3;width:56.55pt"><p><span style="font-weight:700"><span class="word-run"> </span></span></p></td><td style="background-color:#168477;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:0.5px solid #808080;border-left:1px solid #A3A3A3;width:52.65pt"><p><span style="font-weight:700"><span class="word-run">●</span></span></p></td></tr><tr><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:0.5px solid #808080;border-right:none;border-bottom:0.5px solid #808080;border-left:0.5px solid #808080;width:131.55pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:0.5px solid #808080;border-right:none;border-bottom:0.5px solid #808080;border-left:none;width:56.6pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:0.5px solid #808080;border-right:none;border-bottom:0.5px solid #808080;border-left:none;width:56.55pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:0.5px solid #808080;border-right:none;border-bottom:0.5px solid #808080;border-left:none;width:56.55pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:0.5px solid #808080;border-right:none;border-bottom:0.5px solid #808080;border-left:none;width:56.55pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:0.5px solid #808080;border-right:none;border-bottom:0.5px solid #808080;border-left:none;width:56.55pt"><p><span class="word-run"> </span></p></td><td style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:0.5px solid #808080;border-right:0.5px solid #808080;border-bottom:0.5px solid #808080;border-left:none;width:52.65pt"><p><span class="word-run"> </span></p></td></tr><tr><td colspan="7" style="background-color:#244A73;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:0.5px solid #808080;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="color:#FFFFFF;font-weight:700"><span class="word-run">Important timing notes</span></span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">First half of 2027</span></span></p></td><td colspan="6" style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span class="word-run">Confirm project authority, research questions, sample reports, privacy and ethics requirements.</span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">If data access is delayed</span></span></p></td><td colspan="6" style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span class="word-run">Use sample or made-up data for early testing; move or reduce live testing.</span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">By September 2029</span></span></p></td><td colspan="6" style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span class="word-run">Confirm the final scope of work that can be completed by year-end.</span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">October–November 2029</span></span></p></td><td colspan="6" style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span class="word-run">Run final practice tests, check suppliers and fix major problems.</span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">First half of December 2029</span></span></p></td><td colspan="6" style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span class="word-run">Hold the final acceptance meeting.</span></p></td></tr><tr><td style="background-color:#F2F5F8;padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:131.55pt"><p><span style="font-weight:700"><span class="word-run">Final weeks of December 2029</span></span></p></td><td colspan="6" style="padding-top:2pt;padding-left:3pt;padding-bottom:2pt;padding-right:3pt;border-top:1px solid #A3A3A3;border-right:1px solid #A3A3A3;border-bottom:1px solid #A3A3A3;border-left:1px solid #A3A3A3;width:56.6pt"><p><span class="word-run">Finish records, check invoices and hand over the service.</span></p></td></tr></table></div>
+<p><span class="word-run"> </span></p>
+<p><span class="word-run">This schedule reserves the first half of the 2027 for the decisions that will be taken by the authority. This will include the service managers will supply the sample data reports. </span><span class="word-run">Alongside</span><span class="word-run"> this data agreements can be done after certain </span><span class="word-run">approvals,</span><span class="word-run"> and these agreements will be done with private labs like life lab and others. In these decisions, permissions from the building owners and residential building owners will be </span><span class="word-run">gotten</span><span class="word-run"> to install the sensors to collect the data.</span></p>
+<p><span class="word-run">In 2027-2028, building of the research software will be started and data will be collected, </span><span class="word-run">alongside</span><span class="word-run"> with this sensor installation in the buildings will be started. For </span><span class="word-run">these 18 months</span><span class="word-run"> period, development of the software, collection of data will be done.</span></p>
+<p><span class="word-run">In second half of 2028, software will be sent to the production environment in which the live data will be </span><span class="word-run">tested,</span><span class="word-run"> and clinic trials will be done to test the software with other clinic management softwares.</span></p>
+<p><span class="word-run">After successful implementation of the whole system, it will be expanded to other regions like metro Vancouver and other provinces, it will require the extra compute services for the data collection and there will be required to install the millions of more sensors and this will incur more costs and need more investment. </span><span class="word-run">Alongside</span><span class="word-run"> with the practical drills of these clinics. This whole process is expected to be completed in mid 2029.</span></p>
+<p><span class="word-run">In the last six months, if any steps left or errors occurred then that will be solved and then if everything will be implemented successfully then the project will be closed at the end of 2029. (Renso, 2026a)</span></p><!-- DOCUMENT CONTENT END --></article></div>
+        </section>
+        <nav class="page-pagination" aria-label="Previous and next pages">
+          <a class="pagination-link" href="scope-deliverables.html"><span aria-hidden="true">←</span><span><span class="section-pagination-label">Previous page</span><strong>Scope &amp; Deliverables</strong></span></a>
+          <a class="pagination-link pagination-link--next" href="cost.html"><span><span class="section-pagination-label">Next page</span><strong>Cost</strong></span><span aria-hidden="true">→</span></a>
+        </nav>
+      </div>
+    </main>
+  </div>
+  <script src="assets/js/project-data.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script>
+(function(){
+  'use strict';
+  const d=window.PROJECT_DATA; if(!d||!d.time)return;
+  const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+  const money=v=>'CAD $'+Number(v).toLocaleString('en-CA',{maximumFractionDigits:1})+'m';
+  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const startDate=new Date(d.project.startMonth+'-01T00:00:00');
+  const closeDate=new Date(d.project.closingDate+'T00:00:00');
+  const duration=(closeDate.getFullYear()-startDate.getFullYear())*12+(closeDate.getMonth()-startDate.getMonth())+1;
+  $('#time-start-label').textContent=d.project.startPeriod;
+  $('#time-close-label').textContent=new Intl.DateTimeFormat('en-CA',{year:'numeric',month:'long',day:'numeric'}).format(closeDate);
+  $('#time-schedule-description').textContent=d.project.plannedScheduleDescription;
+  $('#time-period-length').textContent='H = '+d.time.periodLengthMonths+'-month period';
+  $('#time-period-selector-caption').textContent='Select a '+d.time.periodLengthMonths+'-month period';
+  $('#time-route-caption').textContent='The '+d.time.activities.length+' schedule activities in their documented order';
+  const today=new Date();today.setHours(0,0,0,0);$('#time-days-until-close').textContent=Math.ceil((closeDate-today)/86400000).toLocaleString('en-CA')+' days remaining';
+  $('#time-duration-label').textContent=duration+' months';
+  $('#time-activity-count').textContent=d.time.activities.length;
+  $('#time-period-count').textContent=d.time.periods.length;
+  $('#time-note-count').textContent=d.time.timingNotes.length;
+  window.ProjectCharts.gantt($('#time-gantt-svg'),d.time.periods,d.time.activities,{ariaLabel:'Schedule Gantt from January 2027 to December 2029'});
+  window.ProjectCharts.verticalBars($('#time-period-chart'),d.time.periods.map(p=>({label:p,value:d.time.activities.filter(a=>a.periods.includes(p)).length})),{ariaLabel:'Number of activities active in each six-month period',format:v=>String(v)});
+  window.ProjectCharts.route($('#time-route-chart'),d.time.activities,{ariaLabel:'Numbered route of project schedule activities'});
+  // Each Time card has a direct, keyboard-accessible details action.
+  $$('#section-widgets .section-widget').forEach((card)=>{
+    const heading=card.querySelector('.card__title');
+    const header=card.querySelector('.card__header');
+    if(!heading||!header||header.querySelector('.time-card-details'))return;
+    const button=document.createElement('button');
+    button.type='button';
+    button.className='time-card-details read-more';
+    button.textContent='View details';
+    button.dataset.drawerTitle=heading.textContent.trim();
+    const subtitle=card.querySelector('.card__subtitle');
+    const copy=card.querySelector('.section-note, .section-copy');
+    button.dataset.drawerText=[subtitle?.textContent.trim(),copy?.textContent.trim()].filter(Boolean).join(' — ') || 'Explore the interactive information and controls in this Time section.';
+    button.dataset.source='Time page';
+    button.dataset.sourceHref='#document-content';
+    header.appendChild(button);
+  });
+  const head=$('#time-gantt-head'); head.innerHTML='<th scope="col">Project activity</th>'+d.time.periods.map(p=>'<th scope="col">'+p+'</th>').join('');
+  const body=$('#time-gantt-body');
+  d.time.activities.forEach((a,i)=>{
+    const tr=document.createElement('tr');
+    const name=document.createElement('td');
+    const button=document.createElement('button'); button.type='button';button.textContent=a.name;button.dataset.drawerTitle=a.name;button.dataset.drawerText='Scheduled periods: '+a.periods.join(', ')+(a.conditional?' · Conditional activity':'')+'. Source: Time page.';button.dataset.source='Time page';button.dataset.sourceHref='#document-content';name.appendChild(button);tr.appendChild(name);
+    d.time.periods.forEach(p=>{const td=document.createElement('td');td.className='gantt-cell '+(a.periods.includes(p)?(a.conditional?'is-active is-conditional':'is-active'):'');td.setAttribute('aria-label',a.name+' / '+p+(a.periods.includes(p)?' scheduled':' not scheduled'));td.textContent=a.periods.includes(p)?'●':'';tr.appendChild(td);});body.appendChild(tr);
+  });
+  const select=$('#time-period-select'); d.time.periods.forEach(p=>{const o=document.createElement('option');o.value=p;o.textContent=p;select.appendChild(o);});
+  function showPeriod(){const p=select.value;const items=d.time.activities.filter(a=>a.periods.includes(p));const root=$('#time-period-activities');root.replaceChildren();if(!items.length){const li=document.createElement('li');li.textContent='No activity is listed for this period.';root.appendChild(li);}else items.forEach(a=>{const li=document.createElement('li');const strong=document.createElement('strong');strong.textContent=a.name;const span=document.createElement('span');span.textContent=a.conditional?'Conditional activity':'Scheduled activity';li.append(strong,span);root.appendChild(li);});}
+  select.addEventListener('change',showPeriod);showPeriod();
+  const noteButtons=$('#time-note-buttons'), noteDetail=$('#time-note-detail');
+  d.time.timingNotes.forEach((n,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',String(i===0));const strong=document.createElement('strong');strong.textContent=n.when;const span=document.createElement('span');span.textContent=n.fallback?'Fallback note':'Timing note';b.append(strong,span);b.addEventListener('click',()=>{noteButtons.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));noteDetail.replaceChildren();const p=document.createElement('p');p.textContent=n.note;noteDetail.appendChild(p);});noteButtons.appendChild(b);});
+  noteDetail.querySelector('p').textContent=d.time.timingNotes[0].note;
+  const overlapA=$('#time-overlap-a'),overlapB=$('#time-overlap-b');
+  d.time.activities.forEach((a,i)=>[overlapA,overlapB].forEach((s)=>{const o=document.createElement('option');o.value=String(i);o.textContent=a.name;s.appendChild(o);}));
+  if(d.time.activities.length>1)overlapB.value='1';
+  function showOverlap(){const a=d.time.activities[Number(overlapA.value)],b=d.time.activities[Number(overlapB.value)];const same=a.periods.filter(p=>b.periods.includes(p));$('#time-overlap-result').textContent=same.length?'Shared periods: '+same.join(', '):'No shared six-month period in the schedule table.';}
+  overlapA.addEventListener('change',showOverlap);overlapB.addEventListener('change',showOverlap);showOverlap();
+  const delayActivity=$('#time-delay-activity'),delayMonths=$('#time-delay-months'),delayLabel=$('#time-delay-months-label'),delayResult=$('#time-delay-result');
+  delayMonths.min='0';delayMonths.max='24';delayMonths.step='1';delayMonths.value='0';
+  d.time.activities.forEach((a,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=a.name;delayActivity.appendChild(o);});
+  function addMonth(date,n){const out=new Date(date);const day=out.getDate();out.setDate(1);out.setMonth(out.getMonth()+n);const last=new Date(out.getFullYear(),out.getMonth()+1,0).getDate();out.setDate(Math.min(day,last));return out;}
+  function dateFmt(date){return new Intl.DateTimeFormat('en-CA',{year:'numeric',month:'short'}).format(date);}
+  function periodDateRange(a){const p0=d.time.periods.indexOf(a.periods[0]);const p1=d.time.periods.indexOf(a.periods[a.periods.length-1]);const y0=2027+Math.floor(p0/2),m0=(p0%2)*6;const y1=2027+Math.floor(p1/2),m1=(p1%2)*6+5;return [new Date(y0,m0,1),new Date(y1,m1+1,0)];}
+  function showDelay(){const n=Number(delayMonths.value),idx=Number(delayActivity.value);delayLabel.textContent=n+' month'+(n===1?'':'s');const changed=d.time.activities.slice(idx);const list=changed.map(a=>{const [s,e]=periodDateRange(a);return {name:a.name,start:addMonth(s,n),end:addMonth(e,n)};});const newClose=addMonth(closeDate,n);delayResult.replaceChildren();const summary=document.createElement('p');summary.textContent='Activities shifted: '+changed.length+' of '+d.time.activities.length;delayResult.appendChild(summary);const ul=document.createElement('ul');ul.style.margin='6px 0 0';ul.style.paddingLeft='18px';list.forEach(x=>{const li=document.createElement('li');li.textContent=x.name+': '+dateFmt(x.start)+' – '+dateFmt(x.end);ul.appendChild(li);});delayResult.appendChild(ul);const close=document.createElement('p');close.style.margin='7px 0 0';close.textContent='Revised closing: '+new Intl.DateTimeFormat('en-CA',{year:'numeric',month:'long',day:'numeric'}).format(newClose);delayResult.appendChild(close);}
+  delayActivity.addEventListener('change',showDelay);delayMonths.addEventListener('input',showDelay);showDelay();
+  const print=$('[data-print-page]');if(print)print.addEventListener('click',()=>window.print());
+})();
+</script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

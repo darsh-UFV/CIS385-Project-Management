@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Scope &amp; Deliverables | Project Website</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* EDIT: Page-specific layout; all document formatting stays inside .doc. */
+    .document-page-intro { margin-bottom: 4px; }
+    .document-page-intro p { margin: 5px 0 0; color: var(--color-muted); font-size: 12px; }
+    .document-paper { width: min(100%, 8.5in); padding: 1in; overflow: visible; }
+    .doc { white-space: normal; }
+    .doc .word-run { white-space: pre-wrap; tab-size: 8; }
+    .doc .doc-page-break { display: block; height: 1px; margin: 18pt 0; border: 0; background: #D8D8D8; break-after: page; page-break-after: always; }
+    .doc .word-bookmark { display: block; height: 0; scroll-margin-top: 18px; }
+    .doc .word-image { display: inline-block; max-width: 100%; object-fit: contain; }
+    .doc .word-list { margin: 0 0 10pt; padding-left: 36pt; font-family: Arial, sans-serif; font-size: 12pt; line-height: 1; }
+    .doc .word-list li { margin: 0; padding-left: 0; }
+    .doc .word-table { width: 100%; border-collapse: collapse; border-spacing: 0; font-family: Arial, sans-serif; font-size: 12pt; line-height: 1; }
+    .doc .word-table td, .doc .word-table th { padding: 4pt; vertical-align: top; }
+    .doc .word-table td p { margin: 0 0 4pt; }
+    .doc .word-table--gridtable4-accent6 { border: 0.5pt solid #8DD873; }
+    .doc .word-table--gridtable4-accent6 td { border: 0.5pt solid #8DD873; }
+    .doc .word-table--gridtable4-accent6 tr:first-child td { background: #4EA72E; color: #FFFFFF; font-weight: 700; }
+    .doc .word-table--gridtable4-accent2 { border: 0.5pt solid #F1A983; }
+    .doc .word-table--gridtable4-accent2 td { border: 0.5pt solid #F1A983; }
+    .doc .word-table--gridtable4-accent2 tr:first-child td { background: #E97132; color: #FFFFFF; font-weight: 700; }
+    .doc .word-table--gridtable4-accent6 td:nth-child(even) { background-color: #FAE2D5; }
+    .doc .word-table--gridtable4-accent6 tr:first-child td { background: #4EA72E; }
+    .doc .word-table--gridtable4-accent2 td:nth-child(even) { background-color: #FCE4D6; }
+    .doc .word-table--gridtable4-accent2 tr:first-child td { background: #E97132; }
+    .doc .word-table--gridtable4-accent6 td p, .doc .word-table--gridtable4-accent2 td p { margin: 0 0 4pt; }
+    .doc table:not([class*="gridtable"]) td { border: 1px solid #A3A3A3; }
+    .doc table:not([class*="gridtable"]) { border: 1px solid #A3A3A3; }
+    .doc .doc-table-wrap { max-width: 100%; overflow-x: auto; margin: 10pt 0; }
+    .doc .doc-table-wrap table { min-width: 520px; }
+    .doc .word-table--image-layout { table-layout: auto; }
+    .doc .word-table--image-layout td { border: 0 !important; padding: 0; }
+    .sidebar__request-card { display:flex; min-height:116px; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:14px; border:1px dashed var(--color-red-soft); border-radius:18px; background:var(--color-card); color:var(--color-nav); text-align:center; }
+    .sidebar__request-plus { display:grid; width:30px; height:30px; place-items:center; border-radius:50%; background:var(--color-red); color:var(--color-card); font-size:22px; line-height:1; }
+    .sidebar__request-card strong { font-size:11px; font-weight:600; }
+    .sidebar__request-card span:last-child { color:var(--color-muted); font-size:9px; }
+    .pagination-link { display:flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; background:var(--color-card); color:var(--color-nav); font-size:11px; }
+    .pagination-link strong { font-weight:600; }
+    .pagination-link--next { margin-left:auto; }
+    .doc a { color: #0563C1; }
+    @media (max-width: 760px) { .document-paper { padding: 0.55in; } }
+    @media (max-width: 480px) { .document-paper { padding: 18px; } }
+    @media print { .document-paper { width: 100%; max-width: none; padding: 0; } .doc-table-wrap { overflow: visible; } .doc-table-wrap table { min-width: 0; } }
+  
+    /* EDIT: Page-specific cards and interactive components for section pages. */
+    .section-heading-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .section-intro{margin:0;color:var(--color-muted);font-size:12px}
+    .section-widget-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-gap)}
+    .section-widget{min-width:0;display:grid;align-content:start;gap:12px}
+    .section-widget--wide{grid-column:1/-1}
+    .section-widget__eyebrow{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--color-muted);font-size:10px}
+    .section-widget__eyebrow strong{color:var(--color-red);font-weight:600}
+    .section-fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .section-fact{padding:12px;border:1px solid var(--color-line);border-radius:14px;background:var(--color-card)}
+    .section-fact__label{display:block;color:var(--color-muted);font-size:10px}
+    .section-fact__value{display:block;margin-top:4px;color:var(--color-title);font-size:16px;font-weight:500;overflow-wrap:anywhere}
+    .section-copy{margin:0;color:var(--color-nav);font-size:12px;line-height:1.65}
+    .section-copy + .section-copy{margin-top:9px}
+    .section-inline-links{display:flex;gap:8px;flex-wrap:wrap}
+    .section-inline-links a{font-size:11px}
+    .section-stat{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+    .section-stat strong{font-size:35px;line-height:1;font-weight:400;letter-spacing:-.05em;color:var(--color-red);font-variant-numeric:tabular-nums}
+    .section-stat span{color:var(--color-muted);font-size:11px}
+    .section-choice-list{display:flex;flex-wrap:wrap;gap:7px}
+    .section-choice-list .chip{cursor:default}
+    .section-note{margin:0;color:var(--color-muted);font-size:10px;line-height:1.5}
+    .section-divider{height:1px;background:var(--color-line);margin:4px 0}
+    .section-document{display:grid;gap:11px;margin-top:4px}
+    .section-document .document-paper{margin-inline:0;max-width:100%;}
+    .section-document__header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .section-document__title{margin:0;font-size:19px;font-weight:400;color:var(--color-title)}
+    .section-tab-panels{min-width:0}
+    .section-tab-panels .tab-panel{padding-top:12px}
+    .section-tab-panels .tab-panel[hidden]{display:none!important}
+    .section-accordion{border-top:1px solid var(--color-line);padding-top:10px}
+    .section-accordion summary{cursor:pointer;color:var(--color-nav);font-size:12px;font-weight:600;list-style:none}
+    .section-accordion summary::-webkit-details-marker{display:none}
+    .section-accordion__body{padding:10px 0 2px;color:var(--color-nav);font-size:12px;line-height:1.65}
+    .section-accordion__body p{margin:0 0 8px}
+    .section-widget[hidden]{display:none!important}
+    .section-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .section-list li{display:flex;align-items:flex-start;gap:8px;color:var(--color-nav);font-size:11px}
+    .section-list li:before{content:"";width:6px;height:6px;flex:0 0 6px;margin-top:5px;border-radius:50%;background:var(--color-red)}
+    .section-pagination-label{display:block;color:var(--color-muted);font-size:9px}
+    @media(max-width:760px){.section-widget-grid{grid-template-columns:1fr}.section-widget--wide{grid-column:auto}}
+    @media print{.section-tools,.section-tabs,.no-print{display:none!important}.section-widget[hidden]{display:block!important}.section-document .document-paper{width:100%;padding:0}.section-widget-grid{grid-template-columns:1fr 1fr}}
+    </style>
+</head>
+<body>
+  <div class="app-shell" id="app-shell">
+    <aside class="sidebar" id="site-sidebar" aria-label="Project navigation">
+      <div class="sidebar__identity">
+        <span class="sidebar__monogram" aria-hidden="true">FV</span>
+        <div class="sidebar__identity-copy">
+          <span class="sidebar__identity-label">Project workspace</span>
+          <strong class="sidebar__identity-name">Fraser Valley Preparedness Research Lab</strong>
+        </div>
+      </div>
+
+      <div class="sidebar__selector">
+        <div class="sidebar__selector-main">
+          <span class="sidebar__selector-mark" aria-hidden="true">FV</span>
+          <span class="sidebar__selector-copy"><small>Institution</small><strong>University of the Fraser Valley</strong></span>
+        </div>
+        <svg viewbox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg>
+      </div>
+
+      <!-- Keep all ten navigation links static and relative on every page. -->
+      <nav class="sidebar__nav" aria-label="Website pages">
+        <a class="sidebar__nav-link" href="index.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1"></rect></svg>
+          <span class="sidebar__nav-label">Executive Overview</span>
+        </a>
+        <a class="sidebar__nav-link" href="project-charter.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5h10a2 2 0 0 1 2 2v13h-14v-13a2 2 0 0 1 2-2Z"></path><path d="M9 3.5h6v3H9zM8 11h8M8 15h8"></path></svg>
+          <span class="sidebar__nav-label">Project Charter</span>
+        </a>
+        <a class="sidebar__nav-link active" href="scope-deliverables.html" aria-current="page">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"></path><path d="m3.8 7.7 8.2 4.6 8.2-4.6M12 12.3V21"></path></svg>
+          <span class="sidebar__nav-label">Scope &amp; Deliverables</span>
+        </a>
+        <a class="sidebar__nav-link" href="time.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5l3.5 2"></path></svg>
+          <span class="sidebar__nav-label">Time</span>
+        </a>
+        <a class="sidebar__nav-link" href="cost.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7.5" ry="3"></ellipse><path d="M4.5 6.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5M4.5 11.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5"></path></svg>
+          <span class="sidebar__nav-label">Cost</span>
+        </a>
+        <a class="sidebar__nav-link" href="operations.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5h6v5H4zM14 13.5h6v5h-6zM10 8h4a2 2 0 0 1 2 2v3.5M7 10.5v7h7"></path></svg>
+          <span class="sidebar__nav-label">Operations</span><span class="sidebar__nav-count" id="operations-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="management.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path><circle cx="9" cy="6" r="2" fill="var(--color-card)"></circle><circle cx="15" cy="12" r="2" fill="var(--color-card)"></circle><circle cx="7" cy="18" r="2" fill="var(--color-card)"></circle></svg>
+          <span class="sidebar__nav-label">Management</span>
+        </a>
+        <a class="sidebar__nav-link" href="references.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h12a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2v-13Z"></path><path d="M7 4.5v13a2 2 0 0 0 2 2M9 9h7M9 13h7"></path></svg>
+          <span class="sidebar__nav-label">References</span><span class="sidebar__nav-count" id="references-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="detailed-documentation.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h8l4 4v13H6z"></path><path d="M14 3.5v4h4M9 12h6M9 16h6"></path></svg>
+          <span class="sidebar__nav-label">Detailed Documentation</span>
+        </a>
+        <a class="sidebar__nav-link" href="about-us.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M9.5 9a2.5 2.5 0 1 1 4.4 1.6c-.9 1-1.9 1.2-1.9 2.9M12 17h.01"></path></svg>
+          <span class="sidebar__nav-label">About Us</span>
+        </a>
+      </nav>
+
+      <section class="sidebar__highlight" aria-label="Project snapshot">
+        <div class="sidebar__highlight-heading"><span class="sidebar__highlight-title">Project snapshot</span><span class="sidebar__highlight-value">Planned</span></div>
+        <div class="sidebar__highlight-metric">
+          <strong class="sidebar__highlight-number" id="highlight-number" data-highlight-number>36</strong>
+          <span class="sidebar__highlight-caption" id="highlight-caption" data-highlight-caption>calendar months</span>
+        </div>
+        <div class="sidebar__highlight-toggles" data-metric-switcher>
+          <button class="sidebar__highlight-toggle active" type="button" data-metric-toggle data-metric-key="duration" aria-pressed="true">Duration</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="budget" aria-pressed="false">Budget</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="risks" aria-pressed="false">Risks</button>
+        </div>
+      </section>
+
+      <div class="sidebar__bottom">
+        <div class="sidebar__quicklinks" aria-label="Quick links">
+          <a href="time.html#time" aria-label="Open Time"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M8 3v4M16 3v4M4 9h16"></path></svg></a>
+          <a href="cost.html#cost" aria-label="Open Cost"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"></path></svg></a>
+          <a href="operations.html#operations" aria-label="Open Operations"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8-4 8 4v10l-8 4-8-4zM4 7l8 5 8-5M12 12v9"></path></svg></a>
+          <a href="management.html#management" aria-label="Open Management"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h4"></path></svg></a>
+        </div>
+        <a class="sidebar__create-link" href="detailed-documentation.html">
+          <span class="sidebar__create-icon" aria-hidden="true">+</span>
+          <span>Open Detailed Documentation</span>
+        </a>
+      </div>
+    </aside>
+    <main class="app-main">
+      <header class="topbar">
+        <div class="topbar__leading">
+          <button class="icon-button mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-sidebar">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div>
+            <h1 class="page-title">Scope &amp; Deliverables</h1>
+            <p class="page-subtitle">Fraser Valley Preparedness Research Lab · Project proposal</p>
+          </div>
+          <a class="topbar__select" href="#document-content">Document <span aria-hidden="true">⌄</span></a>
+        </div>
+        <div class="topbar__actions section-tools">
+          <label class="search-pill">
+            <span class="visually-hidden">Search this page</span>
+            <input type="search" placeholder="Search" data-search-target="#section-widgets" autocomplete="off">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+          </label>
+          <button class="icon-button" type="button" data-print-page aria-label="Print or save as PDF" title="Print / Save as PDF">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V4h10v4M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v6H7z"/></svg>
+          </button>
+        </div>
+      </header>
+      <div class="page-content section-stack">
+        <div class="section-heading-row"><p class="section-intro">Initial scope, local preparedness rationale and the deliverables described in the Word document.</p><span class="chip chip--tint">Planned project · Source: Word document</span></div>
+        <section id="section-widgets" class="section-stack" aria-label="Interactive section content">
+          
+<div class="section-widget-grid">
+  <article class="card section-widget" data-filter-item data-category="initial-scope" data-search-text="initial two willing clinical service sites discovery shadow testing decisions deadline person evidence">
+    <div class="card__header"><div><h2 class="card__title">Initial scope</h2><p class="card__subtitle">Discovery and shadow testing</p></div><span class="chip chip--filled">Initial phase</span></div>
+    <div class="section-stat"><strong data-initial-site-count></strong><span>willing clinical service sites</span></div>
+    <p class="section-copy" id="scope-initial-description"></p>
+    <details class="section-accordion"><summary>Research software purpose</summary><div class="section-accordion__body"><p class="section-copy" id="scope-software-purpose"></p></div></details>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="population" data-search-text="2021 census Fraser Valley population 2016 growth 9.5 percent">
+    <div class="card__header"><div><h2 class="card__title">Fraser Valley population context</h2><p class="card__subtitle">Census comparison stated in the document</p></div><span class="source-label">Source: Scope</span></div>
+    <div class="section-stat"><strong data-population></strong><span>2021 census population</span></div>
+    <div class="comparison-grid"><div class="comparison-cell"><span class="comparison-cell__label">2016 population</span><strong class="comparison-cell__value" data-population-comparison></strong></div><div class="comparison-cell"><span class="comparison-cell__label">Increase</span><strong class="comparison-cell__value" data-population-growth></strong></div></div>
+    <p class="section-note">Source sentence is reproduced in the Document block below.</p>
+  </article>
+
+  <article class="card section-widget section-widget--wide" data-filter-item data-category="why" data-search-text="Why The Fraser Valley Needs Its Own Preparedness Research Hope clinic manager patients population">
+    <div class="card__header"><div><h2 class="card__title">Why The Fraser Valley Needs Its Own Preparedness Research</h2><p class="card__subtitle">Expand to read the original paragraphs</p></div><span class="read-more">Read more</span></div>
+    <details class="section-accordion"><summary>Show the section text</summary><div class="section-accordion__body" id="scope-why-text"></div></details>
+  </article>
+
+  <article class="card section-widget section-widget--wide" data-filter-item data-category="deliverables" data-search-text="project deliverables local alert research software unusual rise illness biological border pharmaceutical research partnerships">
+    <div class="card__header"><div><h2 class="card__title">Project deliverables</h2><p class="card__subtitle">Select a heading to explore its source text</p></div><span class="chip chip--tint">Five headings</span></div>
+    <div class="tab-list" data-tab-group role="tablist" aria-label="Project deliverables" id="deliverable-tabs">
+      <button class="tab-button active" data-tab-button data-tab-index="0" type="button" aria-controls="deliverable-panel-0" aria-selected="true"></button>
+      <button class="tab-button" data-tab-button data-tab-index="1" type="button" aria-controls="deliverable-panel-1" aria-selected="false"></button>
+      <button class="tab-button" data-tab-button data-tab-index="2" type="button" aria-controls="deliverable-panel-2" aria-selected="false"></button>
+      <button class="tab-button" data-tab-button data-tab-index="3" type="button" aria-controls="deliverable-panel-3" aria-selected="false"></button>
+      <button class="tab-button" data-tab-button data-tab-index="4" type="button" aria-controls="deliverable-panel-4" aria-selected="false"></button>
+    </div>
+    <div class="section-tab-panels" id="deliverable-panels">
+      <div class="tab-panel" id="deliverable-panel-0" role="tabpanel"><div id="deliverable-copy-0"></div></div>
+      <div class="tab-panel" id="deliverable-panel-1" role="tabpanel" hidden><div id="deliverable-copy-1"></div></div>
+      <div class="tab-panel" id="deliverable-panel-2" role="tabpanel" hidden><div id="deliverable-copy-2"></div></div>
+      <div class="tab-panel" id="deliverable-panel-3" role="tabpanel" hidden><div id="deliverable-copy-3"></div></div>
+      <div class="tab-panel" id="deliverable-panel-4" role="tabpanel" hidden><div id="deliverable-copy-4"></div></div>
+    </div>
+    <p class="section-note">Text in these panels is copied from the corresponding part of the Word document.</p>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="indicators" data-search-text="monitoring indicators respiratory visits total visits holidays days week season wastewater viruses bacteria">
+    <div class="card__header"><div><h2 class="card__title">Monitoring indicators</h2><p class="card__subtitle">Terms identified in the Scope section</p></div><span class="read-more">Explore</span></div>
+    <div class="section-choice-list" data-scope-indicators></div>
+    <p class="section-note">Select a deliverable tab above to read the surrounding source paragraph.</p>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="wastewater" data-search-text="wastewater surveillance community viruses bacteria tested regular intervals">
+    <div class="card__header"><div><h2 class="card__title">Wastewater surveillance</h2><p class="card__subtitle">Additional community information</p></div><span class="chip chip--tint">Local Alert</span></div>
+    <details class="section-accordion"><summary>Show the original statement</summary><div class="section-accordion__body" id="scope-wastewater-text"></div></details>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="biological-border" data-search-text="biological border indoor air sensors residential building workplace ventilation">
+    <div class="card__header"><div><h2 class="card__title">Biological Border</h2><p class="card__subtitle">Sensors and indoor air monitoring</p></div><span class="chip chip--tint">Research deliverable</span></div>
+    <details class="section-accordion"><summary>Show the original statements</summary><div class="section-accordion__body" id="scope-biological-text"></div></details>
+  </article>
+
+  <article class="card section-widget" data-filter-item data-category="partnerships" data-search-text="Eli Lilly Pfizer AstraZeneca pharmaceutical research partnerships respiratory care">
+    <div class="card__header"><div><h2 class="card__title">Pharmaceutical research partnerships</h2><p class="card__subtitle">Companies named in the document</p></div><span class="read-more">Read more</span></div>
+    <div class="section-choice-list" data-pharma-list></div>
+    <details class="section-accordion"><summary>Show the original statement</summary><div class="section-accordion__body" id="scope-pharma-text"></div></details>
+  </article>
+
+  <article class="card section-widget section-widget--wide" data-filter-item data-category="navigation" data-search-text="related sections project charter time cost detailed documentation">
+    <div class="card__header"><div><h2 class="card__title">Related project sections</h2><p class="card__subtitle">Open the supporting project pages</p></div></div>
+    <div class="section-inline-links"><a class="chip" href="project-charter.html#project-charter">Project Charter</a><a class="chip" href="time.html#time">Time</a><a class="chip" href="cost.html#cost">Cost</a><a class="chip" href="detailed-documentation.html">Detailed Documentation</a></div>
+  </article>
+</div>
+
+        </section>
+        <section class="section-document" aria-labelledby="document-section-title">
+          <div class="section-document__header"><h2 class="section-document__title" id="document-section-title">Document</h2><span class="source-label">Original Word formatting</span></div>
+          <div id="document-content" class="document-paper">
+            <article class="doc" lang="en"><!-- DOCUMENT CONTENT START --><h1><span id="bookmark-_Toc246349570" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Scope</span></h1>
+<p><span class="word-run">It will start with two willing clinical service sites for discovery and shadow testing, and both sites will be selected for different operations. Then we will ask each site to name a decision, its deadline, the person able to act and the evidence currently available that will support their decision. </span></p>
+<p><span class="word-run">The research software that will be part of this project, it will be used to store the data of the decisions taken, evidence behind those decisions, and regional support service actions taken. </span></p>
+<h2><span id="bookmark-_Toc246349571" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Why </span><span class="word-run">The </span><span class="word-run">Fraser </span><span class="word-run">Valley </span><span class="word-run">Needs Its Own Preparedness Research</span></h2>
+<p><span class="word-run">During </span><span class="word-run">an</span><span class="word-run"> </span><span class="word-run">outbreak, a</span><span class="word-run"> manager in Hope </span><span class="word-run">must</span><span class="word-run"> decide whether the enough people can reach the clinic and whether the next shift can handle the </span><span class="word-run">number</span><span class="word-run"> of patients that are expected to arrive, which will be predicted by our research software.</span></p>
+<p><span class="word-run">The 2021 census counted 324,005 people in the Fraser Valley and it is up 9.5% from 295,934 in 2016. This increasing population in the Fraser Valley reason tells that there is need of high investment to predict the future patient counts visiting the clinics so that protective measures can be taken. For example, supplying the medicines, equipment at right time, right place and in right amount. These protective measures can </span><span class="word-run">save</span><span class="word-run"> many lives. (Statistics Canada, 2022a)</span></p>
+<h2><span id="bookmark-_Toc246349572" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Project Deliverables</span></h2>
+<p><span class="word-run">It includes what the project should deliver</span></p>
+<h3><span id="bookmark-_Toc246349573" class="word-bookmark" aria-hidden="true"></span><span class="word-run">What </span><span class="word-run">Will Be </span><span class="word-run">the</span><span class="word-run"> Purpose </span><span class="word-run">of</span><span class="word-run"> The </span><span class="word-run">Local </span><span class="word-run">Alert</span></h3>
+<p><span class="word-run">British Columbia is already publishing respiratory surveillance dashboards and weekly summaries. Recent summary illustrates the reason that why the lab should preserve several indicators. For example, during COVID-19 pandemic, COVID-19 test positives had been increasing while the proportions of emergency and primary care visits for respiratory illness remained low. These are the things that needs to be observed </span><span class="word-run">as soon as possible,</span><span class="word-run"> and correct data should be collected and presented. (BC Centre for Disease Control, 2026b)</span></p>
+<p><span class="word-run">Meanwhile, wastewater can provide additional information about the community. For example, </span><span class="word-run">wastewater</span><span class="word-run"> can be tested at regular intervals so that UFV lab will get the data about the viruses and bacteria, which bacteria and viruses are </span><span class="word-run">growing,</span><span class="word-run"> and which viruses are new to humans, can be detected early. (BC Centre for Disease Control, 2026b)</span></p>
+<h3><span id="bookmark-_Toc246349574" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Research Software</span></h3>
+<h3><span id="bookmark-_Toc246349575" class="word-bookmark" aria-hidden="true"></span><span class="word-run">How the lab will recognize an unusual rise in illness</span></h3>
+<p><span class="word-run">A Fraser Valley clinic manager needs to know whether a busy waiting room reflects an emerging regional problem, a nearby clinic closure or the usual winter pattern.</span></p>
+<p><span class="word-run">This lab will use different types of data to feed in the research </span><span class="word-run">software;</span><span class="word-run"> it will compare respiratory visits with the total number of visits. It will also include the data like the holidays, days of the week, season, and other events </span><span class="word-run">throughout</span><span class="word-run"> the year, so that number of patients visiting can be compared with these events. (BC Centre for Disease Control, 2026a)</span></p>
+<p><span class="word-run"> </span></p>
+<p><span class="word-run">Lab will use AI also to detect the unusual patterns and other instant spikes in the visits. With the integration of the AI, data analyzation will be </span><span class="word-run">faster,</span><span class="word-run"> and decisions can be taken quicker by the clinic's manager.</span></p>
+<p><span class="word-run">The second part of the software would predict the number of visits in clinic could expected during the next week. This will also include the </span><span class="word-run">number</span><span class="word-run"> of supplies that will be needed in that clinic for the next </span><span class="word-run">week,</span><span class="word-run"> and it will also take the data from the schedule supply ordering of that clinic and then this software can predict the amount of the supplies needed for the next week. (Fox et al., 2024)</span></p>
+<h3><span id="bookmark-_Toc246349576" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Biological Border</span></h3>
+<p><span class="word-run">A biological border is needed to build where residents already share indoor air. This </span><span class="word-run">can be</span><span class="word-run"> done by monitoring the air regularly with the use of sensors and it will detect the viruses and meanwhile new viruses that are not known to humans. (World Health Organization, 2021)</span></p>
+<p><span class="word-run">To make this possible, there is need to install sensors in every residential building and workplace and that sensors will send data via WIFI to the lab and it will be monitored and continuously analyzed with the AI and Research software, when it will be detected a foreign virus then </span><span class="word-run">an</span><span class="word-run"> alert like alarm will be sounded to alert the people in that building. In addition to this, there will proposed regulations to increase the ventilation so that effect of the viruses will be decreased. (World Health Organization, 2021)</span></p>
+<h3><span id="bookmark-_Toc246349577" class="word-bookmark" aria-hidden="true"></span><span class="word-run">Pharmaceutical Research Partnerships</span></h3>
+<p><span class="word-run">Partnership with Eli Lilly will focus </span><span class="word-run">on the</span><span class="word-run"> methods improve the data of the research software so that model predictions accuracy can be increased. Other partnerships with Pfizer and AstraZeneca regarding the respiratory care. With these companies the development of the vaccines can be accelerated by sharing the real time data with them and they can do their research and then vaccine for the new virus can be invented as soon as possible. (Pfizer, n.d.)</span></p><!-- DOCUMENT CONTENT END --></article>
+          </div>
+        </section>
+        <nav class="page-pagination" aria-label="Previous and next pages">
+          <a class="pagination-link" href="project-charter.html"><span aria-hidden="true">←</span><span><span class="section-pagination-label">Previous page</span><strong>Project Charter</strong></span></a>
+          <a class="pagination-link pagination-link--next" href="time.html"><span><span class="section-pagination-label">Next page</span><strong>Time</strong></span><span aria-hidden="true">→</span></a>
+        </nav>
+      </div>
+    </main>
+  </div>
+  <script src="assets/js/project-data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function(){
+      'use strict';
+      const data=window.PROJECT_DATA, ui={"scopeText": {"why": ["During an outbreak, a manager in Hope must decide whether the enough people can reach the clinic and whether the next shift can handle the number of patients that are expected to arrive, which will be predicted by our research software.", "The 2021 census counted 324,005 people in the Fraser Valley and it is up 9.5% from 295,934 in 2016. This increasing population in the Fraser Valley reason tells that there is need of high investment to predict the future patient counts visiting the clinics so that protective measures can be taken. For example, supplying the medicines, equipment at right time, right place and in right amount. These protective measures can save many lives. (Statistics Canada, 2022a)"], "localAlert": ["British Columbia is already publishing respiratory surveillance dashboards and weekly summaries. Recent summary illustrates the reason that why the lab should preserve several indicators. For example, during COVID-19 pandemic, COVID-19 test positives had been increasing while the proportions of emergency and primary care visits for respiratory illness remained low. These are the things that needs to be observed as soon as possible, and correct data should be collected and presented. (BC Centre for Disease Control, 2026b)", "Meanwhile, wastewater can provide additional information about the community. For example, wastewater can be tested at regular intervals so that UFV lab will get the data about the viruses and bacteria, which bacteria and viruses are growing, and which viruses are new to humans, can be detected early. (BC Centre for Disease Control, 2026b)"], "recognize": ["A Fraser Valley clinic manager needs to know whether a busy waiting room reflects an emerging regional problem, a nearby clinic closure or the usual winter pattern.", "This lab will use different types of data to feed in the research software; it will compare respiratory visits with the total number of visits. It will also include the data like the holidays, days of the week, season, and other events throughout the year, so that number of patients visiting can be compared with these events. (BC Centre for Disease Control, 2026a)", "Lab will use AI also to detect the unusual patterns and other instant spikes in the visits. With the integration of the AI, data analyzation will be faster, and decisions can be taken quicker by the clinic's manager.", "The second part of the software would predict the number of visits in clinic could expected during the next week. This will also include the number of supplies that will be needed in that clinic for the next week, and it will also take the data from the schedule supply ordering of that clinic and then this software can predict the amount of the supplies needed for the next week. (Fox et al., 2024)"], "biologicalBorder": ["A biological border is needed to build where residents already share indoor air. This can be done by monitoring the air regularly with the use of sensors and it will detect the viruses and meanwhile new viruses that are not known to humans. (World Health Organization, 2021)", "To make this possible, there is need to install sensors in every residential building and workplace and that sensors will send data via WIFI to the lab and it will be monitored and continuously analyzed with the AI and Research software, when it will be detected a foreign virus then an alert like alarm will be sounded to alert the people in that building. In addition to this, there will proposed regulations to increase the ventilation so that effect of the viruses will be decreased. (World Health Organization, 2021)"], "pharmaceutical": ["Partnership with Eli Lilly will focus on the methods improve the data of the research software so that model predictions accuracy can be increased. Other partnerships with Pfizer and AstraZeneca regarding the respiratory care. With these companies the development of the vaccines can be accelerated by sharing the real time data with them and they can do their research and then vaccine for the new virus can be invented as soon as possible. (Pfizer, n.d.)"], "researchSoftware": ["The research software that will be part of this project, it will be used to store the data of the decisions taken, evidence behind those decisions, and regional support service actions taken."]}};
+      if(!data)return;
+      const $=(selector,root=document)=>root.querySelector(selector);
+      const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
+      const start=new Date(data.project.startMonth+'-01T00:00:00');
+      const close=new Date(data.project.closingDate+'T00:00:00');
+      const today=new Date();today.setHours(0,0,0,0);
+      const plannedMonths=(close.getFullYear()-start.getFullYear())*12+(close.getMonth()-start.getMonth())+1;
+      const metric={duration:{value:plannedMonths,label:'calendar months'},budget:{value:'CAD $'+data.cost.documentedTotals.fundingCeiling.toLocaleString('en-CA')+'m',label:'CAD funding ceiling'},risks:{value:data.risks.length,label:'priority risks'}};
+      $$('[data-metric-key]').forEach(button=>{const item=metric[button.dataset.metricKey];if(item){button.dataset.metricValue=String(item.value);button.dataset.metricLabel=item.label;}});
+      const highlight=$('[data-highlight-number]'),caption=$('[data-highlight-caption]');
+      if(highlight&&caption){highlight.textContent=String(plannedMonths);caption.textContent='calendar months';}
+      const days=Math.ceil((close-today)/86400000);
+      $$('[data-countdown-close]').forEach(element=>element.textContent=String(days));
+      $$('[data-dynamic-close]').forEach(element=>element.textContent=new Intl.DateTimeFormat('en-CA',{year:'numeric',month:'long',day:'numeric'}).format(close));
+      $$('[data-dynamic-start]').forEach(element=>element.textContent=data.project.startPeriod);
+      $$('[data-project-name]').forEach(element=>element.textContent=data.project.name);
+      $$('[data-institution]').forEach(element=>element.textContent=data.project.institution);
+      $$('[data-initial-site-count]').forEach(element=>element.textContent=String(data.scope.initialSites.quantity));
+      $$('[data-population]').forEach(element=>element.textContent=data.scope.populationContext.population.toLocaleString('en-CA'));
+      $$('[data-population-comparison]').forEach(element=>element.textContent=data.scope.populationContext.comparisonPopulation.toLocaleString('en-CA'));
+      $$('[data-population-growth]').forEach(element=>element.textContent=data.scope.populationContext.growthPercent+'%');
+      $$('[data-charter-people]').forEach(root=>data.project.charterPeople.forEach(person=>{const chip=document.createElement('span');chip.className='chip chip--tint';chip.textContent=person;root.appendChild(chip);}));
+      $$('[data-purpose-index]').forEach(element=>{const index=Number(element.dataset.purposeIndex);if(data.project.charterPurposeStatements[index])element.textContent=data.project.charterPurposeStatements[index];});
+      const closeCondition=$('#charter-close-condition');if(closeCondition)closeCondition.textContent=data.project.statedCloseCondition;
+      const closeRepeat=$('#charter-close-condition-repeat');if(closeRepeat)closeRepeat.textContent=data.project.statedCloseCondition;
+      const contribution=$('#charter-closing-statement');if(contribution)contribution.textContent=data.project.closingStatement;
+      const addParagraphs=(selector,items)=>{const root=$(selector);if(!root)return;root.replaceChildren();(items||[]).forEach(text=>{const p=document.createElement('p');p.className='section-copy';p.textContent=text;root.appendChild(p);});};
+      addParagraphs('#scope-why-text',ui.scopeText.why);
+      addParagraphs('#scope-wastewater-text',ui.scopeText.localAlert.slice(1));
+      addParagraphs('#scope-biological-text',ui.scopeText.biologicalBorder);
+      addParagraphs('#scope-pharma-text',ui.scopeText.pharmaceutical);
+      addParagraphs('#deliverable-copy-0',ui.scopeText.localAlert);
+      addParagraphs('#deliverable-copy-1',ui.scopeText.researchSoftware);
+      addParagraphs('#deliverable-copy-2',ui.scopeText.recognize);
+      addParagraphs('#deliverable-copy-3',ui.scopeText.biologicalBorder);
+      addParagraphs('#deliverable-copy-4',ui.scopeText.pharmaceutical);
+      const initial=$('#scope-initial-description');if(initial)initial.textContent=data.scope.initialSites.description;
+      const software=$('#scope-software-purpose');if(software)software.textContent=data.scope.softwarePurpose;
+      $$('[data-scope-indicators]').forEach(root=>data.scope.monitoringIndicators.forEach(item=>{const chip=document.createElement('span');chip.className='chip';chip.textContent=item;root.appendChild(chip);}));
+      $$('[data-pharma-list]').forEach(root=>data.scope.pharmaceuticalPartnerships.forEach(item=>{const chip=document.createElement('span');chip.className='chip chip--tint';chip.textContent=item;root.appendChild(chip);}));
+      $$('#deliverable-tabs [data-tab-button]').forEach((button,index)=>{const heading=data.scope.deliverableHeadings[index];if(heading){button.textContent=heading;button.title=heading;button.setAttribute('aria-label',heading);}});
+      const print=$('[data-print-page]');if(print)print.addEventListener('click',()=>window.print());
+    })();
+  </script>
+
+</body>
+</html>

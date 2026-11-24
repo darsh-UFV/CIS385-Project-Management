@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>About Us | Project Website</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* EDIT: Page-specific layout; all document formatting stays inside .doc. */
+    .document-page-intro { margin-bottom: 4px; }
+    .document-page-intro p { margin: 5px 0 0; color: var(--color-muted); font-size: 12px; }
+    .document-paper { width: min(100%, 8.5in); padding: 1in; overflow: visible; }
+    .doc { white-space: normal; }
+    .doc .word-run { white-space: pre-wrap; tab-size: 8; }
+    .doc .doc-page-break { display: block; height: 1px; margin: 18pt 0; border: 0; background: #D8D8D8; break-after: page; page-break-after: always; }
+    .doc .word-bookmark { display: block; height: 0; scroll-margin-top: 18px; }
+    .doc .word-image { display: inline-block; max-width: 100%; object-fit: contain; }
+    .doc .word-list { margin: 0 0 10pt; padding-left: 36pt; font-family: Arial, sans-serif; font-size: 12pt; line-height: 1; }
+    .doc .word-list li { margin: 0; padding-left: 0; }
+    .doc .word-table { width: 100%; border-collapse: collapse; border-spacing: 0; font-family: Arial, sans-serif; font-size: 12pt; line-height: 1; }
+    .doc .word-table td, .doc .word-table th { padding: 4pt; vertical-align: top; }
+    .doc .word-table td p { margin: 0 0 4pt; }
+    .doc .word-table--gridtable4-accent6 { border: 0.5pt solid #8DD873; }
+    .doc .word-table--gridtable4-accent6 td { border: 0.5pt solid #8DD873; }
+    .doc .word-table--gridtable4-accent6 tr:first-child td { background: #4EA72E; color: #FFFFFF; font-weight: 700; }
+    .doc .word-table--gridtable4-accent2 { border: 0.5pt solid #F1A983; }
+    .doc .word-table--gridtable4-accent2 td { border: 0.5pt solid #F1A983; }
+    .doc .word-table--gridtable4-accent2 tr:first-child td { background: #E97132; color: #FFFFFF; font-weight: 700; }
+    .doc .word-table--gridtable4-accent6 td:nth-child(even) { background-color: #FAE2D5; }
+    .doc .word-table--gridtable4-accent6 tr:first-child td { background: #4EA72E; }
+    .doc .word-table--gridtable4-accent2 td:nth-child(even) { background-color: #FCE4D6; }
+    .doc .word-table--gridtable4-accent2 tr:first-child td { background: #E97132; }
+    .doc .word-table--gridtable4-accent6 td p, .doc .word-table--gridtable4-accent2 td p { margin: 0 0 4pt; }
+    .doc table:not([class*="gridtable"]) td { border: 1px solid #A3A3A3; }
+    .doc table:not([class*="gridtable"]) { border: 1px solid #A3A3A3; }
+    .doc .doc-table-wrap { max-width: 100%; overflow-x: auto; margin: 10pt 0; }
+    .doc .doc-table-wrap table { min-width: 520px; }
+    .doc .word-table--image-layout { table-layout: auto; }
+    .doc .word-table--image-layout td { border: 0 !important; padding: 0; }
+    .sidebar__request-card { display:flex; min-height:116px; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:14px; border:1px dashed var(--color-red-soft); border-radius:18px; background:var(--color-card); color:var(--color-nav); text-align:center; }
+    .sidebar__request-plus { display:grid; width:30px; height:30px; place-items:center; border-radius:50%; background:var(--color-red); color:var(--color-card); font-size:22px; line-height:1; }
+    .sidebar__request-card strong { font-size:11px; font-weight:600; }
+    .sidebar__request-card span:last-child { color:var(--color-muted); font-size:9px; }
+    .pagination-link { display:flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; background:var(--color-card); color:var(--color-nav); font-size:11px; }
+    .pagination-link strong { font-weight:600; }
+    .pagination-link--next { margin-left:auto; }
+    .doc a { color: #0563C1; }
+    @media (max-width: 760px) { .document-paper { padding: 0.55in; } }
+    @media (max-width: 480px) { .document-paper { padding: 18px; } }
+    @media print { .document-paper { width: 100%; max-width: none; padding: 0; } .doc-table-wrap { overflow: visible; } .doc-table-wrap table { min-width: 0; } }
+  
+    /* EDIT: Page-specific cards and interactive components for section pages. */
+    .section-heading-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .section-intro{margin:0;color:var(--color-muted);font-size:12px}
+    .section-widget-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--content-gap)}
+    .section-widget{min-width:0;display:grid;align-content:start;gap:12px}
+    .section-widget--wide{grid-column:1/-1}
+    .section-widget__eyebrow{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--color-muted);font-size:10px}
+    .section-widget__eyebrow strong{color:var(--color-red);font-weight:600}
+    .section-fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .section-fact{padding:12px;border:1px solid var(--color-line);border-radius:14px;background:var(--color-card)}
+    .section-fact__label{display:block;color:var(--color-muted);font-size:10px}
+    .section-fact__value{display:block;margin-top:4px;color:var(--color-title);font-size:16px;font-weight:500;overflow-wrap:anywhere}
+    .section-copy{margin:0;color:var(--color-nav);font-size:12px;line-height:1.65}
+    .section-copy + .section-copy{margin-top:9px}
+    .section-inline-links{display:flex;gap:8px;flex-wrap:wrap}
+    .section-inline-links a{font-size:11px}
+    .section-stat{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+    .section-stat strong{font-size:35px;line-height:1;font-weight:400;letter-spacing:-.05em;color:var(--color-red);font-variant-numeric:tabular-nums}
+    .section-stat span{color:var(--color-muted);font-size:11px}
+    .section-choice-list{display:flex;flex-wrap:wrap;gap:7px}
+    .section-choice-list .chip{cursor:default}
+    .section-note{margin:0;color:var(--color-muted);font-size:10px;line-height:1.5}
+    .section-divider{height:1px;background:var(--color-line);margin:4px 0}
+    .section-document{display:grid;gap:11px;margin-top:4px}
+    .section-document .document-paper{margin-inline:0;max-width:100%;}
+    .section-document__header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .section-document__title{margin:0;font-size:19px;font-weight:400;color:var(--color-title)}
+    .section-tab-panels{min-width:0}
+    .section-tab-panels .tab-panel{padding-top:12px}
+    .section-tab-panels .tab-panel[hidden]{display:none!important}
+    .section-accordion{border-top:1px solid var(--color-line);padding-top:10px}
+    .section-accordion summary{cursor:pointer;color:var(--color-nav);font-size:12px;font-weight:600;list-style:none}
+    .section-accordion summary::-webkit-details-marker{display:none}
+    .section-accordion__body{padding:10px 0 2px;color:var(--color-nav);font-size:12px;line-height:1.65}
+    .section-accordion__body p{margin:0 0 8px}
+    .section-widget[hidden]{display:none!important}
+    .section-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .section-list li{display:flex;align-items:flex-start;gap:8px;color:var(--color-nav);font-size:11px}
+    .section-list li:before{content:"";width:6px;height:6px;flex:0 0 6px;margin-top:5px;border-radius:50%;background:var(--color-red)}
+    .section-pagination-label{display:block;color:var(--color-muted);font-size:9px}
+    @media(max-width:760px){.section-widget-grid{grid-template-columns:1fr}.section-widget--wide{grid-column:auto}}
+    @media print{.section-tools,.section-tabs,.no-print{display:none!important}.section-widget[hidden]{display:block!important}.section-document .document-paper{width:100%;padding:0}.section-widget-grid{grid-template-columns:1fr 1fr}}
+    </style>
+</head>
+<body>
+  <div class="app-shell" id="app-shell">
+    <aside class="sidebar" id="site-sidebar" aria-label="Project navigation">
+      <div class="sidebar__identity">
+        <span class="sidebar__monogram" aria-hidden="true">FV</span>
+        <div class="sidebar__identity-copy">
+          <span class="sidebar__identity-label">Project workspace</span>
+          <strong class="sidebar__identity-name">Fraser Valley Preparedness Research Lab</strong>
+        </div>
+      </div>
+
+      <div class="sidebar__selector">
+        <div class="sidebar__selector-main">
+          <span class="sidebar__selector-mark" aria-hidden="true">FV</span>
+          <span class="sidebar__selector-copy"><small>Institution</small><strong>University of the Fraser Valley</strong></span>
+        </div>
+        <svg viewbox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg>
+      </div>
+
+      <!-- Keep all ten navigation links static and relative on every page. -->
+      <nav class="sidebar__nav" aria-label="Website pages">
+        <a class="sidebar__nav-link" href="index.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1"></rect></svg>
+          <span class="sidebar__nav-label">Executive Overview</span>
+        </a>
+        <a class="sidebar__nav-link" href="project-charter.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4.5h10a2 2 0 0 1 2 2v13h-14v-13a2 2 0 0 1 2-2Z"></path><path d="M9 3.5h6v3H9zM8 11h8M8 15h8"></path></svg>
+          <span class="sidebar__nav-label">Project Charter</span>
+        </a>
+        <a class="sidebar__nav-link" href="scope-deliverables.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"></path><path d="m3.8 7.7 8.2 4.6 8.2-4.6M12 12.3V21"></path></svg>
+          <span class="sidebar__nav-label">Scope &amp; Deliverables</span>
+        </a>
+        <a class="sidebar__nav-link" href="time.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5l3.5 2"></path></svg>
+          <span class="sidebar__nav-label">Time</span>
+        </a>
+        <a class="sidebar__nav-link" href="cost.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7.5" ry="3"></ellipse><path d="M4.5 6.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5M4.5 11.5v5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-5"></path></svg>
+          <span class="sidebar__nav-label">Cost</span>
+        </a>
+        <a class="sidebar__nav-link" href="operations.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5h6v5H4zM14 13.5h6v5h-6zM10 8h4a2 2 0 0 1 2 2v3.5M7 10.5v7h7"></path></svg>
+          <span class="sidebar__nav-label">Operations</span><span class="sidebar__nav-count" id="operations-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="management.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path><circle cx="9" cy="6" r="2" fill="var(--color-card)"></circle><circle cx="15" cy="12" r="2" fill="var(--color-card)"></circle><circle cx="7" cy="18" r="2" fill="var(--color-card)"></circle></svg>
+          <span class="sidebar__nav-label">Management</span>
+        </a>
+        <a class="sidebar__nav-link" href="references.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h12a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2v-13Z"></path><path d="M7 4.5v13a2 2 0 0 0 2 2M9 9h7M9 13h7"></path></svg>
+          <span class="sidebar__nav-label">References</span><span class="sidebar__nav-count" id="references-nav-count"></span>
+        </a>
+        <a class="sidebar__nav-link" href="detailed-documentation.html">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h8l4 4v13H6z"></path><path d="M14 3.5v4h4M9 12h6M9 16h6"></path></svg>
+          <span class="sidebar__nav-label">Detailed Documentation</span>
+        </a>
+        <a class="sidebar__nav-link active" href="about-us.html" aria-current="page">
+          <svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M9.5 9a2.5 2.5 0 1 1 4.4 1.6c-.9 1-1.9 1.2-1.9 2.9M12 17h.01"></path></svg>
+          <span class="sidebar__nav-label">About Us</span>
+        </a>
+      </nav>
+
+      <section class="sidebar__highlight" aria-label="Project snapshot">
+        <div class="sidebar__highlight-heading"><span class="sidebar__highlight-title">Project snapshot</span><span class="sidebar__highlight-value">Planned</span></div>
+        <div class="sidebar__highlight-metric">
+          <strong class="sidebar__highlight-number" id="highlight-number" data-highlight-number>36</strong>
+          <span class="sidebar__highlight-caption" id="highlight-caption" data-highlight-caption>calendar months</span>
+        </div>
+        <div class="sidebar__highlight-toggles" data-metric-switcher>
+          <button class="sidebar__highlight-toggle active" type="button" data-metric-toggle data-metric-key="duration" aria-pressed="true">Duration</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="budget" aria-pressed="false">Budget</button>
+          <button class="sidebar__highlight-toggle" type="button" data-metric-toggle data-metric-key="risks" aria-pressed="false">Risks</button>
+        </div>
+      </section>
+
+      <div class="sidebar__bottom">
+        <div class="sidebar__quicklinks" aria-label="Quick links">
+          <a href="time.html#time" aria-label="Open Time"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M8 3v4M16 3v4M4 9h16"></path></svg></a>
+          <a href="cost.html#cost" aria-label="Open Cost"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"></path></svg></a>
+          <a href="operations.html#operations" aria-label="Open Operations"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 7 8-4 8 4v10l-8 4-8-4zM4 7l8 5 8-5M12 12v9"></path></svg></a>
+          <a href="management.html#management" aria-label="Open Management"><svg viewbox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h4"></path></svg></a>
+        </div>
+        <a class="sidebar__create-link" href="detailed-documentation.html">
+          <span class="sidebar__create-icon" aria-hidden="true">+</span>
+          <span>Open Detailed Documentation</span>
+        </a>
+      </div>
+    </aside>
+    <main class="app-main">
+      <header class="topbar">
+        <div class="topbar__leading">
+          <button class="icon-button mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-sidebar">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div><h1 class="page-title" id="about-us">About Us</h1><p class="page-subtitle">Fraser Valley Preparedness Research Lab · Project proposal</p></div>
+          <a class="topbar__select" href="#document-content">Document <span aria-hidden="true">⌄</span></a>
+        </div>
+        <div class="topbar__actions">
+          <label class="search-pill"><span class="visually-hidden">Search document content</span><input type="search" placeholder="Search" data-search-target="#document-content" autocomplete="off"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></label>
+          <button class="icon-button" type="button" data-print-page aria-label="Print or save as PDF" title="Print / Save as PDF"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V4h10v4M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v6H7z"/></svg></button>
+        </div>
+      </header>
+      <div class="page-content section-stack">
+        <section class="section-document" aria-labelledby="document-section-title">
+          <div class="section-document__header"><h2 class="section-document__title" id="document-section-title">Document</h2><span class="source-label">Original Word formatting</span></div>
+          <div id="document-content" class="document-paper"><article class="doc" lang="en"><!-- DOCUMENT CONTENT START --><p style="text-align:center" data-searchable=""><span style="color:#000000;font-weight:700"><span class="word-run">Assignment </span></span><span style="color:#000000;font-weight:700"><span class="word-run">4</span></span><span style="color:#000000;font-weight:700"><span class="word-run">: </span></span><span style="color:#000000;font-weight:700"><span class="word-run">PROJECT PROPOSAL</span></span><span style="color:#000000;font-weight:700"><span class="word-run"> - </span></span><span style="font-weight:700"><span class="word-run">Fraser Valley Preparedness Research Lab</span></span></p><p style="text-align:center" data-searchable=""></p><p style="text-align:center" data-searchable=""><span style="color:#000000"><span class="word-run">Darshpreet Singh</span></span></p><p style="text-align:center" data-searchable=""><span style="color:#000000"><span class="word-run">Department of School of Computing, University of the Fraser Valley</span></span></p><p style="text-align:center" data-searchable=""><span style="color:#000000"><span class="word-run">CIS 385, AB1, Project Management</span></span></p><p style="text-align:center" data-searchable=""><span style="color:#000000"><span class="word-run">Kevin Renso</span></span></p><p style="text-align:center" data-searchable=""><span style="color:#000000"><span class="word-run">23 November</span></span><span style="color:#000000"><span class="word-run"> 2026</span></span></p><!-- DOCUMENT CONTENT END --></article></div>
+        </section>
+        <nav class="page-pagination" aria-label="Previous and next pages">
+          <a class="pagination-link" href="detailed-documentation.html"><span aria-hidden="true">←</span><span><span class="section-pagination-label">Previous page</span><strong>Detailed Documentation</strong></span></a>
+          <a class="pagination-link pagination-link--next" href="index.html"><span><span class="section-pagination-label">Next page</span><strong>Executive Overview</strong></span><span aria-hidden="true">→</span></a>
+        </nav>
+      </div>
+    </main>
+  </div>
+  <script src="assets/js/project-data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>document.querySelector('[data-print-page]').addEventListener('click', function () { window.print(); });</script>
+</body>
+</html>
